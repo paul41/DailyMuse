@@ -1,2 +1,2 @@
 # DailyMuse
-podcast using github actions
+One brilliant podcast, delivered daily at 5am IST.
