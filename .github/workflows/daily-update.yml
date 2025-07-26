@@ -2,7 +2,7 @@ name: Daily news update
 
 on:
   schedule:
-    - cron: '30 0 * * *'
+    - cron: '20 0 * * *'
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -41,20 +41,20 @@ jobs:
           git commit -m "Automated update: $(date '+%Y-%m-%d %H:%M:%S')"
           git push origin main
 
-      - name: Copy snapshot to history/
-        run: |
-          mkdir -p history
-          cp index.html history/index-$(date '+%Y-%m-%d').html
+      # - name: Copy snapshot to history/
+      #   run: |
+      #     mkdir -p history
+      #     cp index.html history/index-$(date '+%Y-%m-%d').html
 
-      - name: Commit snapshot
-        run: |
-          git add history/index-*.html
-          git commit -m "Snapshot: $(date '+%Y-%m-%d %H:%M:%S')"
-          git push origin main
+      # - name: Commit snapshot
+      #   run: |
+      #     git add history/index-*.html
+      #     git commit -m "Snapshot: $(date '+%Y-%m-%d %H:%M:%S')"
+      #     git push origin main
 
-      - name: Deploy to GitHub Pages 🌐
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
+      # - name: Deploy to GitHub Pages 🌐
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: ./
 
