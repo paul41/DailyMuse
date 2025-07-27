@@ -11,12 +11,12 @@ class RSSLinkExtractor{
                 const result = await parser.parseStringPromise(xml);
                 const channel = result.rss?.channel;
                 const items = channel?.item || [];
-                const contentArray = items.map(({title,link})=>({title,link})).slice(0,10)
+                const contentArray = items.map(({title,link,enclosure,StoryImage,media})=>({title,link,enclosure,StoryImage,media})).slice(0,10)
                 
                 channels.push({
                     title: channel?.title,
                     link: channel?.link,
-                    pubDate: channel?.lastBuildDate || new Date,
+                    pubDate: channel?.lastBuildDate ? new Date(channel.lastBuildDate).toDateString() : new Date().toDateString(),
                     image: channel?.image?.url || channel?.fullimage || null,
                     headlines: contentArray
                 });
