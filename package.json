@@ -1,17 +1,17 @@
 {
   "name": "dailymuse",
   "version": "1.0.0",
-  "description": "A static github webpage that presents daily of Indian-express ",
+  "description": "Today's Finds - A static github webpage that presents daily news",
   "keywords": [
     "headlines",
     "news",
-    "firstpost.com",
+    "cnbctv18",
     "thehindu",
     "indiatoday",
     "ndtv",
     "timesofindia",
     "github-pages",
-    "dailymuse"
+    "today's finds"
   ],
   "homepage": "https://github.com/paul41/DailyMuse#readme",
   "bugs": {

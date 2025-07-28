@@ -19,23 +19,33 @@ async function updateHTML(params) {
     <html>
         <head>
             <meta charset="UTF-8">
-            <title>Daily NEWS highlights</title>
+            <title>Today's Find | Daily NEWS highlights</title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <meta name="description" content="Webpage that displays headlines from top 5 indian channels. Refreshed each day" />
-            <meta name="author" content="souravPaul" />
+            <meta name="description" content="Webpage that display news headlines from top 5 indian channels. Refreshed each day" />
+            <meta name="author" content="SouravPaul" />
             <style>
                 /* CSS */
-                body { font-family: Arial,sans-serif; padding: 20px; background:#ddd }
+                body { font-family: Arial,sans-serif; padding: 15px; background:#ddd }
                 .news-header {
                     display: flex;
                     align-items: center;
                     gap: 16px;
-                    margin-bottom: 24px;
+                    margin-bottom: 18px;
+                }
+                .header-stt{
+                    background:#fff;
+                    box-shadow:0 2px 8px rgba(0, 0, 0, 0.1);
+                    text-align:center;
                 }
                 .news-header img {
                     width: 120px;
                     height: 120px;
                     object-fit: contain;
+                    border-radius: 5px;
+                    border:1px solid #fff
+                }
+                news-header-stt{
+                    display:block;
                 }
                 .news-title {
                     font-size: 1.2rem;
@@ -50,15 +60,30 @@ async function updateHTML(params) {
                     width: 100%;
                     height: 200px;
                     object-fit: contain;
-                    border-radius: 8px;
+                    border-radius: 5px;
+                    border:1px solid #ddd
                 }
-
+                .news-date {
+                    font-family: Arial,sans-serif;
+                    font-size: 0.95rem;
+                    color: #555;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                    margin-bottom: 1em;
+                    display: block;
+                }
+                .app-logo {
+                    width: 70px;
+                    height: 70px;
+                    margin-right: 3px;
+                    vertical-align: middle;
+                }
                 .card-container {
                     display: flex;
                     justify-content: space-between; /* ensures even spacing across all cards */
                     gap: 16px;
                     flex-wrap: nowrap; /* forces cards to stay on one line */
-                    margin-bottom: 20px;
+                    margin-bottom: 15px;
                     overflow-x: auto; /* enables scrolling if cards overflow */
                 }
                 .card {
@@ -66,7 +91,7 @@ async function updateHTML(params) {
                     max-width: 200px;
                     flex-shrink: 0; /* prevents cards from shrinking */
                     background-color: #f1f1f1;
-                    border-radius: 8px;
+                    border-radius: 17px 17px 0 0;
                     padding: 12px;
                     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
                 }
@@ -92,26 +117,31 @@ async function updateHTML(params) {
             </style>
         </head>
         <body>
-        <h1>📰 Today's Finds</h1>
-        ${params.map((entry, i) => `
-            <div class="news-header">
-                <img src="${entry.image}" alt="News Logo">
-                <h3 class="news-title">
-                    <a href="${entry.link}" target="_blank">${entry.title}</a>
-                </h3>
-                <p class="news-date">${entry.pubDate}</p>
-            </div>
-                <div class="card-container">
-                    ${entry['headlines'].map((content,i)=>`
-                        <div class="card">
-                            <img src="${content?.enclosure?.['$']?.url || content?.StoryImage || content?.["media:content"]?.['$']?.url}" alt="Headline image">
-                            <h3>${content?.title}</h3>
-                            <a href="${content?.link}" class="read-more" target="_blank">Read More →</a>
-                        </div>   
-                    `).join('')}
+            <h1 class="header-stt">
+                <img src="tficon.png" alt="" class="app-logo" />
+                Today's Finds
+            </h1>
+            ${params.map((entry, i) => `
+                <div class="news-header">
+                    <img src="${entry.image}" alt="News Logo">
+                    <div class="news-header-stt">
+                        <h3 class="news-title">
+                            <a href="${entry.link}" target="_blank">${entry.title}</a>
+                        </h3>
+                        <p class="news-date">${entry.pubDate}</p>
+                    </div>
                 </div>
-            
-        `).join('')}
+                    <div class="card-container">
+                        ${entry['headlines'].map((content,i)=>`
+                            <div class="card">
+                                <img src="${content?.enclosure?.['$']?.url || content?.StoryImage || content?.["media:content"]?.['$']?.url}" alt="Headline image">
+                                <h3>${content?.title}</h3>
+                                <a href="${content?.link}" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        `).join('')}
+                    </div>
+                
+            `).join('')}
         </body>
     </html>`
     fs.writeFileSync('index.html', html);
