@@ -34,6 +34,7 @@ async function updateHTML(params) {
                 }
                 .header-stt{
                     background:#fff;
+                    padding:5px;
                     box-shadow:0 2px 8px rgba(0, 0, 0, 0.1);
                     text-align:center;
                 }
@@ -73,10 +74,8 @@ async function updateHTML(params) {
                     display: block;
                 }
                 .app-logo {
-                    width: 70px;
-                    height: 70px;
-                    margin-right: 3px;
-                    vertical-align: middle;
+                    width: 100px;
+                    height: 110px;
                 }
                 .card-container {
                     display: flex;
@@ -125,9 +124,9 @@ async function updateHTML(params) {
         </head>
         <body>
             <h1 class="header-stt">
-                <img src="tficon.png" alt="" class="app-logo" />
-                Today's Finds
+                <img src="dailyMicon.png" alt="" class="app-logo" />
             </h1>
+            
             ${params.map((entry, i) => `
                 <div class="news-header">
                     <img src="${entry.image}" alt="News Logo">
