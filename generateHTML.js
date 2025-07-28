@@ -19,9 +19,9 @@ async function updateHTML(params) {
     <html>
         <head>
             <meta charset="UTF-8">
-            <title>Today's Find | Daily NEWS highlights</title>
+            <title>Daily Muse | Daily NEWS highlights</title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <meta name="description" content="Webpage that display news headlines from top 5 indian channels. Refreshed each day" />
+            <meta name="description" content="Webpage that display news headlines from top 5 Indian news channels." />
             <meta name="author" content="SouravPaul" />
             <style>
                 /* CSS */
@@ -115,6 +115,13 @@ async function updateHTML(params) {
                     font-weight: bold;
                 }
             </style>
+            <script type="text/javascript">
+                (function(c,l,a,r,i,t,y){
+                    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                })(window, document, "clarity", "script", "slvrquufd1");
+            </script>
         </head>
         <body>
             <h1 class="header-stt">
@@ -145,5 +152,4 @@ async function updateHTML(params) {
         </body>
     </html>`
     fs.writeFileSync('index.html', html);
-    //<img src="image1.jpg" alt="News 1">
 }
