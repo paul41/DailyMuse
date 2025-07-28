@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Daily Muse | Daily NEWS highlights</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <meta name="description" content="Webpage that display news headlines from top 5 Indian news channels." />
+            <meta name="author" content="SouravPaul" />
+            <style>
+                /* CSS */
+                body { font-family: Arial,sans-serif; padding: 15px; background:#ddd }
+                .news-header {
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+                    margin-bottom: 18px;
+                }
+                .header-stt{
+                    background:#fff;
+                    padding:5px;
+                    box-shadow:0 2px 8px rgba(0, 0, 0, 0.1);
+                    text-align:center;
+                }
+                .news-header img {
+                    width: 120px;
+                    height: 120px;
+                    object-fit: contain;
+                    border-radius: 5px;
+                    border:1px solid #fff
+                }
+                news-header-stt{
+                    display:block;
+                }
+                .news-title {
+                    font-size: 1.2rem;
+                    margin: 0 0 8px;
+                    color: #333;
+                }
+                .news-card:hover {
+                    transform: translateY(-5px);
+                }
+
+                .news-image {
+                    width: 100%;
+                    height: 200px;
+                    object-fit: contain;
+                    border-radius: 5px;
+                    border:1px solid #ddd
+                }
+                .news-date {
+                    font-family: Arial,sans-serif;
+                    font-size: 0.95rem;
+                    color: #555;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                    margin-bottom: 1em;
+                    display: block;
+                }
+                .app-logo {
+                    width: 100px;
+                    height: 110px;
+                }
+                .card-container {
+                    display: flex;
+                    justify-content: space-between; /* ensures even spacing across all cards */
+                    gap: 16px;
+                    flex-wrap: nowrap; /* forces cards to stay on one line */
+                    margin-bottom: 15px;
+                    overflow-x: auto; /* enables scrolling if cards overflow */
+                }
+                .card {
+                    min-width: 200px;
+                    max-width: 200px;
+                    flex-shrink: 0; /* prevents cards from shrinking */
+                    background-color: #f1f1f1;
+                    border-radius: 17px 17px 0 0;
+                    padding: 12px;
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                }
+                .card img {
+                    width: 100%;
+                    height: 120px;
+                    object-fit: contain;
+                    border-radius: 4px;
+                }
+                .card h3 {
+                    font-size: 16px;
+                    margin-top: 8px;
+                }
+                .card p {
+                    font-size: 14px;
+                    color: #555;
+                }
+                .read-more {
+                    text-decoration: none;
+                    color: #0078D4;
+                    font-weight: bold;
+                }
+            </style>
+            <script type="text/javascript">
+                (function(c,l,a,r,i,t,y){
+                    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                })(window, document, "clarity", "script", "slvrquufd1");
+            </script>
+        </head>
+        <body>
+            <h1 class="header-stt">
+                <img src="dailyMicon.png" alt="" class="app-logo" />
+            </h1>
+            
+            
+                <div class="news-header">
+                    <img src="https://static.toiimg.com/photo/msid-98638255.cms" alt="News Logo">
+                    <div class="news-header-stt">
+                        <h3 class="news-title">
+                            <a href="https://timesofindia.indiatimes.com" target="_blank">Times of India</a>
+                        </h3>
+                        <p class="news-date">Mon Jul 28 2025</p>
+                    </div>
+                </div>
+                    <div class="card-container">
+                        
+                            <div class="card">
+                                <img src="https://static.toiimg.com/photo/msid-122958370,imgsize-40218.cms" alt="Headline image">
+                                <h3>'JD Vance warned PM Modi of massive Pak attack' - Jaishankar in LS during Op Sindoor debate</h3>
+                                <a href="https://timesofindia.indiatimes.com/india/monsoon-session-jd-vance-warned-pm-modi-of-massive-pakistani-attack-jaishankar-in-lok-sabha-during-op-sindoor-update/articleshow/122958308.cms" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="https://static.toiimg.com/photo/msid-122958035,imgsize-46620.cms" alt="Headline image">
+                                <h3>Op Sindoor debate: How can 'gora' in White House declare ceasefire? asks Owaisi</h3>
+                                <a href="https://timesofindia.indiatimes.com/india/op-sindoor-debate-how-can-gora-in-white-house-declare-ceasefire-asks-owaisi-opposes-india-pak-match/articleshow/122957514.cms" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="https://static.toiimg.com/photo/msid-122958660,imgsize-68400.cms" alt="Headline image">
+                                <h3>Boeing may be benefitting big from Donald Trump's trade war despite regulatory hurdles</h3>
+                                <a href="https://timesofindia.indiatimes.com/business/international-business/aircraft-crashes-to-regulatory-hurdles-despite-several-challenges-boeing-may-be-benefitting-big-from-donald-trumps-trade-war/articleshow/122958617.cms" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="https://static.toiimg.com/photo/msid-122956730,imgsize-52442.cms" alt="Headline image">
+                                <h3>Only 3 of 190 nations which are part of UN opposed Op Sindoor, says Jaishankar - Top quotes</h3>
+                                <a href="https://timesofindia.indiatimes.com/india/only-3-of-190-nations-which-are-part-of-un-opposed-operation-sindoor-says-jaishankar-top-quotes/articleshow/122956721.cms" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="https://static.toiimg.com/photo/msid-122956418,imgsize-71278.cms" alt="Headline image">
+                                <h3>Ex-Google AI engineer shares his experience after joining Microsoft: ‘I’m already …’</h3>
+                                <a href="https://timesofindia.indiatimes.com/technology/tech-news/ex-google-ai-engineer-amar-subramanya-shares-his-first-week-experience-after-joining-microsoft-im-already-feeling/articleshow/122956429.cms" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="https://static.toiimg.com/photo/msid-122958705,imgsize-75166.cms" alt="Headline image">
+                                <h3>When Pakistan Test team left the ground leaving Gavaskar stranded at 86</h3>
+                                <a href="https://timesofindia.indiatimes.com/sports/cricket/news/when-pakistan-test-team-left-the-ground-leaving-gavaskar-stranded-at-86/articleshow/122958663.cms" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="https://static.toiimg.com/photo/msid-122957261,imgsize-867033.cms" alt="Headline image">
+                                <h3>Cambodia–Thailand ceasefire: Trump takes credit; declares himself 'prez of peace'</h3>
+                                <a href="https://timesofindia.indiatimes.com/world/us/cambodiathailand-ceasefire-donald-trump-takes-credit-declares-himself-president-of-peace/articleshow/122957254.cms" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="https://static.toiimg.com/photo/msid-122952786,imgsize-9666.cms" alt="Headline image">
+                                <h3>Operation Mahadev: 'Pahalgam attack mastermind' among 3 terrorists killed</h3>
+                                <a href="https://timesofindia.indiatimes.com/india/operation-mahadev-pahalgam-attack-mastermind-among-3-terrorists-killed-what-we-know/articleshow/122950886.cms" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="https://static.toiimg.com/photo/msid-122918111,imgsize-91716.cms" alt="Headline image">
+                                <h3>Zuckerberg appoints ChatGPT co-creator Shengjia Zhao as chief scientist of Meta’s AI lab</h3>
+                                <a href="https://timesofindia.indiatimes.com/technology/tech-news/mark-zuckerberg-appoints-shengjia-zhao-who-co-created-openais-chatgpt-as-chief-scientist-of-metas-ai-superintelligence-lab/articleshow/122918120.cms" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="https://static.toiimg.com/photo/msid-122954526,imgsize-45004.cms" alt="Headline image">
+                                <h3>BJP's Panda takes a swipe at Cong with Tharoor mention - 'No one could stop him from ...'</h3>
+                                <a href="https://timesofindia.indiatimes.com/india/operation-sindoor-debate-bjps-baijayant-panda-takes-a-swipe-at-congress-with-shashi-tharoor-mention-no-one-could-stop-him/articleshow/122954448.cms" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                    </div>
+                
+            
+                <div class="news-header">
+                    <img src="https://www.ndtv.com/common/header/images/ndtv_logo_black.gif" alt="News Logo">
+                    <div class="news-header-stt">
+                        <h3 class="news-title">
+                            <a href="https://www.ndtv.com" target="_blank">NDTV News- Special</a>
+                        </h3>
+                        <p class="news-date">Mon Jul 28 2025</p>
+                    </div>
+                </div>
+                    <div class="card-container">
+                        
+                            <div class="card">
+                                <img src="https://c.ndtvimg.com/2025-07/26944987_motilal_nagar_4.jpeg" alt="Headline image">
+                                <h3>Supreme Court Upholds Redevelopment Of Mumbai's Motilal Nagar Via MHADA C&DA Model</h3>
+                                <a href="https://www.ndtvprofit.com/real-estate/supreme-court-upholds-redevelopment-of-mumbais-motilal-nagar-via-mhada-cda-model" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="https://c.ndtvimg.com/2025-07/oo3ssgmo_sai-sudharsan-afp_625x300_28_July_25.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" alt="Headline image">
+                                <h3>"I Don't Even Look...":  Gambhir's Blunt Response To Sai Sudharsan's Critics</h3>
+                                <a href="https://sports.ndtv.com/cricket/i-dont-even-look-gautam-gambhirs-bold-take-on-sai-sudharsans-critics-8962970" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="https://c.ndtvimg.com/2025-07/4dabe9ab_business-concept-2025-01-09-18-46-12-utc.jpg" alt="Headline image">
+                                <h3>Laxmi India Finance Raises Over Rs 75 Crore From Anchor Investors Ahead Of IPO</h3>
+                                <a href="https://www.ndtvprofit.com/markets/laxmi-india-finance-raises-over-rs-75-crore-from-anchor-investors-ahead-of-ipo" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="https://c.ndtvimg.com/2025-07/munbac7g_parab-maha-_625x300_28_July_25.jpeg" alt="Headline image">
+                                <h3>Team Uddhav Leaders Meet Maharashtra Governor, Seek Action Against Ministers</h3>
+                                <a href="https://www.ndtv.com/india-news/team-uddhav-leaders-meet-maharashtra-governor-seek-action-against-ministers-8969449" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="https://c.ndtvimg.com/2025-07/djaj6l5k_as_625x300_28_July_25.jpeg" alt="Headline image">
+                                <h3>US Mom Dies After Tree Branch Falls On Her During Daughter's Sports Tournament</h3>
+                                <a href="https://www.ndtv.com/world-news/us-woman-dies-after-tree-branch-falls-on-her-during-daughters-sports-tournament-8969443" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="https://c.ndtvimg.com/2022-12/0htt5beg_india-police-generic_625x300_23_December_22.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" alt="Headline image">
+                                <h3>UP Girl Killed, Buried In Graveyard Over Love Affair, 6 Arrested: Cops</h3>
+                                <a href="https://www.ndtv.com/india-news/minor-up-girl-killed-buried-in-graveyard-over-love-affair-6-arrested-cops-8969442" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="https://c.ndtvimg.com/2025-07/qf0tvjqo_library-school-_625x300_28_July_25.jpg?im=FitAndFill,algorithm=dnn,width=240,height=180" alt="Headline image">
+                                <h3>24x7 Library Inaugurated In Dwarka A Year After Rajinder Nagar Tragedy</h3>
+                                <a href="https://www.ndtv.com/education/24x7-safe-study-space-inaugurated-in-dwarka-a-year-after-rajinder-nagar-tragedy-8969421" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="https://i.ndtvimg.com/i/2016-05/firefighter-fireman-generic_650x400_41464239708.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" alt="Headline image">
+                                <h3>Delhi, Nearby Areas To Witness First-Ever Mega Mock Disaster Drill On Aug 1</h3>
+                                <a href="https://www.ndtv.com/india-news/delhi-nearby-areas-to-witness-first-ever-mega-mock-disaster-drill-on-august-1-8969412" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="https://c.ndtvimg.com/2025-07/685a0dba_coil-of-copper-wire-hangs-on-an-iron-rack-2025-02-02-20-44-10-utc.jpg" alt="Headline image">
+                                <h3>Motherson Sumi Wiring Sees 4% Decline In Net Profit</h3>
+                                <a href="https://www.ndtvprofit.com/quarterly-earnings/motherson-sumi-wiring-sees-4-decline-in-net-profit" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="https://i.gadgets360cdn.com/large/SCI_2_Thum_1753443424341.jpg" alt="Headline image">
+                                <h3>Doomed Exoplanet TOI-2109b Spirals Toward Its Star with Three Possible Fates</h3>
+                                <a href="https://www.gadgets360.com/science/news/doomed-exoplanet-toi-2109b-spirals-toward-its-star-with-three-possible-fates-8949091" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                    </div>
+                
+            
+                <div class="news-header">
+                    <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/mediamanager/itlogo.png" alt="News Logo">
+                    <div class="news-header-stt">
+                        <h3 class="news-title">
+                            <a href=" https://www.indiatoday.in/?utm_source=rss " target="_blank">India Today | India</a>
+                        </h3>
+                        <p class="news-date">Mon Jul 28 2025</p>
+                    </div>
+                </div>
+                    <div class="card-container">
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>Where is your public apology? Top court raps BJP minister over Col Qureshi remarks</h3>
+                                <a href=" https://www.indiatoday.in/india/law-news/story/supreme-court-bjp-minister-vijay-shah-controversial-remarks-colonel-sofyia-qureshi-2762749-2025-07-28?utm_source=rss " class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>Asaduddin Owaisi slams government, asks how can India play with Pak in Asia Cup</h3>
+                                <a href=" https://www.indiatoday.in/india/video/asaduddin-owaisi-slams-government-asks-how-can-india-play-with-pak-in-asia-cup-2762739-2025-07-28?utm_source=rss " class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>Jammu hit-and-run: SUV reverses to ram elderly man again, CCTV footage emerges</h3>
+                                <a href=" https://www.indiatoday.in/india/story/jammu-hit-and-run-elderly-man-critically-injured-thar-suv-speeding-driver-flees-2762740-2025-07-28?utm_source=rss " class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>Video: Raj Thackeray's party workers thrash Mumbai UPSC coach, allege fraud</h3>
+                                <a href=" https://www.indiatoday.in/india/story/maharashtra-navnirman-sena-workers-thrash-mumbai-upsc-coach-allege-fraud-2762731-2025-07-28?utm_source=rss " class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>Nuns jailed in Chhattisgarh on conversion charge, political storm erupts</h3>
+                                <a href=" https://www.indiatoday.in/india/chhattisgarh/video/nuns-jailed-in-chhattisgarh-on-conversion-charge-political-storm-erupts-2762730-2025-07-28?utm_source=rss " class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>Only in India: 'Dog Babu' gets a residence certificate in Patna</h3>
+                                <a href=" https://www.indiatoday.in/india/video/only-in-india-dog-babu-gets-a-residence-certificate-in-patna-2762724-2025-07-28?utm_source=rss " class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>Gujarat doctor loses Rs 19 crore in 3 months in digital arrest scam</h3>
+                                <a href=" https://www.indiatoday.in/india/story/senior-citizen-doctor-defrauded-19-crore-gujarat-digital-scam-2762691-2025-07-28?utm_source=rss " class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>Terror networks in J&K deplete, only 40 such camps remain active near LoC</h3>
+                                <a href=" https://www.indiatoday.in/india/story/terror-networks-jammu-kashmir-only-40-such-camps-remain-active-near-line-of-control-2762710-2025-07-28?utm_source=rss " class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>Will quit politics if Congress loses 2026 polls: Kerala Leader of Opposition</h3>
+                                <a href=" https://www.indiatoday.in/india/kerala/story/kerala-opposition-leader-vd-satheesan-says-will-quit-politics-udf-landslide-majority-2026-kerala-assembly-elections-vellappally-natesan-sndp-2762700-2025-07-28?utm_source=rss " class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>What is UPA's 2009 Balochistan blunder of Sharm El-Sheikh</h3>
+                                <a href=" https://www.indiatoday.in/india/story/how-upa-ended-up-hyphenating-india-pakistan-with-its-balochistan-blunder-manmohan-singh-yusuf-raza-gilani-2762671-2025-07-28?utm_source=rss " class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                    </div>
+                
+            
+                <div class="news-header">
+                    <img src="https://www.thehindu.com/theme/images/th-online/OG-sections.png" alt="News Logo">
+                    <div class="news-header-stt">
+                        <h3 class="news-title">
+                            <a href="https://www.thehindu.com/news/national/" target="_blank">India Latest News: Top National Headlines Today & Breaking News | The Hindu</a>
+                        </h3>
+                        <p class="news-date">Mon Jul 28 2025</p>
+                    </div>
+                </div>
+                    <div class="card-container">
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>BMRCL opens new gate at Majestic Metro for direct KSRTC terminal access</h3>
+                                <a href="https://www.thehindu.com/news/national/karnataka/bmrcl-opens-new-gate-at-majestic-metro-for-direct-ksrtc-terminal-access/article69866751.ece" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>Farmers in Punjab stage demonstration under KMM banner against Govt’s land pooling policy; Akali Dal also protests </h3>
+                                <a href="https://www.thehindu.com/news/national/punjab/farmers-in-punjab-stage-demonstration-under-kmm-banner-against-govts-land-pooling-policy-akali-dal-also-protests/article69865938.ece" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>Complaint against social media user for defamatory posts against Congress leaders </h3>
+                                <a href="https://www.thehindu.com/news/national/karnataka/complaint-against-social-media-user-for-defamatory-posts-against-congress-leaders/article69866563.ece" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>Nuns are innocent, say family members of tribal women</h3>
+                                <a href="https://www.thehindu.com/news/national/chhattisgarh/nuns-are-innocent-say-family-members-of-tribal-women/article69866064.ece" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>CS instructs officials not to appoint teachers to revise voters’ list</h3>
+                                <a href="https://www.thehindu.com/news/national/karnataka/cs-instructs-officials-not-to-appoint-teachers-to-revise-voters-list/article69827412.ece" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>India, Japan officials meet, discuss PM’s visit, bullet train project</h3>
+                                <a href="https://www.thehindu.com/news/national/india-japan-officials-meet-discuss-pms-visit-bullet-train-project/article69866627.ece" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>State sees a fall in seroprevalence of Hepatitis B, says nodal officer</h3>
+                                <a href="https://www.thehindu.com/news/national/andhra-pradesh/state-sees-a-fall-in-seroprevalence-of-hepatitis-b-says-nodal-officer/article69866495.ece" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>Centre should abandon security-centric approach, engage in dialogue to resolve J&K issues: Mehbooba Mufti</h3>
+                                <a href="https://www.thehindu.com/news/national/jammu-and-kashmir/centre-should-abandon-security-centric-approach-engage-in-dialogue-to-resolve-jk-issues-mehbooba-mufti/article69864964.ece" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>Google officials depose before ED in online betting linked PMLA case</h3>
+                                <a href="https://www.thehindu.com/news/national/google-officials-depose-before-ed-in-online-betting-linked-pmla-case/article69865817.ece" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>Nuns to stay, serve in Gaza despite attacks, says Missionaries of Charity</h3>
+                                <a href="https://www.thehindu.com/news/national/nuns-to-stay-serve-in-gaza-despite-attacks-says-missionaries-of-charity/article69866146.ece" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                    </div>
+                
+            
+                <div class="news-header">
+                    <img src="https://www.cnbctv18.com/_next/static/media/cnbctv18-logo.e3f586f6.png" alt="News Logo">
+                    <div class="news-header-stt">
+                        <h3 class="news-title">
+                            <a href="https://www.cnbctv18.com/business/" target="_blank">Business News in CNBCTV18, Business Latest News, Business News</a>
+                        </h3>
+                        <p class="news-date">Mon Jul 28 2025</p>
+                    </div>
+                </div>
+                    <div class="card-container">
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>ICICI Bank leads Q1 earnings among private banks, Kotak and Axis lag behind</h3>
+                                <a href="https://www.cnbctv18.com/market/earnings/icici-hdfc-axis-kotak-bank-q1-growth-earnings-analysis-19644890.htm" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>Promising reserves of rare earth elements found in Singrauli coalfields: Minister</h3>
+                                <a href="https://www.cnbctv18.com/business/promising-reserves-of-rare-earth-elements-found-in-singrauli-coalfields-minister-19644901.htm" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>Genius Act gives legitimacy boost to stablecoins, says Cornell’s Eswar Prasad</h3>
+                                <a href="https://www.cnbctv18.com/market/cryptocurrency/genius-act-stablecoins-legalisation-cryptocurrencies-eswar-prasad-19644875.htm" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>Bajaj Healthcare Q1 Results | Net profit soars 66% despite margin pressure, revenue up 13%</h3>
+                                <a href="https://www.cnbctv18.com/market/stocks/bajaj-healthcare-share-price-q1-results-net-profit-soars-66-despite-margin-pressure-revenue-up-13-19644896.htm" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>SuperK to use ₹100 crore Series B funding to deepen presence in small-town India</h3>
+                                <a href="https://www.cnbctv18.com/business/startup/retail-startup-superk-series-b-funding-expansion-small-town-india-19644892.htm" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>No interim US-India trade deal yet; Indian exporters brace for 20-25% tariffs as August 1 deadline nears</h3>
+                                <a href="https://www.cnbctv18.com/world/india-us-trade-deal-delay-trump-tariffs-impact-exporters-19644819.htm" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>Quess Corp Q1 Results | Net profit rises 4% to ₹51 crore; secures 79 new deals</h3>
+                                <a href="https://www.cnbctv18.com/market/stocks/quess-corp-share-price-q1-results-net-profit-rises-4-to-rs-51-crore-secures-79-new-deals-19644894.htm" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>Top 10@10 | TCS job cuts, Nifty slides, Operation Sindoor in Parliament, Divya Deshmukh makes history & more</h3>
+                                <a href="https://www.cnbctv18.com/business/top-10-stories-today-tcs-job-cuts-nifty-slides-operation-sindoor-divya-deshmukh-and-more-19644873.htm" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>Upskilling key as Indian IT faces layoffs, tech shifts, say experts</h3>
+                                <a href="https://www.cnbctv18.com/education/tcs-layoffs-indian-it-sector-upskilling-reskilling-trends-ai-impact-experts-19644854.htm" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                            <div class="card">
+                                <img src="undefined" alt="Headline image">
+                                <h3>ONGC, Reliance and BP ink joint operating pact for offshore block in Saurashtra Basin</h3>
+                                <a href="https://www.cnbctv18.com/market/stocks/ongc-share-price-reliance-share-price-and-bp-sign-joint-operating-agreement-for-offshore-block-in-saurashtra-basin-19644863.htm" class="read-more" target="_blank">Read More →</a>
+                            </div>   
+                        
+                    </div>
+                
+            
+        </body>
+    </html>
