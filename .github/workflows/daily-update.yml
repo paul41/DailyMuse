@@ -1,8 +1,11 @@
 name: Daily news update
 
 on:
-  schedule:
-    - cron: '20 0 * * *'
+  # schedule:
+  #   - cron: '20 0 * * *'
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -45,7 +48,7 @@ jobs:
         run: |
           mkdir -p history
           cp data.json history/data-$(date '+%Y-%m-%d').json
-          
+
       - name: Clean up history files older than 15 days
         run: |
           find history -name "data-*.json" | while read file; do
