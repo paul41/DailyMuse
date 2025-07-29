@@ -5,9 +5,7 @@ const xmlContent = JSON.parse(raw);
 
 (async ()=>{
     const extractor = new RSSLinkExtractor(xmlContent);
-    const contents = await extractor.extractLinks();
-    //console.log(contents[3].headlines);
-    
+    const contents = await extractor.extractLinks();  
     await updateHTML(contents).then(data=>console.log('✅ HTML generated: index.html')).catch(err=>{
         console.error('Error updating HTML');
         process.exit(1);
@@ -183,13 +181,18 @@ async function updateHTML(params) {
                     </div>
                 </div>
                     <div class="card-container">
-                        ${entry['headlines'].map((content,i)=>`
+                        ${entry['headlines'].map((content, i) => {
+                            const imgHTML = content?.['description']?.match(/<img[^>]+src=(["'])(.*?)\1/)
+                            ? `<img src="${content?.['description']?.match(/<img[^>]+src=(["'])(.*?)\1/)[2]}" alt="Headline image"/>`
+                            : `<img src="${content?.enclosure?.['$']?.url || content?.StoryImage || content?.mediaContent?.['$']?.url || `imageNA.png`}" alt="Headline image" />`;
+                            return `
                             <div class="card">
-                                <img src="${content?.enclosure?.['$']?.url || content?.StoryImage || content?.["media:content"]?.['$']?.url}" alt="Headline image">
+                                ${imgHTML}
                                 <h3>${content?.title}</h3>
                                 <a href="${content?.link}" class="read-more" target="_blank">Read More →</a>
-                            </div>   
-                        `).join('')}
+                            </div>
+                            `;
+                        }).join('')}
                     </div>
                 
             `).join('')}

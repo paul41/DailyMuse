@@ -11,8 +11,7 @@ class RSSLinkExtractor{
                 const result = await parser.parseStringPromise(xml);
                 const channel = result.rss?.channel;
                 const items = channel?.item || [];
-                const contentArray = items.map(({title,link,enclosure,StoryImage,media})=>({title,link,enclosure,StoryImage,media})).slice(0,10)
-                
+                const contentArray = items.map(({title,link,enclosure,StoryImage,description,['media:content']: mediaContent})=>({title,link,enclosure,StoryImage,description,mediaContent})).slice(0,10)
                 channels.push({
                     title: channel?.title,
                     link: channel?.link,
