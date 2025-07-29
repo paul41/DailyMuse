@@ -19,7 +19,7 @@ async function updateHTML(params) {
     <html>
         <head>
             <meta charset="UTF-8">
-            <title>Daily Muse | Daily NEWS highlights</title>
+            <title>Daily Muse | Daily NEWS headlines</title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <meta name="description" content="Webpage that display news headlines from top 5 Indian news channels." />
             <meta name="author" content="SouravPaul" />
@@ -34,7 +34,7 @@ async function updateHTML(params) {
                 }
                 .header-stt{
                     background:#fff;
-                    padding:5px;
+                    padding-top:7px;
                     box-shadow:0 2px 8px rgba(0, 0, 0, 0.1);
                     text-align:center;
                 }
@@ -43,7 +43,7 @@ async function updateHTML(params) {
                     height: 120px;
                     object-fit: contain;
                     border-radius: 5px;
-                    border:1px solid #fff
+                    background:#ccc9c9
                 }
                 news-header-stt{
                     display:block;
@@ -74,8 +74,8 @@ async function updateHTML(params) {
                     display: block;
                 }
                 .app-logo {
-                    width: 100px;
-                    height: 110px;
+                    width: 120px;
+                    height: 120px;
                 }
                 .card-container {
                     display: flex;
@@ -113,6 +113,52 @@ async function updateHTML(params) {
                     color: #0078D4;
                     font-weight: bold;
                 }
+                .footer {
+                    background-color: #f9f9f9;
+                    padding: 24px 0;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    color: #333;
+                    text-align: center;
+                    border-top: 1px solid #e0e0e0;
+                }
+
+                .footer .container {
+                    max-width: 960px;
+                    margin: 0 auto;
+                    padding: 0 16px;
+                }
+
+                .footer .container p {
+                    margin: 8px 0;
+                    font-size: 0.95rem;
+                }
+
+                .footer-links {
+                    list-style: none;
+                    padding: 0;
+                    margin: 12px 0;
+                    display: flex;
+                    justify-content: center;
+                    gap: 20px;
+                }
+
+                .footer-links li a {
+                    text-decoration: none;
+                    color: #007acc;
+                    font-weight: 500;
+                    transition: color 0.2s ease-in-out;
+                }
+
+                .footer-links li a:hover {
+                    color: #005a99;
+                    text-decoration: underline;
+                }
+
+                .copyright {
+                    font-size: 0.85rem;
+                    color: #666;
+                    margin-top: 12px;
+                }
             </style>
             <script type="text/javascript">
                 (function(c,l,a,r,i,t,y){
@@ -125,8 +171,7 @@ async function updateHTML(params) {
         <body>
             <h1 class="header-stt">
                 <img src="dailyMicon.png" alt="" class="app-logo" />
-            </h1>
-            
+            </h1>   
             ${params.map((entry, i) => `
                 <div class="news-header">
                     <img src="${entry.image}" alt="News Logo">
@@ -148,6 +193,23 @@ async function updateHTML(params) {
                     </div>
                 
             `).join('')}
+
+            <footer class="footer">
+                <div class="container">
+                    <b>DailyMuse · One brilliant headliner, delivered daily </b></p>
+                    <ul class="footer-links">
+                        <li><a href="javascript:void(0)">About</a></li>
+                        <li><a href="javascript:void(0)">Privacy</a></li>
+                        <li><a href="https://github.com/paul41/DailyMuse">GitHub</a></li>
+                        <li><a href="mailto:sourav03.paul29@gmail.com">
+                                Contact
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright">© 2025 DailyMuse. Powered by GitHub Actions.</p>
+                </div>
+            </footer>
+
         </body>
     </html>`
     fs.writeFileSync('index.html', html);
