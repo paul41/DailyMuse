@@ -121,7 +121,6 @@ async function updateHTML(params) {
                     color: #888;
                     text-transform: uppercase;
                 }
-
                 .card-container {
                     display: flex;
                     gap: 12px;
@@ -129,22 +128,22 @@ async function updateHTML(params) {
                     overflow-x: auto;
                     scroll-behavior: smooth;
                 }
-                .card-container::-webkit-scrollbar {
-                    height: 8px;
-                }
-                .card-container::-webkit-scrollbar-thumb {
-                    background-color: rgba(0,0,0,0.2);
-                    border-radius: 4px;
-                }
 
                 .card {
-                    min-width: 220px;
+                    min-width: 250px;
                     background: var(--card-bg);
                     border-radius: 14px;
                     padding: 14px;
                     box-shadow: var(--shadow);
                     flex-shrink: 0;
                     transition: transform 0.2s ease;
+                }
+                .card-container::-webkit-scrollbar {
+                    height: 8px;
+                }
+                .card-container::-webkit-scrollbar-thumb {
+                    background-color: rgba(0,0,0,0.2);
+                    border-radius: 4px;
                 }
 
                 .card:hover {
@@ -178,12 +177,22 @@ async function updateHTML(params) {
                 }
                 .card-actions {
                     display: flex;
-                    flex-direction: column;
-                    gap: 8px;
+                    justify-content: space-between;
+                    flex-direction:column;
+                    align-items: center;
                     margin-top: 10px;
                 }
 
+                .verdict-reactions {
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+                    flex-wrap: wrap;
+                }
+
                 .verdict-btn {
+                    flex: 1;
+                    max-width: 50%;
                     padding: 6px 10px;
                     font-size: 0.9rem;
                     border: 1px solid var(--border-color);
@@ -193,10 +202,27 @@ async function updateHTML(params) {
                     cursor: not-allowed;
                     transition: background 0.2s ease;
                     opacity: 0.6;
+                    text-align: left;
                 }
 
-                .verdict-btn:hover {
-                    background-color: var(--border-color);
+                .reaction-bar {
+                    display: flex;
+                    gap: 10px;
+                    font-size: 0.9rem;
+                    opacity: 0.85;
+                    justify-content: flex-end;
+                    flex-shrink: 0;city: 0.8;
+                }
+
+                .reaction {
+                    display: flex;
+                    align-items: center;
+                    gap: 4px;
+                    cursor:pointer;
+                }
+
+                .reaction-count {
+                    font-weight: 500;
                 }
                 .footer {
                     padding: 32px 0;
@@ -234,6 +260,21 @@ async function updateHTML(params) {
                     .card-container {
                         padding-left: 8px;
                         padding-right: 8px;
+                    }
+                }
+                /* ≥768px: 2 cards per row */
+                @media (min-width: 768px) {
+                    .card {
+                        flex: 1 1 calc(50% - 20px);
+                        max-width: calc(50% - 20px);
+                    }
+                }
+
+                /* ≥1200px: 3 cards per row */
+                @media (min-width: 1200px) {
+                    .card {
+                        flex: 1 1 calc(33.333% - 22px);
+                        max-width: calc(33.333% - 22px);
                     }
                 }
             </style>
@@ -291,8 +332,15 @@ async function updateHTML(params) {
                                 ${imgHTML}
                                 <h3>${content?.title}</h3>
                                 <div class="card-actions">
-                                    <a href="${content?.link}" class="read-more" target="_blank">Read More →</a>
-                                    <button class="verdict-btn" disabled>🗣️ AI Verdict</button>
+                                    <a href="${content?.link}" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>🗣️ AI Verdict</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             `;
