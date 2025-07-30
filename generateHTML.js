@@ -184,7 +184,7 @@ async function updateHTML(params) {
                         ${entry['headlines'].map((content, i) => {
                             const imgHTML = content?.['description']?.match(/<img[^>]+src=(["'])(.*?)\1/)
                             ? `<img src="${content?.['description']?.match(/<img[^>]+src=(["'])(.*?)\1/)[2]}" alt="Headline image"/>`
-                            : `<img src="${content?.enclosure?.['$']?.url || content?.StoryImage || content?.mediaContent?.['$']?.url || `imageNA.png`}" alt="Headline image" />`;
+                            : `<img src="${content?.enclosure?.['$']?.url || content?.StoryImage || content?.mediaContent?.['$']?.url || `imageUnavailable.png`}" alt="Headline image" />`;
                             return `
                             <div class="card">
                                 ${imgHTML}
