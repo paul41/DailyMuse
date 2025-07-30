@@ -21,143 +21,223 @@ async function updateHTML(params) {
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <meta name="description" content="Webpage that display news headlines from top 5 Indian news channels." />
             <meta name="author" content="SouravPaul" />
-            <style>
-                /* CSS */
-                body { font-family: Arial,sans-serif; padding: 15px; background:#ddd }
+           <style>
+                :root {
+                    --bg-color: #f0f2f5;
+                    --text-color: #222;
+                    --card-bg: #ffffff;
+                    --link-color: #0078D4;
+                    --hover-link-color: #005a99;
+                    --border-color: #e5e7eb;
+                    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+                }
+
+                body.dark {
+                    --bg-color: #121212;
+                    --text-color: #e0e0e0;
+                    --card-bg: #1f1f1f;
+                    --link-color: #66aaff;
+                    --hover-link-color: #99cfff;
+                    --border-color: #2a2a2a;
+                    --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+                }
+
+                body {
+                    margin: 0;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    background: var(--bg-color);
+                    color: var(--text-color);
+                    transition: background 0.3s ease, color 0.3s ease;
+                }
+
+                .header-stt {
+                    background: var(--card-bg);
+                    box-shadow: var(--shadow);
+                    text-align: center;
+                    padding: 7px 0;
+                    margin-bottom: 20px;
+                }
+
+                .app-logo {
+                    width: 125px;
+                    height: auto;
+                }
+
+                .theme-toggle {
+                    display: flex;
+                    justify-content: flex-end;
+                    padding: 0 16px;
+                    margin-top: -40px;
+                    margin-bottom: 20px;
+                }
+
+                #toggleTheme {
+                    background: var(--card-bg);
+                    color: var(--text-color);
+                    border: 1px solid var(--border-color);
+                    padding: 6px 12px;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    font-weight: 500;
+                    transition: background 0.3s;
+                }
+
+                #toggleTheme:hover {
+                    background: var(--border-color);
+                }
+
                 .news-header {
                     display: flex;
                     align-items: center;
                     gap: 16px;
-                    margin-bottom: 18px;
-                }
-                .header-stt{
-                    background:#fff;
-                    padding-top:7px;
-                    box-shadow:0 2px 8px rgba(0, 0, 0, 0.1);
-                    text-align:center;
-                }
-                .news-header img {
-                    width: 120px;
-                    height: 120px;
-                    object-fit: contain;
-                    border-radius: 5px;
-                    background:#ccc9c9
-                }
-                news-header-stt{
-                    display:block;
-                }
-                .news-title {
-                    font-size: 1.2rem;
-                    margin: 0 0 8px;
-                    color: #333;
-                }
-                .news-card:hover {
-                    transform: translateY(-5px);
+                    padding: 16px;
+                    background: var(--card-bg);
+                    box-shadow: var(--shadow);
+                    border-radius: 12px;
+                    margin: 20px auto;
+                    max-width: 960px;
                 }
 
-                .news-image {
-                    width: 100%;
-                    height: 200px;
+                .news-header img {
+                    width: 100px;
+                    height: 100px;
                     object-fit: contain;
-                    border-radius: 5px;
-                    border:1px solid #ddd
+                    border-radius: 8px;
+                    background: #ccc;
                 }
+
+                .news-header-stt {
+                    flex: 1;
+                }
+
+                .news-title {
+                    font-size: 1.1rem;
+                    margin: 0 0 6px;
+                    color: var(--text-color);
+                }
+
                 .news-date {
-                    font-family: Arial,sans-serif;
-                    font-size: 0.95rem;
-                    color: #555;
+                    font-size: 0.85rem;
+                    color: #888;
                     text-transform: uppercase;
-                    letter-spacing: 0.05em;
-                    margin-bottom: 1em;
-                    display: block;
                 }
-                .app-logo {
-                    width: 120px;
-                    height: 120px;
-                }
+
                 .card-container {
                     display: flex;
-                    justify-content: space-between; /* ensures even spacing across all cards */
-                    gap: 16px;
-                    flex-wrap: nowrap; /* forces cards to stay on one line */
-                    margin-bottom: 15px;
-                    overflow-x: auto; /* enables scrolling if cards overflow */
+                    gap: 12px;
+                    padding: 0 16px 32px;
+                    overflow-x: auto;
+                    scroll-behavior: smooth;
                 }
+                .card-container::-webkit-scrollbar {
+                    height: 8px;
+                }
+                .card-container::-webkit-scrollbar-thumb {
+                    background-color: rgba(0,0,0,0.2);
+                    border-radius: 4px;
+                }
+
                 .card {
-                    min-width: 200px;
-                    max-width: 200px;
-                    flex-shrink: 0; /* prevents cards from shrinking */
-                    background-color: #f1f1f1;
-                    border-radius: 17px 17px 0 0;
-                    padding: 12px;
-                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                    min-width: 220px;
+                    background: var(--card-bg);
+                    border-radius: 14px;
+                    padding: 14px;
+                    box-shadow: var(--shadow);
+                    flex-shrink: 0;
+                    transition: transform 0.2s ease;
                 }
+
+                .card:hover {
+                    transform: translateY(-4px);
+                }
+
                 .card img {
                     width: 100%;
                     height: 120px;
+                    background:var(--bg-color);
                     object-fit: contain;
-                    border-radius: 4px;
+                    border-radius: 8px;
+                    margin-bottom: 8px;
                 }
+
                 .card h3 {
-                    font-size: 16px;
-                    margin-top: 8px;
+                    font-size: 15px;
+                    margin: 0 0 6px;
+                    font-weight: 600;
                 }
-                .card p {
-                    font-size: 14px;
-                    color: #555;
-                }
+
                 .read-more {
                     text-decoration: none;
-                    color: #0078D4;
-                    font-weight: bold;
+                    color: var(--link-color);
+                    font-weight: 500;
+                    font-size: 0.9rem;
+                }
+
+                .read-more:hover {
+                    color: var(--hover-link-color);
+                }
+                .card-actions {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    margin-top: 10px;
+                }
+
+                .verdict-btn {
+                    padding: 6px 10px;
+                    font-size: 0.9rem;
+                    border: 1px solid var(--border-color);
+                    background-color: transparent;
+                    color: var(--text-color);
+                    border-radius: 6px;
+                    cursor: not-allowed;
+                    transition: background 0.2s ease;
+                    opacity: 0.6;
+                }
+
+                .verdict-btn:hover {
+                    background-color: var(--border-color);
                 }
                 .footer {
-                    background-color: #f9f9f9;
-                    padding: 24px 0;
-                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                    color: #333;
+                    padding: 32px 0;
                     text-align: center;
-                    border-top: 1px solid #e0e0e0;
-                }
-
-                .footer .container {
-                    max-width: 960px;
-                    margin: 0 auto;
-                    padding: 0 16px;
-                }
-
-                .footer .container p {
-                    margin: 8px 0;
                     font-size: 0.95rem;
+                    color: var(--text-color);
+                    border-top: 1px solid var(--border-color);
+                    margin-top: 40px;
                 }
 
                 .footer-links {
                     list-style: none;
                     padding: 0;
-                    margin: 12px 0;
+                    margin: 12px 0 20px;
                     display: flex;
+                    flex-wrap: wrap;
                     justify-content: center;
-                    gap: 20px;
+                    gap: 16px;
                 }
 
-                .footer-links li a {
+                .footer-links a {
                     text-decoration: none;
-                    color: #007acc;
-                    font-weight: 500;
-                    transition: color 0.2s ease-in-out;
+                    color: var(--link-color);
                 }
 
-                .footer-links li a:hover {
-                    color: #005a99;
-                    text-decoration: underline;
+                .footer-links a:hover {
+                    color: var(--hover-link-color);
                 }
 
-                .copyright {
-                    font-size: 0.85rem;
-                    color: #666;
-                    margin-top: 12px;
+                @media (max-width: 600px) {
+                    .news-header {
+                        flex-direction: column;
+                        text-align: center;
+                    }
+                    .card-container {
+                        padding-left: 8px;
+                        padding-right: 8px;
+                    }
                 }
             </style>
+
             <script type="text/javascript">
                 (function(c,l,a,r,i,t,y){
                     c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -165,11 +245,32 @@ async function updateHTML(params) {
                     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
                 })(window, document, "clarity", "script", "slvrquufd1");
             </script>
+
+            <script>
+                window.onload = function () {
+                    const toggle = document.getElementById("toggleTheme");
+                    const currentTheme = localStorage.getItem("theme");
+
+                    if (currentTheme === "dark") {
+                        document.body.classList.add("dark");
+                    }
+
+                    toggle.addEventListener("click", () => {
+                        document.body.classList.toggle("dark");
+                        const theme = document.body.classList.contains("dark") ? "dark" : "light";
+                        localStorage.setItem("theme", theme);
+                    });
+                }
+            </script>
         </head>
         <body>
             <h1 class="header-stt">
                 <img src="dailyMicon.png" alt="" class="app-logo" />
-            </h1>   
+            </h1>
+            <div class="theme-toggle">
+                <button id="toggleTheme">🌓 Toggle Theme</button>
+            </div>
+   
             ${params.map((entry, i) => `
                 <div class="news-header">
                     <img src="${entry.image}" alt="News Logo">
@@ -189,12 +290,14 @@ async function updateHTML(params) {
                             <div class="card">
                                 ${imgHTML}
                                 <h3>${content?.title}</h3>
-                                <a href="${content?.link}" class="read-more" target="_blank">Read More →</a>
+                                <div class="card-actions">
+                                    <a href="${content?.link}" class="read-more" target="_blank">Read More →</a>
+                                    <button class="verdict-btn" disabled>🗣️ AI Verdict</button>
+                                </div>
                             </div>
                             `;
                         }).join('')}
                     </div>
-                
             `).join('')}
 
             <footer class="footer">
@@ -207,6 +310,9 @@ async function updateHTML(params) {
                         <li><a href="mailto:sourav03.paul29@gmail.com">
                                 Contact
                             </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" title="Subscribe for a 3-minute morning news brief. "> Subscribe </a>
                         </li>
                     </ul>
                     <p class="copyright">© 2025 DailyMuse. Powered by GitHub Actions.</p>
