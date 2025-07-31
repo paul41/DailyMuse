@@ -123,19 +123,20 @@ async function updateHTML(params) {
                 }
                 .card-container {
                     display: flex;
-                    gap: 12px;
+                    gap: 16px;
                     padding: 0 16px 32px;
                     overflow-x: auto;
                     scroll-behavior: smooth;
+                    flex-wrap: nowrap;
                 }
 
                 .card {
-                    min-width: 250px;
+                    flex: 0 0 100%;
+                    max-width: 100%;
                     background: var(--card-bg);
                     border-radius: 14px;
                     padding: 14px;
                     box-shadow: var(--shadow);
-                    flex-shrink: 0;
                     transition: transform 0.2s ease;
                 }
                 .card-container::-webkit-scrollbar {
@@ -145,18 +146,17 @@ async function updateHTML(params) {
                     background-color: rgba(0,0,0,0.2);
                     border-radius: 4px;
                 }
-
                 .card:hover {
                     transform: translateY(-4px);
                 }
 
                 .card img {
                     width: 100%;
-                    height: 120px;
-                    background:var(--bg-color);
-                    object-fit: contain;
+                    height: 200px; /* Adjust height as needed */
+                    object-fit: cover;
                     border-radius: 8px;
                     margin-bottom: 8px;
+                    background-color: var(--bg-color);
                 }
 
                 .card h3 {
@@ -262,19 +262,19 @@ async function updateHTML(params) {
                         padding-right: 8px;
                     }
                 }
-                /* ≥768px: 2 cards per row */
+               /* Tablet: 2 cards per screen */
                 @media (min-width: 768px) {
                     .card {
-                        flex: 1 1 calc(50% - 20px);
-                        max-width: calc(50% - 20px);
+                        flex: 0 0 50%;
+                        max-width: 50%;
                     }
                 }
 
-                /* ≥1200px: 3 cards per row */
+                /* Large desktop: 3 cards per screen */
                 @media (min-width: 1200px) {
                     .card {
-                        flex: 1 1 calc(33.333% - 22px);
-                        max-width: calc(33.333% - 22px);
+                        flex: 0 0 33.333%;
+                        max-width: 33.333%;
                     }
                 }
             </style>
@@ -326,7 +326,7 @@ async function updateHTML(params) {
                         ${entry['headlines'].map((content, i) => {
                             const imgHTML = content?.['description']?.match(/<img[^>]+src=(["'])(.*?)\1/)
                             ? `<img src="${content?.['description']?.match(/<img[^>]+src=(["'])(.*?)\1/)[2]}" alt="Headline image"/>`
-                            : `<img src="${content?.enclosure?.['$']?.url || content?.StoryImage || content?.mediaContent?.['$']?.url || `imageUnavailable.png`}" alt="Headline image" />`;
+                            : `<img src="${content?.enclosure?.['$']?.url || content?.StoryImage || content?.mediaContent?.['$']?.url || `noImg.png`}" alt="Headline image" />`;
                             return `
                             <div class="card">
                                 ${imgHTML}
