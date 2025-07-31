@@ -166,63 +166,79 @@ async function updateHTML(params) {
                 }
 
                 .read-more {
+                    display: inline-block;
+                    background-color: var(--link-color);
+                    color: #fff;
+                    padding: 6px 12px;
+                    border-radius: 6px;
                     text-decoration: none;
-                    color: var(--link-color);
-                    font-weight: 500;
-                    font-size: 0.9rem;
+                    font-size: 0.85rem;
+                    font-weight: 600;
+                    transition: background 0.3s ease;
                 }
 
                 .read-more:hover {
-                    color: var(--hover-link-color);
+                   background-color: var(--hover-link-color);
                 }
                 .card-actions {
                     display: flex;
-                    justify-content: space-between;
-                    flex-direction:column;
-                    align-items: center;
+                    flex-direction: column;
+                    gap: 8px;
                     margin-top: 10px;
                 }
-
-                .verdict-reactions {
-                    display: flex;
-                    align-items: center;
-                    gap: 16px;
-                    flex-wrap: wrap;
-                }
-
                 .verdict-btn {
                     flex: 1;
                     max-width: 50%;
                     padding: 6px 10px;
-                    font-size: 0.9rem;
-                    border: 1px solid var(--border-color);
+                    font-size: 0.85rem;
                     background-color: transparent;
                     color: var(--text-color);
+                    border: 1px solid var(--border-color);
                     border-radius: 6px;
-                    cursor: not-allowed;
-                    transition: background 0.2s ease;
-                    opacity: 0.6;
-                    text-align: left;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease, color 0.3s ease;
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                    opacity: 0.9;
+                }
+                verdict-btn:hover {
+                    background-color: var(--border-color);
+                    color: var(--link-color);
                 }
 
                 .reaction-bar {
                     display: flex;
-                    gap: 10px;
+                    gap: 12px;
+                    justify-content: flex-end;
                     font-size: 0.9rem;
                     opacity: 0.85;
-                    justify-content: flex-end;
-                    flex-shrink: 0;city: 0.8;
+                    margin-left: auto;
+                    flex-wrap: wrap;
                 }
 
                 .reaction {
                     display: flex;
                     align-items: center;
                     gap: 4px;
-                    cursor:pointer;
+                    background: var(--border-color);
+                    padding: 4px 8px;
+                    border-radius: 14px;
+                    cursor: pointer;
+                    transition: background 0.2s ease;
                 }
 
+                .reaction:hover {
+                    background: var(--hover-link-color);
+                    color: #fff;
+                }
                 .reaction-count {
                     font-weight: 500;
+                }
+                .verdict-reactions {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
                 }
                 .footer {
                     padding: 32px 0;
