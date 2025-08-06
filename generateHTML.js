@@ -186,29 +186,44 @@ async function updateHTML(params) {
                     gap: 8px;
                     margin-top: 10px;
                 }
-                .verdict-btn {
+                .verdict-reactions {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: stretch; /* Changed from center to stretch */
+                    box-sizing: border-box;
+                    margin: 0 9px;
+                    padding: 3px;
+                    box-shadow: 0px -2px 5px 1px #888888;
+                    }
+
+                    .verdict-btn {
                     flex: 1;
                     max-width: 50%;
-                    padding: 6px 10px;
-                    font-size: 0.85rem;
-                    background-color: transparent;
-                    color: var(--text-color);
-                    border: 1px solid var(--border-color);
-                    border-radius: 6px;
+                    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+                    color: #fff;
+                    border: none;
+                    border-radius: 8px;
+                    padding: 10px 16px;
+                    font-size: 0.95rem;
+                    font-weight: 600;
+                    box-shadow: 0 4px 12px rgba(78, 84, 200, 0.3);
                     cursor: pointer;
-                    transition: background-color 0.3s ease, color 0.3s ease;
+                    transition: transform 0.2s ease, box-shadow 0.2s ease;
                     display: flex;
                     align-items: center;
                     gap: 6px;
                     opacity: 0.9;
-                }
+                    }
                 verdict-btn:hover {
                     background-color: var(--border-color);
                     color: var(--link-color);
                 }
-
+                #ai-ltr{
+                    border 1px solid blue
+                }
                 .reaction-bar {
                     display: flex;
+                    padding:5px;
                     gap: 12px;
                     justify-content: flex-end;
                     font-size: 0.9rem;
@@ -234,11 +249,6 @@ async function updateHTML(params) {
                 }
                 .reaction-count {
                     font-weight: 500;
-                }
-                .verdict-reactions {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
                 }
                 .footer {
                     padding: 32px 0;
@@ -350,7 +360,7 @@ async function updateHTML(params) {
                                 <div class="card-actions">
                                     <a href="${content?.link}" class="read-more" target="_blank">Read More →</a></br>
                                     <div class="verdict-reactions">
-                                        <button class="verdict-btn" disabled>🗣️ AI Verdict</button>
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
                                         <div class="reaction-bar">
                                             <span class="reaction">👍 <span class="reaction-count">24</span></span>
                                             <span class="reaction">👎 <span class="reaction-count">3</span></span>
