@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Daily Muse | Daily NEWS headlines</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <meta name="description" content="Webpage that display news headlines from top 5 Indian news channels." />
+            <meta name="author" content="SouravPaul" />
+           <style>
+                :root {
+                    --bg-color: #f0f2f5;
+                    --text-color: #222;
+                    --card-bg: #ffffff;
+                    --link-color: #0078D4;
+                    --hover-link-color: #005a99;
+                    --border-color: #e5e7eb;
+                    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+                }
+
+                body.dark {
+                    --bg-color: #121212;
+                    --text-color: #e0e0e0;
+                    --card-bg: #1f1f1f;
+                    --link-color: #66aaff;
+                    --hover-link-color: #99cfff;
+                    --border-color: #2a2a2a;
+                    --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+                }
+
+                body {
+                    margin: 0;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    background: var(--bg-color);
+                    color: var(--text-color);
+                    transition: background 0.3s ease, color 0.3s ease;
+                }
+
+                .header-stt {
+                    background: var(--card-bg);
+                    box-shadow: var(--shadow);
+                    text-align: center;
+                    padding: 7px 0;
+                    margin-bottom: 20px;
+                }
+
+                .app-logo {
+                    width: 125px;
+                    height: auto;
+                }
+
+                .theme-toggle {
+                    display: flex;
+                    justify-content: flex-end;
+                    padding: 0 16px;
+                    margin-top: -40px;
+                    margin-bottom: 20px;
+                }
+
+                #toggleTheme {
+                    background: var(--card-bg);
+                    color: var(--text-color);
+                    border: 1px solid var(--border-color);
+                    padding: 6px 12px;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    font-weight: 500;
+                    transition: background 0.3s;
+                }
+
+                #toggleTheme:hover {
+                    background: var(--border-color);
+                }
+
+                .news-header {
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+                    padding: 16px;
+                    background: var(--card-bg);
+                    box-shadow: var(--shadow);
+                    border-radius: 12px;
+                    margin: 20px auto;
+                    max-width: 960px;
+                }
+
+                .news-header img {
+                    width: 100px;
+                    height: 100px;
+                    object-fit: contain;
+                    border-radius: 8px;
+                    background: #ccc;
+                }
+
+                .news-header-stt {
+                    flex: 1;
+                }
+
+                .news-title {
+                    font-size: 1.1rem;
+                    margin: 0 0 6px;
+                    color: var(--text-color);
+                }
+
+                .news-date {
+                    font-size: 0.85rem;
+                    color: #888;
+                    text-transform: uppercase;
+                }
+                .card-container {
+                    display: flex;
+                    gap: 16px;
+                    padding: 0 16px 32px;
+                    overflow-x: auto;
+                    scroll-behavior: smooth;
+                    flex-wrap: nowrap;
+                }
+
+                .card {
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                    background: var(--card-bg);
+                    border-radius: 14px;
+                    padding: 14px;
+                    box-shadow: var(--shadow);
+                    transition: transform 0.2s ease;
+                }
+                .card-container::-webkit-scrollbar {
+                    height: 8px;
+                }
+                .card-container::-webkit-scrollbar-thumb {
+                    background-color: rgba(0,0,0,0.2);
+                    border-radius: 4px;
+                }
+                .card:hover {
+                    transform: translateY(-4px);
+                }
+
+                .card img {
+                    width: 100%;
+                    height: 200px; /* Adjust height as needed */
+                    object-fit: cover;
+                    border-radius: 8px;
+                    margin-bottom: 8px;
+                    background-color: var(--bg-color);
+                }
+
+                .card h3 {
+                    font-size: 15px;
+                    margin: 0 0 6px;
+                    font-weight: 600;
+                }
+
+                .read-more {
+                    display: inline-block;
+                    background-color: var(--link-color);
+                    color: #fff;
+                    padding: 6px 12px;
+                    border-radius: 6px;
+                    text-decoration: none;
+                    font-size: 0.85rem;
+                    font-weight: 600;
+                    transition: background 0.3s ease;
+                }
+
+                .read-more:hover {
+                   background-color: var(--hover-link-color);
+                }
+                .card-actions {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    margin-top: 10px;
+                }
+                .verdict-reactions {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: stretch; /* Changed from center to stretch */
+                    box-sizing: border-box;
+                    margin: 0 9px;
+                    padding: 3px;
+                    box-shadow: 0px -2px 5px 1px #888888;
+                    }
+
+                    .verdict-btn {
+                    flex: 1;
+                    max-width: 50%;
+                    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+                    color: #fff;
+                    border: none;
+                    border-radius: 8px;
+                    padding: 10px 16px;
+                    font-size: 0.95rem;
+                    font-weight: 600;
+                    box-shadow: 0 4px 12px rgba(78, 84, 200, 0.3);
+                    cursor: pointer;
+                    transition: transform 0.2s ease, box-shadow 0.2s ease;
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                    opacity: 0.9;
+                    }
+                verdict-btn:hover {
+                    background-color: var(--border-color);
+                    color: var(--link-color);
+                }
+                #ai-ltr{
+                    border 1px solid blue
+                }
+                .reaction-bar {
+                    display: flex;
+                    padding:5px;
+                    gap: 12px;
+                    justify-content: flex-end;
+                    font-size: 0.9rem;
+                    opacity: 0.85;
+                    margin-left: auto;
+                    flex-wrap: wrap;
+                }
+
+                .reaction {
+                    display: flex;
+                    align-items: center;
+                    gap: 4px;
+                    background: var(--border-color);
+                    padding: 4px 8px;
+                    border-radius: 14px;
+                    cursor: pointer;
+                    transition: background 0.2s ease;
+                }
+
+                .reaction:hover {
+                    background: var(--hover-link-color);
+                    color: #fff;
+                }
+                .reaction-count {
+                    font-weight: 500;
+                }
+                .footer {
+                    padding: 32px 0;
+                    text-align: center;
+                    font-size: 0.95rem;
+                    color: var(--text-color);
+                    border-top: 1px solid var(--border-color);
+                    margin-top: 40px;
+                }
+
+                .footer-links {
+                    list-style: none;
+                    padding: 0;
+                    margin: 12px 0 20px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    gap: 16px;
+                }
+
+                .footer-links a {
+                    text-decoration: none;
+                    color: var(--link-color);
+                }
+
+                .footer-links a:hover {
+                    color: var(--hover-link-color);
+                }
+
+                @media (max-width: 600px) {
+                    .news-header {
+                        flex-direction: column;
+                        text-align: center;
+                    }
+                    .card-container {
+                        padding-left: 8px;
+                        padding-right: 8px;
+                    }
+                }
+               /* Tablet: 2 cards per screen */
+                @media (min-width: 768px) {
+                    .card {
+                        flex: 0 0 50%;
+                        max-width: 50%;
+                    }
+                }
+
+                /* Large desktop: 3 cards per screen */
+                @media (min-width: 1200px) {
+                    .card {
+                        flex: 0 0 33.333%;
+                        max-width: 33.333%;
+                    }
+                }
+            </style>
+
+            <script type="text/javascript">
+                (function(c,l,a,r,i,t,y){
+                    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                })(window, document, "clarity", "script", "slvrquufd1");
+            </script>
+
+            <script>
+                window.onload = function () {
+                    const toggle = document.getElementById("toggleTheme");
+                    const currentTheme = localStorage.getItem("theme");
+
+                    if (currentTheme === "dark") {
+                        document.body.classList.add("dark");
+                    }
+
+                    toggle.addEventListener("click", () => {
+                        document.body.classList.toggle("dark");
+                        const theme = document.body.classList.contains("dark") ? "dark" : "light";
+                        localStorage.setItem("theme", theme);
+                    });
+                }
+            </script>
+        </head>
+        <body>
+            <h1 class="header-stt">
+                <img src="dailyMicon.png" alt="" class="app-logo" />
+            </h1>
+            <div class="theme-toggle">
+                <button id="toggleTheme">🌓 Toggle Theme</button>
+            </div>
+   
+            
+                <div class="news-header">
+                    <img src="https://static.toiimg.com/photo/msid-98638255.cms" alt="News Logo">
+                    <div class="news-header-stt">
+                        <h3 class="news-title">
+                            <a href="https://timesofindia.indiatimes.com" target="_blank">Times of India</a>
+                        </h3>
+                        <p class="news-date">Sat Aug 09 2025</p>
+                    </div>
+                </div>
+                    <div class="card-container">
+                        
+                            <div class="card">
+                                <img src="https://static.toiimg.com/photo/msid-123207216,imgsize-866849.cms" alt="Headline image" />
+                                <h3>'If there were any constraints ...': IAF chief on oppn's 'no political will' charge during Op Sindoor</h3>
+                                <div class="card-actions">
+                                    <a href="https://timesofindia.indiatimes.com/india/oppositions-no-political-will-charge-iaf-chief-cites-govts-clear-resolve-in-op-sindoor-responds-to-aur-maarna-tha-remarks/articleshow/123207190.cms" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://static.toiimg.com/photo/msid-123207297,imgsize-55938.cms" alt="Headline image" />
+                                <h3>Schiller vs Miller: Who is the 'Trump whisperer'? The duel shaping tariffs on India, Pak</h3>
+                                <div class="card-actions">
+                                    <a href="https://timesofindia.indiatimes.com/world/us/miller-v-schiller-who-is-the-real-trump-whisperer/articleshow/123207299.cms" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://static.toiimg.com/photo/msid-123206885,imgsize-1495074.cms" alt="Headline image" />
+                                <h3>'Not an era of war': India welcomes US-Russia meet in Alaska</h3>
+                                <div class="card-actions">
+                                    <a href="https://timesofindia.indiatimes.com/india/not-an-era-of-war-india-welcomes-us-russia-meet-in-alaska-calls-it-step-toward-ending-ukraine-conflict/articleshow/123206771.cms" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://static.toiimg.com/photo/msid-123207525,imgsize-163054.cms" alt="Headline image" />
+                                <h3>'I Was Shocked' – When Samson left speechless by 14-year-old Vaibhav Suryavanshi</h3>
+                                <div class="card-actions">
+                                    <a href="https://timesofindia.indiatimes.com/sports/cricket/news/i-was-shocked-when-sanju-samson-left-speechless-by-14-year-old-vaibhav-suryavanshi/articleshow/123207533.cms" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://static.toiimg.com/photo/msid-123207756,imgsize-1121227.cms" alt="Headline image" />
+                                <h3>'Used manipulative tactics to gain trust': 14-yr-old girl raped; neighbour on run</h3>
+                                <div class="card-actions">
+                                    <a href="https://timesofindia.indiatimes.com/city/chandigarh/14-yr-old-girl-raped-neighbour-on-run/articleshow/123206601.cms" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://static.toiimg.com/photo/msid-123194569,imgsize-43658.cms" alt="Headline image" />
+                                <h3>Nvidia CEO checks salaries of company's 42,000 employees; says: It's a strategy that…</h3>
+                                <div class="card-actions">
+                                    <a href="https://timesofindia.indiatimes.com/technology/tech-news/nvidia-ceo-jensen-huang-checks-salaries-of-companys-entire-42000-employees-says-its-a-strategy-that-/articleshow/123194662.cms" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://static.toiimg.com/photo/msid-123207648,imgsize-114122.cms" alt="Headline image" />
+                                <h3>Rafael Nadal, wife Mery welcome second child - name also revealed</h3>
+                                <div class="card-actions">
+                                    <a href="https://timesofindia.indiatimes.com/sports/tennis/top-stories/tennis-legend-rafael-nadal-wife-mery-perell-welcome-second-child-its-a-baby-boy-his-name-also-revealed/articleshow/123207567.cms" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://static.toiimg.com/photo/msid-123206383,imgsize-1603207.cms" alt="Headline image" />
+                                <h3>BrahMos led offensive, Akashteer guarded skies: Weapons behind Op Sindoor</h3>
+                                <div class="card-actions">
+                                    <a href="https://timesofindia.indiatimes.com/india/brahmos-led-the-offensive-akashteer-guarded-the-skies-drdo-chief-details-weapons-behind-operation-sindoor-details/articleshow/123206268.cms" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://static.toiimg.com/photo/msid-123205078,imgsize-782855.cms" alt="Headline image" />
+                                <h3>'Ghost of Balakot’ laid to rest: Air Force chief on why videos of Operation Sindoor matter - watch</h3>
+                                <div class="card-actions">
+                                    <a href="https://timesofindia.indiatimes.com/india/ghost-of-balakot-laid-to-rest-air-force-chief-on-why-videos-of-operation-sindoor-matter-watch/articleshow/123204862.cms" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://static.toiimg.com/photo/msid-123205407,imgsize-46384.cms" alt="Headline image" />
+                                <h3>GTA 6 release date set for May 2026: Innovative gameplay promises new thrills</h3>
+                                <div class="card-actions">
+                                    <a href="https://timesofindia.indiatimes.com/technology/gaming/gta-6-release-date-confirmed-for-may-2026-featuring-innovative-gameplay-and-expected-premium-pricing/articleshow/123204173.cms" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                    </div>
+            
+                <div class="news-header">
+                    <img src="https://www.ndtv.com/common/header/images/ndtv_logo_black.gif" alt="News Logo">
+                    <div class="news-header-stt">
+                        <h3 class="news-title">
+                            <a href="https://www.ndtv.com" target="_blank">NDTV News- Special</a>
+                        </h3>
+                        <p class="news-date">Sat Aug 09 2025</p>
+                    </div>
+                </div>
+                    <div class="card-container">
+                        
+                            <div class="card">
+                                <img src="https://c.ndtvimg.com/2025-08/20795f41_Donald-Trump-vs-Kamala-Harris.jpg" alt="Headline image" />
+                                <h3>Donald Trump's Order On Investing For Retirement: What Does It Change | Explained</h3>
+                                <div class="card-actions">
+                                    <a href="https://www.ndtvprofit.com/world/donald-trumps-order-on-investing-for-retirement-what-does-it-change-explained" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://c.ndtvimg.com/2025-08/9tbvk39s_shreyas-iyer-and-shashank-singh_625x300_09_August_25.jpg?im=FitAndFill,algorithm=dnn,width=240,height=180" alt="Headline image" />
+                                <h3>"Woakes Hai Kya Tu?": Shreyas Iyer Takes Hilarious Dig At England Pacer</h3>
+                                <div class="card-actions">
+                                    <a href="https://sports.ndtv.com/cricket/woakes-hai-kya-tu-shreyas-iyer-takes-hilarious-dig-at-england-pacer-in-video-with-pbks-teammate-9051991" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://c.ndtvimg.com/2025-08/10848c12_AP18332546941264__1_.jpg" alt="Headline image" />
+                                <h3>India Endorses Putin-Trump Summit In Alaska Next Week, Recalls PM Modi's Remark: 'Not An Era Of War'</h3>
+                                <div class="card-actions">
+                                    <a href="https://www.ndtvprofit.com/nation/india-endorses-putin-trump-summit-in-alaska-next-week-recalls-pm-modis-remark-not-an-era-of-war" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://c.ndtvimg.com/2025-08/nda4ksmk_nuclear-war_625x300_09_August_25.jpeg" alt="Headline image" />
+                                <h3>New Study Reveals How Nuclear War Could Starve The World</h3>
+                                <div class="card-actions">
+                                    <a href="https://www.ndtv.com/science/new-study-reveals-how-nuclear-war-could-starve-the-world-9053608" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://c.ndtvimg.com/2025-08/c865d21d_container-ship-6631117_1920.jpg" alt="Headline image" />
+                                <h3>Government To Roll Out Rs 2,250 Crore Export Promotion Mission Soon</h3>
+                                <div class="card-actions">
+                                    <a href="https://www.ndtvprofit.com/business/government-to-roll-out-rs-2250-crore-export-promotion-mission-soon" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://c.ndtvimg.com/2025-08/0a1de13d_PTI08082025000035B.jpg" alt="Headline image" />
+                                <h3>Uttarkashi Flash Floods: Evacuation Of People Underway, Over 1,000 Airlifted</h3>
+                                <div class="card-actions">
+                                    <a href="https://www.ndtvprofit.com/nation/uttarkashi-flash-floods-evacuation-of-people-underway-over-1000-airlifted" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://c.ndtvimg.com/2025-08/47119606_ashwini-chaudhary-monty-GmDVGjqeVEk-unsplash.jpg" alt="Headline image" />
+                                <h3>Maharashtra Government To Probe 26 Lakh 'Suspect' Beneficiaries Of Ladki Bahin Yojana</h3>
+                                <div class="card-actions">
+                                    <a href="https://www.ndtvprofit.com/nation/maharashtra-government-to-probe-26-lakh-suspect-beneficiaries-of-ladki-bahin-yojana" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://c.ndtvimg.com/2025-08/102c8b7c_437858193.jpg" alt="Headline image" />
+                                <h3>UK Steps Up Aid For Gaza Amid Israel's Expanded Takeover Plans</h3>
+                                <div class="card-actions">
+                                    <a href="https://www.ndtvprofit.com/world/uk-steps-up-aid-for-gaza-amid-israels-expanded-takeover-plans" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://c.ndtvimg.com/2025-08/5ol4i64o_as_625x300_09_August_25.jpeg" alt="Headline image" />
+                                <h3>Was Rolex Founder A Nazi Spy? MI5 Files Link Wilsdorf To Hitler</h3>
+                                <div class="card-actions">
+                                    <a href="https://www.ndtv.com/offbeat/was-rolex-founder-a-nazi-spy-mi5-files-link-hans-wilsdorf-to-adolf-hitler-9053534" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://c.ndtvimg.com/2025-04/flbpvfvo_airline_625x300_16_April_25.jpg?im=FitAndFill,algorithm=dnn,width=240,height=180" alt="Headline image" />
+                                <h3>Pakistan Lost Rs 127 Crore In Two Months After Shutting Airspace For India</h3>
+                                <div class="card-actions">
+                                    <a href="https://www.ndtv.com/world-news/pakistan-lost-rs-127-crore-in-two-months-after-shutting-airspace-for-india-report-9053516" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                    </div>
+            
+                <div class="news-header">
+                    <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/mediamanager/itlogo.png" alt="News Logo">
+                    <div class="news-header-stt">
+                        <h3 class="news-title">
+                            <a href=" https://www.indiatoday.in/?utm_source=rss " target="_blank">India Today | India</a>
+                        </h3>
+                        <p class="news-date">Sat Aug 09 2025</p>
+                    </div>
+                </div>
+                    <div class="card-container">
+                        
+                            <div class="card">
+                                <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202508/xx-090030601-16x9_0.jpeg?VersionId=QC56ShjiXk2N2ZmUe71JCM2KL1zleQYJ" alt="Headline image"/>
+                                <h3>Civil judge aspirant disappears during train journey in Madhya Pradesh</h3>
+                                <div class="card-actions">
+                                    <a href=" https://www.indiatoday.in/india/story/mp-crime-news-civil-judge-aspirant-disappears-during-train-journey-in-madhya-pradesh-2768864-2025-08-09?utm_source=rss " class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202508/dharali-disaster-093428342-16x9_0.jpeg?VersionId=_gduig0jH.TfSP6HTJr4ElbRs4P.45Sd" alt="Headline image"/>
+                                <h3>Uttarakhand forms 3-member panel to assess Dharali disaster damage</h3>
+                                <div class="card-actions">
+                                    <a href=" https://www.indiatoday.in/india/story/uttarakhand-forms-3-member-panel-uttarkashi-dharali-disaster-damage-2768874-2025-08-09?utm_source=rss " class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202508/donald-trump-and-vladimir-putin-090231233-16x9_0.png?VersionId=WeTGHe1mWSy1yR7uRKgkW3xXGDu5RIqv" alt="Headline image"/>
+                                <h3>Summit holds promise of ending Ukraine war: India on Trump-Putin Alaska meet</h3>
+                                <div class="card-actions">
+                                    <a href=" https://www.indiatoday.in/india/story/india-welcomes-august-15-meet-between-trump-putin-in-alaska-summit-holds-promise-of-ending-ukraine-war-2768856-2025-08-09?utm_source=rss " class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202508/pm-modi-jairam-ramesh-091612441-16x9_0.jpeg?VersionId=IBFxgLrBmANqGtBVX9uVMz3iU9DP2Iyn" alt="Headline image"/>
+                                <h3>Why did PM stop Op Sindoor: Congress after Air Force chief details huge Pak losses</h3>
+                                <div class="card-actions">
+                                    <a href=" https://www.indiatoday.in/india/story/congress-question-pm-modi-operation-sindoor-air-force-chief-details-huge-pak-losses-2768841-2025-08-09?utm_source=rss " class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202508/police-team-080138653-16x9.jpg?VersionId=AebsIFfcJWqOBTZSJsAa4pNKnuFbRVLD" alt="Headline image"/>
+                                <h3>IAS officer alleges husband's business partner harassed her over hotel dealings</h3>
+                                <div class="card-actions">
+                                    <a href=" https://www.indiatoday.in/india/story/ias-officer-alleges-husbands-business-partner-harassed-her-over-hotel-dealings-2768819-2025-08-09?utm_source=rss " class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202508/the-airline-confirmed-that-the-systems-have-now-been-restored--but-some-flights-may-still-experience-093351731-16x9_0.png?VersionId=lVN8jbWhbbVYQMnIg0V1andK5YWDRiJU" alt="Headline image"/>
+                                <h3>Flight ops hit at Mumbai airport due to network outage, Air India issues advisory</h3>
+                                <div class="card-actions">
+                                    <a href=" https://www.indiatoday.in/india/story/data-network-outage-impacts-check-in-systems-of-airlines-including-air-india-flights-delayed-2768817-2025-08-09?utm_source=rss " class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202508/kangpokpi-08443851-16x9.png?VersionId=8kPr_LDSs9uFC2hkq5HcGg.viaxfKGW0" alt="Headline image"/>
+                                <h3>Centre backs Kuki hill road demand, Manipur denies illegal work claims</h3>
+                                <div class="card-actions">
+                                    <a href=" https://www.indiatoday.in/india/story/doner-ministry-backs-call-for-dedicated-road-corridor-to-manipur-hills-state-denies-unauthorised-road-works-2768814-2025-08-09?utm_source=rss " class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202508/chirag-paswan-is-currently-an-mp-and-a-union-minister-in-narendra-modis-cabinet-file-image-283609929-16x9.png?VersionId=yOggpYLelrag.xUdW78CX7f2Wvxuq0iQ" alt="Headline image"/>
+                                <h3>BJP miffed with Chirag Paswan's remarks on Nitish Kumar, plans talks soon: Sources</h3>
+                                <div class="card-actions">
+                                    <a href=" https://www.indiatoday.in/india/story/bjp-expresses-concern-over-chirag-paswans-criticism-of-nitish-kumar-urges-nda-unity-for-bihar-polls-2768813-2025-08-09?utm_source=rss " class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202508/four-accused-arrested-in-fake-visa-racket-090038346-16x9_0.jpg?VersionId=trKk8fXf_2U77QNy2dN8bWohOJ._K04t" alt="Headline image"/>
+                                <h3>Gujarat anti-terrorism squad busts fake Luxembourg visa racket, 4 arrested</h3>
+                                <div class="card-actions">
+                                    <a href=" https://www.indiatoday.in/india/story/gujarat-anti-terrorism-squad-busts-fake-luxembourg-visa-racket-4-arrested-2768811-2025-08-09?utm_source=rss " class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202508/election-commission-095313232-16x9_0.jpeg?VersionId=3WkYw3SbRVfY0xvQePrW9Nj8DDsA3JZR" alt="Headline image"/>
+                                <h3>Poll panel delists 334 political parties absent from elections since 2019</h3>
+                                <div class="card-actions">
+                                    <a href=" https://www.indiatoday.in/india/story/poll-body-delists-334-political-parties-absent-from-elections-since-2019-2768808-2025-08-09?utm_source=rss " class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                    </div>
+            
+                <div class="news-header">
+                    <img src="https://www.thehindu.com/theme/images/th-online/OG-sections.png" alt="News Logo">
+                    <div class="news-header-stt">
+                        <h3 class="news-title">
+                            <a href="https://www.thehindu.com/news/national/" target="_blank">India Latest News: Top National Headlines Today & Breaking News | The Hindu</a>
+                        </h3>
+                        <p class="news-date">Sat Aug 09 2025</p>
+                    </div>
+                </div>
+                    <div class="card-container">
+                        
+                            <div class="card">
+                                <img src="https://th-i.thgim.com/public/news/national/c90x7b/article66721324.ece/alternates/LANDSCAPE_1200/NKV-ECI.jpg" alt="Headline image" />
+                                <h3>No name will be deleted without notice, says ECI on Bihar SIR</h3>
+                                <div class="card-actions">
+                                    <a href="https://www.thehindu.com/news/national/no-name-will-be-deleted-without-notice-says-eci-on-bihar-sir/article69914550.ece" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="noImg.png" alt="Headline image" />
+                                <h3>CPI district conference makes an unvarnished stock taking of the party, government and LDF </h3>
+                                <div class="card-actions">
+                                    <a href="https://www.thehindu.com/news/national/kerala/cpi-district-conference-makes-an-unvarnished-stock-taking-of-the-party-government-and-ldf/article69914604.ece" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://th-i.thgim.com/public/news/national/lyqn0p/article67936606.ece/alternates/LANDSCAPE_1200/NKV-ECI.jpg" alt="Headline image" />
+                                <h3>ECI again asks Rahul Gandhi to submit evidence of irregularity in Karnataka Assembly election under oath</h3>
+                                <div class="card-actions">
+                                    <a href="https://www.thehindu.com/news/national/eci-again-asks-rahul-gandhi-to-submit-evidence-of-irregularity-in-karnataka-assembly-election-under-oath/article69914528.ece" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://th-i.thgim.com/public/news/national/w6a3yc/article69913940.ece/alternates/LANDSCAPE_1200/Basheer%20with%20his%20collection%201.jpg" alt="Headline image" />
+                                <h3>In Gurez Valley, a lone man is archiving the Dard-Shin story</h3>
+                                <div class="card-actions">
+                                    <a href="https://www.thehindu.com/news/national/in-gurez-valley-a-lone-man-is-archiving-the-dard-shin-story/article69913891.ece" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="noImg.png" alt="Headline image" />
+                                <h3>A.P.’s second rank in IJR a remarkable milestone, says Naidu</h3>
+                                <div class="card-actions">
+                                    <a href="https://www.thehindu.com/news/national/andhra-pradesh/aps-second-rank-in-ijr-a-remarkable-milestone-says-naidu/article69914491.ece" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://th-i.thgim.com/public/incoming/xh5gkb/article69914574.ece/alternates/LANDSCAPE_1200/PTI07_16_2025_000140B.jpg" alt="Headline image" />
+                                <h3>Why Maoists are on the wane in the once-dreaded Red Corridor </h3>
+                                <div class="card-actions">
+                                    <a href="https://www.thehindu.com/news/national/why-maoists-are-on-the-wane-in-the-once-dreaded-red-corridor/article69914276.ece" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="noImg.png" alt="Headline image" />
+                                <h3>Kerala marks golden jubilee of State Scheduled Tribes Development department</h3>
+                                <div class="card-actions">
+                                    <a href="https://www.thehindu.com/news/national/kerala/kerala-marks-golden-jubilee-of-state-scheduled-tribes-development-department/article69914409.ece" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://th-i.thgim.com/public/incoming/dxlcnt/article69914545.ece/alternates/LANDSCAPE_1200/PTI08_06_2025_000044B.jpg" alt="Headline image" />
+                                <h3>Political parties say they have filed many claims and objections after Bihar draft roll, though ECI lists zero complaints</h3>
+                                <div class="card-actions">
+                                    <a href="https://www.thehindu.com/elections/bihar-assembly/political-parties-say-they-have-filed-many-claims-and-objections-after-bihar-draft-roll-though-eci-lists-zero-complaints/article69914135.ece" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="noImg.png" alt="Headline image" />
+                                <h3>Independence of judiciary crucial to survival of democracy, says judge</h3>
+                                <div class="card-actions">
+                                    <a href="https://www.thehindu.com/news/national/kerala/independence-of-judiciary-crucial-to-survival-of-democracy-says-judge/article69913855.ece" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="noImg.png" alt="Headline image" />
+                                <h3>Man booked for drunk driving after his car rams 14 two-wheelers parked at a cafe in Kochi </h3>
+                                <div class="card-actions">
+                                    <a href="https://www.thehindu.com/news/national/kerala/man-booked-for-drunk-driving-after-his-car-rams-14-two-wheelers-parked-at-a-cafe-in-kochi/article69913003.ece" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                    </div>
+            
+                <div class="news-header">
+                    <img src="https://www.cnbctv18.com/_next/static/media/cnbctv18-logo.e3f586f6.png" alt="News Logo">
+                    <div class="news-header-stt">
+                        <h3 class="news-title">
+                            <a href="https://www.cnbctv18.com/business/" target="_blank">Business News in CNBCTV18, Business Latest News, Business News</a>
+                        </h3>
+                        <p class="news-date">Sat Aug 09 2025</p>
+                    </div>
+                </div>
+                    <div class="card-container">
+                        
+                            <div class="card">
+                                <img src="https://images.cnbctv18.com/uploads/2024/10/starbucks-2024-10-6a71d27f7b3dc0eb30937cdc9f8e76ea.jpg" alt="Headline image" />
+                                <h3>Tata Consumers inks deal to open new markets for Araku coffee, to be served at Starbucks</h3>
+                                <div class="card-actions">
+                                    <a href="https://www.cnbctv18.com/business/tata-consumers-inks-deal-to-open-new-markets-for-araku-coffee-to-be-served-at-starbucks-19651407.htm" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://images.cnbctv18.com/uploads/2025/08/st-2025-08-09t152735141-2025-08-0f8bafeee02c4d5944591db7320874f0.jpg" alt="Headline image" />
+                                <h3>Govt may roll out ₹2,250 cr export promotion mission soon: Report</h3>
+                                <div class="card-actions">
+                                    <a href="https://www.cnbctv18.com/india/govt-may-roll-out-%25e2%2582%25b92250-cr-export-promotion-mission-soon-report-19651378.htm" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://images.cnbctv18.com/uploads/2024/12/stock-market-2024-12-b28808ac008b680321649e163e6cf702.jpg" alt="Headline image" />
+                                <h3>Blue Star cuts FY26 revenue growth guidance to 10%</h3>
+                                <div class="card-actions">
+                                    <a href="https://www.cnbctv18.com/market/earnings/blue-star-cuts-fy26-revenue-growth-guidance-to-10-percent-results-boardroom-19651308.htm" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://images.cnbctv18.com/uploads/2025/07/earnings-2025-07-b931fa4101dcfa44250035a7b84e00a3.jpg" alt="Headline image" />
+                                <h3>Keystone Realtors achieves 25% of annual pre-sales target in Q1; secures ₹7,700 crore worth projects</h3>
+                                <div class="card-actions">
+                                    <a href="https://www.cnbctv18.com/market/earnings/keystone-realtors-25-pc-annual-pre-sales-target-in-q1-secures-rs-7700-crore-projects-19651300.htm" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://images.cnbctv18.com/uploads/2024/07/siemens-2024-07-d6b13e01399315fd930ad7db6f0177d7.jpg" alt="Headline image" />
+                                <h3>Siemens Q3 Results | Net profit dips 3% to ₹423 crore on lower other income; new orders up 13%</h3>
+                                <div class="card-actions">
+                                    <a href="https://www.cnbctv18.com/market/stocks/siemens-share-price-q3-results-net-profit-dips-3-to-rs-423-crore-on-lower-other-income-new-orders-up-13-19651253.htm" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://images.cnbctv18.com/uploads/2025/08/premiere-pro-thumbs-27-2025-08-f9ed276d76db799da3cd9d9bc33f81e5.jpg" alt="Headline image" />
+                                <h3>Top 10@10 | Trump draws a red line on India trade talks, markets slide for sixth week, & more</h3>
+                                <div class="card-actions">
+                                    <a href="https://www.cnbctv18.com/business/top-10-stories-today-trump-draws-a-red-line-on-india-trade-talks-markets-slide-for-sixth-week-more-19651228.htm" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://images.cnbctv18.com/uploads/2025/03/brigade-enterprises-2025-03-35ba21d170a97cdc4e39aec179cf6550.jpeg" alt="Headline image" />
+                                <h3>Brigade Enterprises launches Brigade Cherry Blossom in East Bengaluru with ₹225 crore revenue potential</h3>
+                                <div class="card-actions">
+                                    <a href="https://www.cnbctv18.com/market/stocks/brigade-enterprises-share-price-launches-brigade-cherry-blossom-in-east-bengaluru-with-rs-225-crore-revenue-potential-19651232.htm" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://images.cnbctv18.com/uploads/2025/08/compressjpegonline-img1280x720-34-2025-08-a7f0a4bf25c3fa5cf253b00a3b9d47c4.jpg" alt="Headline image" />
+                                <h3>TVS Supply Chain Q1 results: Net profit jumps 853% to ₹71 crore</h3>
+                                <div class="card-actions">
+                                    <a href="https://www.cnbctv18.com/market/tvs-supply-chain-share-price-q1-fy26-results-net-profit-revenue-margins-ebitda-restructuring-19651167.htm" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://images.cnbctv18.com/uploads/2024/06/puravankara-jpeg-2024-06-4d4b65e04b066c8d4fe695bd7fdfdd64.jpeg" alt="Headline image" />
+                                <h3>Puravankara slips into red in Q1 with ₹69-crore loss despite higher sales bookings</h3>
+                                <div class="card-actions">
+                                    <a href="https://www.cnbctv18.com/market/stocks/puravankara-share-price-q1fy26-earnings-net-loss-revenue-higher-sales-pipeline-launches-joint-development-projects-19651201.htm" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="https://images.cnbctv18.com/uploads/2025/02/shipping-corporation-of-india-2025-02-9964d80f2d16a6e5516533db86ec83d8.jpeg" alt="Headline image" />
+                                <h3>Shipping Corporation Q1 Results | Net profit, margins expand; revenue slips</h3>
+                                <div class="card-actions">
+                                    <a href="https://www.cnbctv18.com/market/stocks/shipping-corporation-share-price-q1-results-net-profit-grows-operating-margin-widens-ebitda-revenue-19651174.htm" class="read-more" target="_blank">Read More →</a></br>
+                                    <div class="verdict-reactions">
+                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <div class="reaction-bar">
+                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
+                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
+                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                    </div>
+            
+
+            <footer class="footer">
+                <div class="container">
+                    <b>DailyMuse · One brilliant headliner, delivered daily </b></p>
+                    <ul class="footer-links">
+                        <li><a href="javascript:void(0)">About</a></li>
+                        <li><a href="javascript:void(0)">Privacy</a></li>
+                        <li><a href="https://github.com/paul41/DailyMuse">GitHub</a></li>
+                        <li><a href="mailto:sourav03.paul29@gmail.com">
+                                Contact
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" title="Subscribe for a 3-minute morning news brief. "> Subscribe </a>
+                        </li>
+                    </ul>
+                    <p class="copyright">© 2025 DailyMuse. Powered by GitHub Actions.</p>
+                </div>
+            </footer>
+
+        </body>
+    </html>

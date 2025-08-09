@@ -1,0 +1,38 @@
+{
+  "name": "dailymuse",
+  "version": "1.0.0",
+  "description": "Today's Finds - A static github webpage that presents daily news",
+  "keywords": [
+    "headlines",
+    "news",
+    "cnbctv18",
+    "thehindu",
+    "indiatoday",
+    "ndtv",
+    "timesofindia",
+    "github-pages",
+    "daily"
+  ],
+  "homepage": "https://github.com/paul41/DailyMuse#readme",
+  "bugs": {
+    "url": "https://github.com/paul41/DailyMuse/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paul41/DailyMuse.git"
+  },
+  "license": "MIT",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "update": "node index.js",
+    "html": "node generateHTML.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "axios": "^1.11.0",
+    "fs": "^0.0.1-security",
+    "xml2js": "^0.6.2"
+  }
+}
