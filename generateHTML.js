@@ -33,7 +33,7 @@ async function updateHTML(params) {
                 }
 
                 body.dark {
-                    --bg-color: #121212;
+                    --bg-color: #4f4f4f;
                     --text-color: #e0e0e0;
                     --card-bg: #1f1f1f;
                     --link-color: #66aaff;
@@ -329,6 +329,11 @@ async function updateHTML(params) {
                     });
                 }
             </script>
+            <script>
+                function summaryFunction(){
+                    console.log('Hiiiiiiiiiiiiiiiiiiii')
+                }
+            </script>
         </head>
         <body>
             <h1 class="header-stt">
@@ -360,7 +365,7 @@ async function updateHTML(params) {
                                 <div class="card-actions">
                                     <a href="${content?.link}" class="read-more" target="_blank">Read More →</a></br>
                                     <div class="verdict-reactions">
-                                        <button class="verdict-btn" disabled>Smart Summary</button>
+                                        <button class="verdict-btn" onClick="summaryFunction()">Smart Summary</button>
                                         <div class="reaction-bar">
                                             <span class="reaction">👍 <span class="reaction-count">24</span></span>
                                             <span class="reaction">👎 <span class="reaction-count">3</span></span>

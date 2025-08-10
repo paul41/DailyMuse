@@ -80,3 +80,23 @@ Let me know if you want me to include badges, add a screenshot/image, or generat
 Feel free to open issues or PRs!
 
 
+# {
+#   "title": "India's GDP Growth Slows to 5% in Q2",
+#   "stakeholders" : ["Investors", "Policy Makers"],
+#   "summary_points": [
+#     "GDP growth slows to 5%",
+#     "Global and domestic factors to blame",
+#     "Policy clarity may help reverse trend"
+#   ],
+#   "historical_parallels": ["2012 GDP slowdown recovery", "2019 pre-pandemic dip"],
+#   "counterpoint": "Some argue the slowdown is cyclical and not policy-driven.",
+#   "controversy levels":"",
+#   "solution": "Introduce fiscal stimulus and boost investor confidence.",
+#   "causes": ["Global demand slowdown", "Policy uncertainty", "Weak private investment"],
+#   "forecast": "Growth likely to hover between 5-5.3% in the next two quarters.",
+#   "location": "India",
+#   "suggested_questions": [
+#     "What sectors are most vulnerable to this slowdown?",
+#     "How might fiscal stimulus affect inflation?"
+#   ] 
+# }
