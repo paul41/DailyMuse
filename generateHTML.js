@@ -1,7 +1,9 @@
 const fs = require('fs');
 const raw = fs.readFileSync('data.json','utf-8');
 const RSSLinkExtractor = require('./extractor');
+const {startGeminiChat} = require('./smart-summary')
 const xmlContent = JSON.parse(raw);
+
 
 (async ()=>{
     const extractor = new RSSLinkExtractor(xmlContent);
@@ -365,7 +367,7 @@ async function updateHTML(params) {
                                 <div class="card-actions">
                                     <a href="${content?.link}" class="read-more" target="_blank">Read More →</a></br>
                                     <div class="verdict-reactions">
-                                        <button class="verdict-btn" onClick="summaryFunction()">Smart Summary</button>
+                                        <button class="verdict-btn" onClick=${startGeminiChat()}>Smart Summary</button>
                                         <div class="reaction-bar">
                                             <span class="reaction">👍 <span class="reaction-count">24</span></span>
                                             <span class="reaction">👎 <span class="reaction-count">3</span></span>
