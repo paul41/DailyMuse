@@ -1,14 +1,13 @@
 const fs = require('fs');
-const raw = fs.readFileSync('data.json','utf-8');
+const raw = fs.readFileSync('data.json', 'utf-8');
 const RSSLinkExtractor = require('./extractor');
-const {startGeminiChat} = require('./smart-summary')
 const xmlContent = JSON.parse(raw);
 
 
-(async ()=>{
+(async () => {
     const extractor = new RSSLinkExtractor(xmlContent);
-    const contents = await extractor.extractLinks();  
-    await updateHTML(contents).then(data=>console.log('✅ HTML generated: index.html')).catch(err=>{
+    const contents = await extractor.extractLinks();
+    await updateHTML(contents).then(data => console.log('✅ HTML generated: index.html')).catch(err => {
         console.error('Error updating HTML');
         process.exit(1);
     });
@@ -188,6 +187,21 @@ async function updateHTML(params) {
                     gap: 8px;
                     margin-top: 10px;
                 }
+                .verdict-btn {
+                    background-color: #f5f5f5;
+                    border: 1px solid #ccc;
+                    color: #333;
+                    padding: 8px 16px;
+                    font-size: 14px;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    transition: background-color 0.2s ease;
+                }
+
+                .verdict-btn:hover {
+                    background-color: #e0e0e0;
+                }
+
                 .verdict-reactions {
                     display: flex;
                     justify-content: space-between;
@@ -357,17 +371,20 @@ async function updateHTML(params) {
                 </div>
                     <div class="card-container">
                         ${entry['headlines'].map((content, i) => {
-                            const imgHTML = content?.['description']?.match(/<img[^>]+src=(["'])(.*?)\1/)
-                            ? `<img src="${content?.['description']?.match(/<img[^>]+src=(["'])(.*?)\1/)[2]}" alt="Headline image"/>`
-                            : `<img src="${content?.enclosure?.['$']?.url || content?.StoryImage || content?.mediaContent?.['$']?.url || `noImg.png`}" alt="Headline image" />`;
-                            return `
+        const imgHTML = content?.['description']?.match(/<img[^>]+src=(["'])(.*?)\1/)
+            ? `<img src="${content?.['description']?.match(/<img[^>]+src=(["'])(.*?)\1/)[2]}" alt="Headline image"/>`
+            : `<img src="${content?.enclosure?.['$']?.url || content?.StoryImage || content?.mediaContent?.['$']?.url || `noImg.png`}" alt="Headline image" />`;
+        return `
                             <div class="card">
                                 ${imgHTML}
                                 <h3>${content?.title}</h3>
                                 <div class="card-actions">
                                     <a href="${content?.link}" class="read-more" target="_blank">Read More →</a></br>
                                     <div class="verdict-reactions">
-                                        <button class="verdict-btn" onClick=${startGeminiChat()}>Smart Summary</button>
+                                        <button class="verdict-btn" onclick="alert('Smart Summary service is coming soon 🚧')">
+                                            Smart Summary
+                                        </button>
+
                                         <div class="reaction-bar">
                                             <span class="reaction">👍 <span class="reaction-count">24</span></span>
                                             <span class="reaction">👎 <span class="reaction-count">3</span></span>
@@ -377,7 +394,7 @@ async function updateHTML(params) {
                                 </div>
                             </div>
                             `;
-                        }).join('')}
+    }).join('')}
                     </div>
             `).join('')}
 
