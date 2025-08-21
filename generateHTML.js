@@ -196,7 +196,7 @@ async function updateHTML(params) {
                     margin: 0 9px;
                     padding: 3px;
                     box-shadow: 0px -2px 5px 1px #888888;
-                    }
+                }
 
                     .verdict-btn {
                     flex: 1;

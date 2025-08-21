@@ -13,6 +13,12 @@ on:
   workflow_dispatch: # Enables manual runs from GitHub UI
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+  #1. Setup the environment
+  #2. checkout to main branch of the repo
+  #3. Setup git user
+  #4. Setup nodejs & execute the project
+  #5. Push the changes to git repo
+  #6. Deploy to github pages using peaceiris/actions-gh-pages@v3
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -23,7 +29,7 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
-      - name: Setup Git user
+      - name: Setup Git User
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
@@ -48,26 +54,26 @@ jobs:
           git commit -m "Automated update: $(date '+%Y-%m-%d %H:%M:%S')"
           git push origin main
 
-      - name: Copy snapshot to history/
-        run: |
-          mkdir -p history
-          cp data.json history/data-$(date '+%Y-%m-%d').json
+      # - name: Copy snapshot to history/
+      #   run: |
+      #     mkdir -p history
+      #     cp data.json history/data-$(date '+%Y-%m-%d').json
 
-      - name: Clean up history files older than 15 days
-        run: |
-          find history -name "data-*.json" | while read file; do
-            file_date=$(basename "$file" | sed -E 's/data-([0-9]{4}-[0-9]{2}-[0-9]{2}).json/\1/')
-            if [[ $(date -d "$file_date +15 days" +%s) -lt $(date +%s) ]]; then
-              echo "Deleting $file (older than 15 days)"
-              rm "$file"
-            fi
-          done
+      # - name: Clean up history files older than 15 days
+      #   run: |
+      #     find history -name "data-*.json" | while read file; do
+      #       file_date=$(basename "$file" | sed -E 's/data-([0-9]{4}-[0-9]{2}-[0-9]{2}).json/\1/')
+      #       if [[ $(date -d "$file_date +15 days" +%s) -lt $(date +%s) ]]; then
+      #         echo "Deleting $file (older than 15 days)"
+      #         rm "$file"
+      #       fi
+      #     done
 
-      - name: Commit snapshot
-        run: |
-          git add history/data-*.json
-          git commit -m "Snapshot: $(date '+%Y-%m-%d %H:%M:%S')"
-          git push origin main
+      # - name: Commit snapshot
+      #   run: |
+      #     git add history/data-*.json
+      #     git commit -m "Snapshot: $(date '+%Y-%m-%d %H:%M:%S')"
+      #     git push origin main
 
       - name: Deploy to GitHub Pages 🌐
         uses: peaceiris/actions-gh-pages@v3
