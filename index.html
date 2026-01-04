@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Daily Muse | Daily NEWS headlines</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #f0f2f5;
+            --text-color: #222;
+            --card-bg: #ffffff;
+            --link-color: #0078D4;
+            --hover-link-color: #005a99;
+            --border-color: #e5e7eb;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        body.dark {
+            --bg-color: #2f2f2f;
+            --text-color: #e0e0e0;
+            --card-bg: #1c1c1c;
+            --border-color: #444;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            transition: 0.3s;
+        }
+
+        /***************************
+            HEADER SECTION
+        ***************************/
+        .dm-header {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 0;
+            background: var(--card-bg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .dm-logo {
+            width: 58px;
+            height: 58px;
+            object-fit: contain;
+        }
+        .dm-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .dm-title {
+            font-size: 1.3rem;
+            font-weight: 350;
+            letter-spacing: -0.5px;
+            color: #c55f17db;
+            margin-bottom: 0;
+        }
+
+        /***************************
+            HERO + CAROUSEL
+        ***************************/
+        .hero {
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carousel {
+            overflow: hidden;
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .carousel-slide {
+            display: none;
+        }
+        .carousel-slide.active {
+            display: block;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 14px;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: #fff;
+            background: rgba(0,0,0,0.5);
+            padding: 10px 14px;
+            border-radius: 8px;
+        }
+        .section-title {
+            max-width: 960px;
+            margin: 30px auto 10px;
+            padding: 0 16px;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+        /***************************
+            TRENDING
+        ***************************/
+        .trending {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 0 16px;
+        }
+
+        .trend-card {
+            padding: 16px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .heat { height: 4px; border-radius: 6px; margin-bottom: 8px; }
+        .heat-1 { background: #ff5959; }
+        .heat-2 { background: #ff884d; }
+        .heat-3 { background: #ffd24d; }
+
+        /***************************
+            TOPICS
+        ***************************/
+        .topics {
+            margin: 10px auto;
+            padding: 0 16px;
+            display: flex;
+            gap: 16px;
+            width: 80%;
+        }
+
+        .topic-card {
+            flex: 1 1 calc(50% - 16px);
+            background: var(--card-bg);
+            padding: 16px;
+            border-radius: 14px;
+            border-color: var(--border-color);
+            box-shadow: var(--shadow);
+        }
+
+        .topic-card:hover {
+            background: #c55f17db;
+            color: #fff;
+            transform: translateY(-2px);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .topic-card:active {
+            transform: scale(0.95);
+        }
+
+        @media (min-width: 768px) {
+            .topic-card { flex: 1 1 calc(25% - 16px); }
+        }
+        /***************************
+            WEATHER METER
+        ***************************/
+       
+        /***************************
+            COMMUNITY
+        ***************************/
+        .community {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 0 16px;
+        }
+
+        .quick-links {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .quick-btn {
+            padding: 10px 14px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+        }
+
+        .digest-cards {
+            display: flex;
+            gap: 14px;
+            overflow-x: auto;
+        }
+
+        .digest {
+            min-width: 240px;
+            padding: 14px;
+            background: var(--card-bg);
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+        }
+
+        /***************************
+            NEWS CARDS
+        ***************************/
+        .news-header {
+            max-width: 960px;
+            margin: 20px auto 10px;
+            padding: 16px;
+            display: flex;
+            gap: 16px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .card-container {
+            max-width: 960px;
+            margin: 0 auto 30px;
+            padding: 0 16px;
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+        }
+
+        .card {
+            flex: 0 0 100%;
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        @media (min-width: 768px) {
+            .card { flex: 0 0 50%; }
+        }
+        @media (min-width: 1200px) {
+            .card { flex: 0 0 33%; }
+        }
+
+        /***************************
+            FOOTER
+        ***************************/
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            background: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ⭐ HEADER SECTION -->
+    <header class="dm-header">
+        <!-- Logo + Title -->
+        <div class="dm-brand">
+            <img src="dailyMicon.png" class="dm-logo" alt="DailyMuse Logo" />
+            <h3 class="dm-title">India's headlines,from the finest five</h3>
+        </div>
+        <!-- ⭐ Topics -->
+        <section class="topics">
+            <div class="topic-card">🪷 India</div>
+            <div class="topic-card">💰 Finance</div>
+            <div class="topic-card">🌍 Technology</div>
+            <div class="topic-card">⚽ Sports</div>
+            <div class="topic-card">🎬 Entertainment</div>
+            <div class="topic-card">🩺 Health</div>
+        </section>
+    </header>
+    
+    <!-- ⭐ HERO SECTION -->
+    <section class="hero">
+       <h2 class="section-title">Today’s Top Stories</h2>
+       <div class="carousel">
+            
+                <div class="carousel-slide active">
+                    <img src="https://static.toiimg.com/photo/msid-126333690,imgsize-27886.cms" />
+                    <div class="carousel-caption">
+                        'Come get me, don't be late': White House shares Maduro's old clip daring Trump — watch
+                    </div>
+                </div>
+            
+                <div class="carousel-slide">
+                    <img src="https://c.ndtvimg.com/2026-01/hkavjvm4_ladakh-outfit-_625x300_04_January_26.jpeg" />
+                    <div class="carousel-caption">
+                        New Buddhist Outfit In Ladakh Aims To Reshape Talks With Centre For Rights
+                    </div>
+                </div>
+            
+                <div class="carousel-slide">
+                    <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/jarmal-singh-045616374-16x9_0.jpeg?VersionId=FrBdszT8MDrE.akAEWw6flEjVpMeK7HA" />
+                    <div class="carousel-caption">
+                        AAP sarpanch shot dead while attending wedding function at Amritsar resort
+                    </div>
+                </div>
+            
+                <div class="carousel-slide">
+                    <img src="noImg.png" />
+                    <div class="carousel-caption">
+                        Meeting soon to address woes of residents in layouts developed, approved by MUDA: MLA
+                    </div>
+                </div>
+            
+                <div class="carousel-slide">
+                    <img src="https://images.cnbctv18.com/uploads/2025/11/20250215043505_rupeegain_dollar.jpg" />
+                    <div class="carousel-caption">
+                        US-Venezuelan conflict not to impact India's trade: GTRI
+                    </div>
+                </div>
+            
+        </div>
+    </section>
+
+    <!-- ⭐ Dynamic News -->
+    <section>
+        <h2 class="section-title">From Your Favorite Sources</h2>
+        
+            <div class="news-header">
+                <img src="https://static.toiimg.com/photo/msid-98638255.cms" width="100" height="90" style="object-fit: contain; border-radius: 8px;"/>
+                <div>
+                    <h3><a href="https://timesofindia.indiatimes.com" target="_blank" style="color: #8a1260db;">Times of India</a></h3>
+                    <p style="color: #c55f17db; font-family: Arial, sans-serif; font-size: 15px; font-weight: 600;">Sun Jan 04 2026</p>
+                </div>
+            </div>
+            <div class="card-container">
+                
+                        <div class="card">
+                            <img src="https://static.toiimg.com/photo/msid-126333690,imgsize-27886.cms" width="100%" height="180">
+                            <h3>'Come get me, don't be late': White House shares Maduro's old clip daring Trump — watch</h3>
+                            <a href="https://timesofindia.indiatimes.com/world/us/come-get-me-dont-be-late-white-house-shares-maduros-old-clip-daring-trump-watch/articleshow/126333495.cms" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://static.toiimg.com/photo/msid-126333024,imgsize-1420400.cms" width="100%" height="180">
+                            <h3>Explained: Why India's 'Neighbourhood First' policy is about to face its greatest test in 2026</h3>
+                            <a href="https://timesofindia.indiatimes.com/world/explained-why-indias-neighbourhood-first-policy-is-about-to-face-its-greatest-test-in-2026-bangladesh-pakistan-and-nepal/articleshow/126232374.cms" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://static.toiimg.com/photo/msid-126333731,imgsize-51220.cms" width="100%" height="180">
+                            <h3>Mustafizur row: B'desh not to travel to India for T20 World Cup; did Yunus govt 'intervene'?</h3>
+                            <a href="https://timesofindia.indiatimes.com/sports/cricket/news/government-intervention-bangladesh-not-to-travel-to-india-for-t20-world-cup-following-mustafizur-rahmans-exclusion-from-ipl/articleshow/126333706.cms" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://static.toiimg.com/photo/msid-126334452,imgsize-38302.cms" width="100%" height="180">
+                            <h3>CIA in Caracas, source close to Maduro: The planning behind 'flawless' op Absolute Resolve </h3>
+                            <a href="https://timesofindia.indiatimes.com/world/us/inside-op-absolute-resolve-from-cia-team-to-drone-fleet-the-planning-before-flawless-arrest-of-venezuela-president-nicolas-maduro/articleshow/126334353.cms" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://static.toiimg.com/photo/msid-126334079,imgsize-539084.cms" width="100%" height="180">
+                            <h3>'Law of Jungle': Tharoor, Shaina NC &amp; more speak on Venezuela crisis; what they said</h3>
+                            <a href="https://timesofindia.indiatimes.com/india/law-of-jungle-shashi-tharoor-shaina-nc-more-speak-on-venezuela-crisis-what-they-said-after-us-strike/articleshow/126333772.cms" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://static.toiimg.com/photo/msid-126334752,imgsize-30418.cms" width="100%" height="180">
+                            <h3>‘If someone can't be happy, get divorced’: Elon Musk once told employees; old video shows</h3>
+                            <a href="https://timesofindia.indiatimes.com/technology/tech-news/when-elon-musk-told-employees-if-someone-cant-be-happy-get-divorced-and-added-speaking-from-/articleshow/126334762.cms" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://static.toiimg.com/photo/msid-126332819,imgsize-597433.cms" width="100%" height="180">
+                            <h3>'Matter of deep concern': India reacts to US strikes on Venezuela; urges restraint, calls for dialogue</h3>
+                            <a href="https://timesofindia.indiatimes.com/india/matter-of-deep-concern-mea-reacts-to-us-strikes-on-venezuela-urges-restraint-calls-for-dialogue/articleshow/126332674.cms" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://static.toiimg.com/photo/msid-126334547,imgsize-12314.cms" width="100%" height="180">
+                            <h3>Venezuelan President Maduro flashes peace sign while in custody — watch</h3>
+                            <a href="https://timesofindia.indiatimes.com/world/us/venezuelan-president-maduro-flashes-peace-sign-while-in-custody-watch/articleshow/126334211.cms" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://static.toiimg.com/photo/msid-126334147,imgsize-49424.cms" width="100%" height="180">
+                            <h3>Fans react as Tom Brady parties with DiCaprio on yacht amid Alix Earle buzz</h3>
+                            <a href="https://timesofindia.indiatimes.com/sports/nfl/news/two-of-gisele-bundchens-exes-fans-lose-it-as-tom-brady-parties-with-leonardo-dicaprio-on-a-luxury-yacht-in-st-barts-amid-alix-earle-buzz/articleshow/126333869.cms" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://static.toiimg.com/photo/msid-126318862,imgsize-112060.cms" width="100%" height="180">
+                            <h3>China's DeepSeek returns: Proves cheaper AI works again; Silicon Valley shaken</h3>
+                            <a href="https://timesofindia.indiatimes.com/technology/tech-news/chinas-deepseek-that-wiped-billions-from-us-stock-market-in-january-2025-sends-new-years-message-to-american-companies/articleshow/126318862.cms" target="_blank">Read →</a>
+                        </div>
+                    
+            </div>
+        
+            <div class="news-header">
+                <img src="https://www.ndtv.com/common/header/images/ndtv_logo_black.gif" width="100" height="90" style="object-fit: contain; border-radius: 8px;"/>
+                <div>
+                    <h3><a href="https://www.ndtv.com" target="_blank" style="color: #8a1260db;">NDTV News- Special</a></h3>
+                    <p style="color: #c55f17db; font-family: Arial, sans-serif; font-size: 15px; font-weight: 600;">Sun Jan 04 2026</p>
+                </div>
+            </div>
+            <div class="card-container">
+                
+                        <div class="card">
+                            <img src="https://c.ndtvimg.com/2026-01/hkavjvm4_ladakh-outfit-_625x300_04_January_26.jpeg" width="100%" height="180">
+                            <h3>New Buddhist Outfit In Ladakh Aims To Reshape Talks With Centre For Rights</h3>
+                            <a href="https://www.ndtv.com/india-news/voice-of-buddhist-ladakh-new-buddhist-outfit-in-ladakh-aims-to-reshape-talks-with-centre-for-rights-10295432" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://c.ndtvimg.com/2026-01/66ke07ag_maduro-trump_625x300_04_January_26.jpg?im=FitAndFill,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>US Was Ready For Venezuela Strike Before Christmas. What Delayed It</h3>
+                            <a href="https://www.ndtv.com/world-news/us-was-ready-for-venezuela-strike-before-christmas-what-delayed-it-10295412" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://c.ndtvimg.com/2026-01/9j4aa2og_gautam-adani-bhutan_625x300_04_January_26.jpeg" width="100%" height="180">
+                            <h3>Gautam Adani Becomes Founding Member Of Gelephu Mindfulness City In Bhutan</h3>
+                            <a href="https://www.ndtv.com/world-news/gautam-adani-becomes-founding-member-of-gelephu-mindfulness-city-in-bhutan-10295284" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://c.ndtvimg.com/2026-01/q3a5feck_para-sakthi_625x300_04_January_26.jpg?im=FitAndFill,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>Vijay's Fans Tear Down Sivakarthikeyan's Parasakthi Posters In Viral Video</h3>
+                            <a href="https://www.ndtv.com/entertainment/vijays-fans-tear-down-sivakarthikeyans-parasakthi-posters-at-jana-nayagan-trailer-launch-event-in-madurai-10295069" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://i.ndtvimg.com/i/2017-09/hepatitis-action-plan-to-come-in-october_650x400_41505196638.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>Kerala Sees Rise In Hepatitis A Cases: Symptoms And Preventive Measures</h3>
+                            <a href="https://www.ndtv.com/health/kerala-sees-rise-in-hepatitis-a-cases-symptoms-and-preventive-measures-you-must-know-10294868" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://c.ndtvimg.com/2022-12/0htt5beg_india-police-generic_625x300_23_December_22.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>Woman, Child Drown In Well In Jharkhand, Cops File Unnatural Death Case</h3>
+                            <a href="https://www.ndtv.com/india-news/woman-child-drown-in-well-in-jharkhand-cops-file-unnatural-death-case-10294905" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://c.ndtvimg.com/2026-01/lbv23c78_thackeray-brothers_625x300_04_January_26.jpeg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>Raj Thackeray Enters Sena Bhavan After 20 Years As Politics Changes Again</h3>
+                            <a href="https://www.ndtv.com/india-news/raj-thackeray-enters-sena-bhavan-after-20-years-as-maharashtra-politics-change-again-10294873" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://c.ndtvimg.com/2026-01/0o794jo4_australia-england-afp_625x300_04_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>Atherton Points Out Issue That Made Cricket In Ashes 2025-26 One-Dimensional</h3>
+                            <a href="https://sports.ndtv.com/cricket/ashes-lack-of-spin-bowling-has-made-cricket-in-this-series-one-dimensional-says-michael-atherton-10292859" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://c.ndtvimg.com/2026-01/l490ina_food-delivery_625x300_04_January_26.jpeg" width="100%" height="180">
+                            <h3>Malaysian Man Works As Food Delivery Rider Despite Losing Arm In Accident</h3>
+                            <a href="https://www.ndtv.com/feature/malaysian-man-works-as-food-delivery-rider-despite-losing-arm-in-accident-inspires-internet-10294547" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://c.ndtvimg.com/2026-01/eg1rn0ok_food_120x90_04_January_26.jpg" width="100%" height="180">
+                            <h3>This Bizarre 'Egg Inside Microwave' Experiment Has Over 15 Million Views</h3>
+                            <a href="https://food.ndtv.com/news/this-bizarre-egg-inside-microwave-experiment-has-over-15-million-views-10292100" target="_blank">Read →</a>
+                        </div>
+                    
+            </div>
+        
+            <div class="news-header">
+                <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/mediamanager/itlogo.png" width="100" height="90" style="object-fit: contain; border-radius: 8px;"/>
+                <div>
+                    <h3><a href=" https://www.indiatoday.in/?utm_source=rss " target="_blank" style="color: #8a1260db;">India Today | India</a></h3>
+                    <p style="color: #c55f17db; font-family: Arial, sans-serif; font-size: 15px; font-weight: 600;">Sun Jan 04 2026</p>
+                </div>
+            </div>
+            <div class="card-container">
+                
+                        <div class="card">
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/jarmal-singh-045616374-16x9_0.jpeg?VersionId=FrBdszT8MDrE.akAEWw6flEjVpMeK7HA" width="100%" height="180">
+                            <h3>AAP sarpanch shot dead while attending wedding function at Amritsar resort</h3>
+                            <a href=" https://www.indiatoday.in/india/story/aap-sarpanch-jarmal-singh-shot-dead-wedding-function-amritsar-resort-2846421-2026-01-04?utm_source=rss " target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/pramodmadhavamitshahatmodipongal-s0-original-sixteen-to-nine.jpg?VersionId=G2sqTmYK0Q_0002wBj63.oPpIirW9Gpn" width="100%" height="180">
+                            <h3>Pramod Madhav: Amit Shah Concludes Nainar Nagenthran's Yatra; Congress Slams Visit</h3>
+                            <a href=" https://www.indiatoday.in/india/video/pramod-madhav-reports-amit-shah-in-tn-for-modi-pongal-congress-says-no-space-for-bjp-ytvd-2846408-2026-01-04?utm_source=rss " target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/indorewatercrisis10deadblackwaterintaps-s0-original-sixteen-to-nine.jpg?VersionId=ZErZPCo6.z6CdfTqFLgOwyCz_gMeP_Yv" width="100%" height="180">
+                            <h3>Indore Water Horror: 10 Dead in Bhagirathpura, Crisis Spreads to Gulzar Colony</h3>
+                            <a href=" https://www.indiatoday.in/india/video/indore-water-horror-10-dead-in-bhagirathpura-crisis-spreads-to-gulzar-colony-ytvd-2846405-2026-01-04?utm_source=rss " target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/bjpsweepsnandigramcooperativepolls-s0-original-sixteen-to-nine.jpg?VersionId=n8sVCxuWbROEgeoeUwz9k4PFu6unlipr" width="100%" height="180">
+                            <h3>BJP Sweeps Nandigram Cooperative Polls as TMC Draws a Blank in Major Local Win</h3>
+                            <a href=" https://www.indiatoday.in/india/video/bjp-sweeps-nandigram-cooperative-polls-as-tmc-draws-a-blank-in-major-local-win-ytvd-2846403-2026-01-04?utm_source=rss " target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/ecisummonsbengaldgpovermobattack-s0-original-sixteen-to-nine.jpg?VersionId=r_0yCnENSKOwb5zx_Ph7R_uY0HQui6vv" width="100%" height="180">
+                            <h3>ECI Slams Bengal Police Over Mob Attack on Observer C. Murugan; Demands Report by Tuesday</h3>
+                            <a href=" https://www.indiatoday.in/india/video/eci-slams-bengal-police-over-mob-attack-on-observer-c-murugan-demands-report-by-tuesday-ytvd-2846402-2026-01-04?utm_source=rss " target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/suicide-attempt-044143515-16x9_0.jpg?VersionId=NsDiiMPz5aNaOPsNbbiA_0dsLehW.7XD" width="100%" height="180">
+                            <h3>Jharkhand nurse consumes poison after inaction on her rape allegations</h3>
+                            <a href=" https://www.indiatoday.in/india/story/sexual-assault-complaint-delays-nurse-suicide-attempt-hazaribagh-jharkhand-womens-police-station-2846391-2026-01-04?utm_source=rss " target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/reportcongressweighsvijayspoliticalimpact-s0-original-sixteen-to-nine.jpg?VersionId=lRdPpjJNfc0NAtEzcqxgHBHWZeU9fgot" width="100%" height="180">
+                            <h3>Report: Congress Notes Vijay's Strong Support in Tamil Nadu but Flags TVK's Structural Gaps</h3>
+                            <a href=" https://www.indiatoday.in/india/video/report-congress-notes-vijays-strong-support-in-tamil-nadu-but-flags-tvks-structural-gaps-ytvd-2846390-2026-01-04?utm_source=rss " target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/ministerrammohannaiduvowsstrictpenaltyforindigo-s0-original-sixteen-to-nine.jpg?VersionId=9C2305hSoRGhYzT1a.tO3RgAO1BEUOIz" width="100%" height="180">
+                            <h3>Civil Aviation Minister Ram Mohan Naidu Vows Strict Penalty for IndiGo After Operations Crisis</h3>
+                            <a href=" https://www.indiatoday.in/india/video/civil-aviation-minister-ram-mohan-naidu-vows-strict-penalty-for-indigo-after-operations-crisis-ytvd-2846387-2026-01-04?utm_source=rss " target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/rammohannaidubhogapuramairportreadybyjunenoidabyfeb-s0-original-sixteen-to-nine.jpg?VersionId=TCQKnxbTK3IPvv1XdTAhSQTcFMjrzysl" width="100%" height="180">
+                            <h3>Bhogapuram Airport Test Flight Success: Ram Mohan Naidu Fast-Tracks Launch to May-June 2026</h3>
+                            <a href=" https://www.indiatoday.in/india/video/civil-aviation-minister-ram-mohan-naidu-confirms-bhogapuram-airport-operational-by-june-noida-by-february-ytvd-2846381-2026-01-04?utm_source=rss " target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/indore-many-bhagirathpura-where-supply-every-day-black-dirty-and-polluted-water-04035216-16x9.jpg?VersionId=zgXJCqZEDJmjW7EpIrnkJkeV167RgY_R" width="100%" height="180">
+                            <h3>Ignored warnings: Indore water contamination flagged years before deaths</h3>
+                            <a href=" https://www.indiatoday.in/india/story/ignored-warnings-recurring-lapses-indore-water-contamination-flagged-years-before-deaths-2846371-2026-01-04?utm_source=rss " target="_blank">Read →</a>
+                        </div>
+                    
+            </div>
+        
+            <div class="news-header">
+                <img src="https://www.thehindu.com/theme/images/th-online/OG-sections.png" width="100" height="90" style="object-fit: contain; border-radius: 8px;"/>
+                <div>
+                    <h3><a href="https://www.thehindu.com/news/national/" target="_blank" style="color: #8a1260db;">India Latest News: Top National Headlines Today & Breaking News | The Hindu</a></h3>
+                    <p style="color: #c55f17db; font-family: Arial, sans-serif; font-size: 15px; font-weight: 600;">Sun Jan 04 2026</p>
+                </div>
+            </div>
+            <div class="card-container">
+                
+                        <div class="card">
+                            <img src="noImg.png" width="100%" height="180">
+                            <h3>Meeting soon to address woes of residents in layouts developed, approved by MUDA: MLA</h3>
+                            <a href="https://www.thehindu.com/news/national/karnataka/meeting-soon-to-address-woes-of-residents-in-layouts-developed-approved-by-muda-mla/article70470185.ece" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="noImg.png" width="100%" height="180">
+                            <h3>BJP slams Telangana Assembly resolution, accuses Congress of ‘political drama’ over Gandhi’s name</h3>
+                            <a href="https://www.thehindu.com/news/national/telangana/bjp-slams-telangana-assembly-resolution-accuses-congress-of-political-drama-over-gandhis-name/article70470733.ece" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="noImg.png" width="100%" height="180">
+                            <h3>Three-year-old boy drowns in apartment swimming pool at Nizampet</h3>
+                            <a href="https://www.thehindu.com/news/national/telangana/three-year-old-boy-drowns-in-apartment-swimming-pool-at-nizampet/article70470664.ece" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://th-i.thgim.com/public/incoming/wr6bdh/article70470812.ece/alternates/LANDSCAPE_1200/WhatsApp%20Image%202026-01-04%20at%2016.50.46.jpeg" width="100%" height="180">
+                            <h3>Bhumi Puja to be performed for Pottepalem sluice bridge on January 5</h3>
+                            <a href="https://www.thehindu.com/news/national/andhra-pradesh/bhumi-puja-to-be-performed-for-pottepalem-sluice-bridge-on-january-5/article70470672.ece" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://th-i.thgim.com/public/news/national/telangana/9zbdio/article70470791.ece/alternates/LANDSCAPE_1200/Harish%20Rao%20.jpeg" width="100%" height="180">
+                            <h3>Harish Rao alleges CM misled the House with half-truths on Krishna waters</h3>
+                            <a href="https://www.thehindu.com/news/national/telangana/harish-rao-alleges-cm-misled-the-house-with-half-truths-on-krishna-waters/article70470312.ece" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://th-i.thgim.com/public/incoming/z1n03m/article70470680.ece/alternates/LANDSCAPE_1200/007%201.jpg" width="100%" height="180">
+                            <h3>Telangana Governor visits INS Himgiri, Kalvari Class submarine in Visakhapatnam</h3>
+                            <a href="https://www.thehindu.com/news/national/telangana/telangana-governor-visits-ins-himgiri-kalvari-class-submarine-in-visakhapatnam/article70470675.ece" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://th-i.thgim.com/public/incoming/r4zoj6/article70325440.ece/alternates/LANDSCAPE_1200/PTI05_26_2023_000129B.jpg" width="100%" height="180">
+                            <h3>How did Parliament fare in 2025?</h3>
+                            <a href="https://www.thehindu.com/news/national/parliament-sessions-2025-productivity-bills-laws-passed-disruptions/article70449784.ece" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="noImg.png" width="100%" height="180">
+                            <h3>Watch: India’s silence on U.S. attack on Venezuela is unfortunate: M.A. Baby</h3>
+                            <a href="https://www.thehindu.com/shorts/watch-indias-silence-on-us-attack-on-venezuela-is-unfortunate-ma-baby/article70470727.ece" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="noImg.png" width="100%" height="180">
+                            <h3>Kerala Budget to be presented on January 29</h3>
+                            <a href="https://www.thehindu.com/news/national/kerala/kerala-budget-to-be-presented-on-january-29/article70470598.ece" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://th-i.thgim.com/public/incoming/hrhpwh/article70470624.ece/alternates/LANDSCAPE_1200/2248_3_1_2026_20_7_44_1_MOUSIGNINGCEREMONYOFICARIIMRANDHKMCF.JPG" width="100%" height="180">
+                            <h3>MoU signed between HKMCF and IIMR to promote millet-centric nutrition</h3>
+                            <a href="https://www.thehindu.com/news/national/telangana/mou-signed-between-hkmcf-and-iimr-to-promote-millet-centric-nutrition/article70468206.ece" target="_blank">Read →</a>
+                        </div>
+                    
+            </div>
+        
+            <div class="news-header">
+                <img src="CNBC_TV18.png" width="100" height="90" style="object-fit: contain; border-radius: 8px;"/>
+                <div>
+                    <h3><a href="https://www.cnbctv18.com/business/" target="_blank" style="color: #8a1260db;">Business News in CNBCTV18, Business Latest News, Business News</a></h3>
+                    <p style="color: #c55f17db; font-family: Arial, sans-serif; font-size: 15px; font-weight: 600;">Sun Jan 04 2026</p>
+                </div>
+            </div>
+            <div class="card-container">
+                
+                        <div class="card">
+                            <img src="https://images.cnbctv18.com/uploads/2025/11/20250215043505_rupeegain_dollar.jpg" width="100%" height="180">
+                            <h3>US-Venezuelan conflict not to impact India's trade: GTRI</h3>
+                            <a href="https://www.cnbctv18.com/business/us-venezuelan-conflict-not-to-impact-indias-trade-gtri-19813910.htm" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://images.cnbctv18.com/uploads/2023/08/Oil-India.jpg" width="100%" height="180">
+                            <h3>US control of Venezuelan oil may unlock $1 bn stuck dues for India, lift output</h3>
+                            <a href="https://www.cnbctv18.com/energy/us-control-of-venezuelan-oil-may-unlock-1-bn-stuck-dues-for-india-lift-output-19813862.htm" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://images.cnbctv18.com/uploads/2025/12/gareema-feature-images-65-2025-12-be95dba47774aa6f587f3e6f9926d250.jpg" width="100%" height="180">
+                            <h3>India's first commercial tropical trout farm to be inaugurated in Hyderabad on Monday</h3>
+                            <a href="https://www.cnbctv18.com/agriculture/indias-first-commercial-tropical-trout-farm-to-be-inaugurated-in-hyderabad-on-monday-19813856.htm" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://images.cnbctv18.com/uploads/2018/10/2018-10-01T044044Z_1_LYNXNPEE90194_RTROPTP_4_BANDHAN-BANK-IPO-e1707724640711.jpg" width="100%" height="180">
+                            <h3>Bandhan Bank loan growth back at 10% after two quarters, EEB collection efficiency improves</h3>
+                            <a href="https://www.cnbctv18.com/market/bandhan-bank-loan-growth-back-at-10pc-after-two-quarters-eeb-collection-efficiency-improves-ws-l-19813791.htm" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://images.cnbctv18.com/uploads/2025/04/rich-money-2025-04-f0b4073db42c6bc97979f963f46d5013.jpg" width="100%" height="180">
+                            <h3>FPIs pull out ₹7,608 crore from equities in just 2 days of Jan</h3>
+                            <a href="https://www.cnbctv18.com/economy/fpis-pull-out-%25e2%2582%25b97608-crore-from-equities-in-just-2-days-of-jan-19813838.htm" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://images.cnbctv18.com/uploads/2026/01/20250215043505_rupeegain_dollar.jpg" width="100%" height="180">
+                            <h3>Nearly 80% of MoUs signed since 2021 under execution: TRB Rajaa</h3>
+                            <a href="https://www.cnbctv18.com/india/nearly-80-of-mous-signed-since-2021-under-execution-trb-rajaa-19813822.htm" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://images.cnbctv18.com/uploads/2026/01/image-2026-01-0ed1d368f09fca7c4dbcd31172dc9462.jpg" width="100%" height="180">
+                            <h3>Quick commerce & a gig worker: The anatomy of the business</h3>
+                            <a href="https://www.cnbctv18.com/business/quick-commerce-gig-worker-anatomy-of-business-zepto-blinkit-ws-el-19813792.htm" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://images.cnbctv18.com/uploads/2023/01/AU-Small-Finance-Bank.jpg" width="100%" height="180">
+                            <h3>AU Small Finance Bank Q3 Update: Advances and Deposits grow nearly 20% from last year</h3>
+                            <a href="https://www.cnbctv18.com/market/au-small-finance-bank-share-price-q3-update-deposits-23-pc-loan-book-grows-19-pc-ws-l-19813750.htm" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://images.cnbctv18.com/uploads/2025/10/navi-mumbai-international-airport-4-2025-10-b0765cd6e88fc52bb420199bc990c6cf.jpg" width="100%" height="180">
+                            <h3>Mumbai Airport denies cargo shutdown, amid freighter suspension concerns</h3>
+                            <a href="https://www.cnbctv18.com/business/aviation/mumbai-airport-cargo-shutdown-adani-airports-ws-l-19813745.htm" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://images.cnbctv18.com/uploads/2023/08/SOBHA-developers.jpg" width="100%" height="180">
+                            <h3>SOBHA Q3 Update | Reports record Q3 sales of ₹2,115 crore, Bengaluru leads growth</h3>
+                            <a href="https://www.cnbctv18.com/market/stocks/sobha-q3-update-reports-record-q3-sales-of-%25e2%2582%25b92115-crore-bengaluru-leads-growth-19813699.htm" target="_blank">Read →</a>
+                        </div>
+                    
+            </div>
+        
+    </section>
+     <!-- ⭐ Trending Section -->
+    <h2 class="section-title">Trending Now</h2>
+    <section class="trending">
+        <div class="trend-card">
+            <div class="heat heat-1"></div>
+            <h3>Markets Surge to Record High</h3>
+        </div>
+        <div class="trend-card">
+            <div class="heat heat-2"></div>
+            <h3>AI Adoption in India Jumps</h3>
+        </div>
+        <div class="trend-card">
+            <div class="heat heat-3"></div>
+            <h3>Monsoon Expected Above Normal</h3>
+        </div>
+    </section>
+    <!-- ⭐ Community -->
+    <h2 class="section-title">Community & Shareability</h2>
+    <section class="community">
+        <div class="quick-links">
+            <div class="quick-btn">Share DailyMuse</div>
+            <div class="quick-btn">Submit Feedback</div>
+            <div class="quick-btn">Subscribe</div>
+        </div>
+
+        <div class="digest-cards">
+            <div class="digest">Morning Brief</div>
+            <div class="digest">Evening Wrap</div>
+        </div>
+    </section>
+
+    <!-- ⭐ Footer -->
+    <footer>
+        <b>DailyMuse · One brilliant headliner, delivered daily</b>
+        <p>© 2025 DailyMuse</p>
+    </footer>
+
+    <!-- ⭐ GSAP -->
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from(".dm-header", { y: -40, opacity: 0, duration: 1 });
+
+        gsap.from(".carousel", { y: 40, opacity: 0, duration: 1.2 });
+
+        gsap.from(".trend-card", {
+            scrollTrigger: { trigger: ".trending", start: "top 80%" },
+            opacity: 0, y: 30, stagger: 0.15
+        });
+
+        gsap.from(".topic-card", {
+            scrollTrigger: { trigger: ".topics", start: "top 80%" },
+            opacity: 0, scale: 0.7, stagger: 0.1
+        });
+
+        // carousel auto slide
+        const slides = document.querySelectorAll(".carousel-slide");
+        let i = 0;
+        setInterval(() => {
+            slides[i].classList.remove("active");
+            i = (i + 1) % slides.length;
+            slides[i].classList.add("active");
+        }, 4000);
+    </script>
+
+</body>
+</html>

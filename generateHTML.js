@@ -15,409 +15,418 @@ const xmlContent = JSON.parse(raw);
 
 async function updateHTML(params) {
     const html = `<!DOCTYPE html>
-    <html>
-        <head>
-            <meta charset="UTF-8">
-            <title>Daily Muse | Daily NEWS headlines</title>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <meta name="description" content="Webpage that display news headlines from top 5 Indian news channels." />
-            <meta name="author" content="SouravPaul" />
-           <style>
-                :root {
-                    --bg-color: #f0f2f5;
-                    --text-color: #222;
-                    --card-bg: #ffffff;
-                    --link-color: #0078D4;
-                    --hover-link-color: #005a99;
-                    --border-color: #e5e7eb;
-                    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-                }
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Daily Muse | Daily NEWS headlines</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-                body.dark {
-                    --bg-color: #4f4f4f;
-                    --text-color: #e0e0e0;
-                    --card-bg: #1f1f1f;
-                    --link-color: #66aaff;
-                    --hover-link-color: #99cfff;
-                    --border-color: #2a2a2a;
-                    --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-                }
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-                body {
-                    margin: 0;
-                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                    background: var(--bg-color);
-                    color: var(--text-color);
-                    transition: background 0.3s ease, color 0.3s ease;
-                }
+    <style>
+        :root {
+            --bg-color: #f0f2f5;
+            --text-color: #222;
+            --card-bg: #ffffff;
+            --link-color: #0078D4;
+            --hover-link-color: #005a99;
+            --border-color: #e5e7eb;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
 
-                .header-stt {
-                    background: var(--card-bg);
-                    box-shadow: var(--shadow);
-                    text-align: center;
-                    padding: 7px 0;
-                    margin-bottom: 20px;
-                }
+        body.dark {
+            --bg-color: #2f2f2f;
+            --text-color: #e0e0e0;
+            --card-bg: #1c1c1c;
+            --border-color: #444;
+        }
 
-                .app-logo {
-                    width: 125px;
-                    height: auto;
-                }
+        body {
+            margin: 0;
+            font-family: "Segoe UI", sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            transition: 0.3s;
+        }
 
-                .theme-toggle {
-                    display: flex;
-                    justify-content: flex-end;
-                    padding: 0 16px;
-                    margin-top: -40px;
-                    margin-bottom: 20px;
-                }
+        /***************************
+            HEADER SECTION
+        ***************************/
+        .dm-header {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 0;
+            background: var(--card-bg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
 
-                #toggleTheme {
-                    background: var(--card-bg);
-                    color: var(--text-color);
-                    border: 1px solid var(--border-color);
-                    padding: 6px 12px;
-                    border-radius: 6px;
-                    cursor: pointer;
-                    font-weight: 500;
-                    transition: background 0.3s;
-                }
+        .dm-logo {
+            width: 58px;
+            height: 58px;
+            object-fit: contain;
+        }
+        .dm-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .dm-title {
+            font-size: 1.3rem;
+            font-weight: 350;
+            letter-spacing: -0.5px;
+            color: #c55f17db;
+            margin-bottom: 0;
+        }
 
-                #toggleTheme:hover {
-                    background: var(--border-color);
-                }
+        /***************************
+            HERO + CAROUSEL
+        ***************************/
+        .hero {
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-                .news-header {
-                    display: flex;
-                    align-items: center;
-                    gap: 16px;
-                    padding: 16px;
-                    background: var(--card-bg);
-                    box-shadow: var(--shadow);
-                    border-radius: 12px;
-                    margin: 20px auto;
-                    max-width: 960px;
-                }
+        .carousel {
+            overflow: hidden;
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
 
-                .news-header img {
-                    width: 100px;
-                    height: 100px;
-                    object-fit: contain;
-                    border-radius: 8px;
-                    background: #ccc;
-                }
+        .carousel-slide {
+            display: none;
+        }
+        .carousel-slide.active {
+            display: block;
+        }
 
-                .news-header-stt {
-                    flex: 1;
-                }
+        .carousel-slide img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 14px;
+        }
 
-                .news-title {
-                    font-size: 1.1rem;
-                    margin: 0 0 6px;
-                    color: var(--text-color);
-                }
+        .carousel-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: #fff;
+            background: rgba(0,0,0,0.5);
+            padding: 10px 14px;
+            border-radius: 8px;
+        }
+        .section-title {
+            max-width: 960px;
+            margin: 30px auto 10px;
+            padding: 0 16px;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+        /***************************
+            TRENDING
+        ***************************/
+        .trending {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 0 16px;
+        }
 
-                .news-date {
-                    font-size: 0.85rem;
-                    color: #888;
-                    text-transform: uppercase;
-                }
-                .card-container {
-                    display: flex;
-                    gap: 16px;
-                    padding: 0 16px 32px;
-                    overflow-x: auto;
-                    scroll-behavior: smooth;
-                    flex-wrap: nowrap;
-                }
+        .trend-card {
+            padding: 16px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow);
+        }
 
-                .card {
-                    flex: 0 0 100%;
-                    max-width: 100%;
-                    background: var(--card-bg);
-                    border-radius: 14px;
-                    padding: 14px;
-                    box-shadow: var(--shadow);
-                    transition: transform 0.2s ease;
-                }
-                .card-container::-webkit-scrollbar {
-                    height: 8px;
-                }
-                .card-container::-webkit-scrollbar-thumb {
-                    background-color: rgba(0,0,0,0.2);
-                    border-radius: 4px;
-                }
-                .card:hover {
-                    transform: translateY(-4px);
-                }
+        .heat { height: 4px; border-radius: 6px; margin-bottom: 8px; }
+        .heat-1 { background: #ff5959; }
+        .heat-2 { background: #ff884d; }
+        .heat-3 { background: #ffd24d; }
 
-                .card img {
-                    width: 100%;
-                    height: 200px; /* Adjust height as needed */
-                    object-fit: cover;
-                    border-radius: 8px;
-                    margin-bottom: 8px;
-                    background-color: var(--bg-color);
-                }
+        /***************************
+            TOPICS
+        ***************************/
+        .topics {
+            margin: 10px auto;
+            padding: 0 16px;
+            display: flex;
+            gap: 16px;
+            width: 80%;
+        }
 
-                .card h3 {
-                    font-size: 15px;
-                    margin: 0 0 6px;
-                    font-weight: 600;
-                }
+        .topic-card {
+            flex: 1 1 calc(50% - 16px);
+            background: var(--card-bg);
+            padding: 16px;
+            border-radius: 14px;
+            border-color: var(--border-color);
+            box-shadow: var(--shadow);
+        }
 
-                .read-more {
-                    display: inline-block;
-                    background-color: var(--link-color);
-                    color: #fff;
-                    padding: 6px 12px;
-                    border-radius: 6px;
-                    text-decoration: none;
-                    font-size: 0.85rem;
-                    font-weight: 600;
-                    transition: background 0.3s ease;
-                }
+        .topic-card:hover {
+            background: #c55f17db;
+            color: #fff;
+            transform: translateY(-2px);
+            cursor: pointer;
+            transition: 0.2s;
+        }
 
-                .read-more:hover {
-                   background-color: var(--hover-link-color);
-                }
-                .card-actions {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 8px;
-                    margin-top: 10px;
-                }
-                .verdict-btn {
-                    background-color: #f5f5f5;
-                    border: 1px solid #ccc;
-                    color: #333;
-                    padding: 8px 16px;
-                    font-size: 14px;
-                    border-radius: 6px;
-                    cursor: pointer;
-                    transition: background-color 0.2s ease;
-                }
+        .topic-card:active {
+            transform: scale(0.95);
+        }
 
-                .verdict-btn:hover {
-                    background-color: #e0e0e0;
-                }
+        @media (min-width: 768px) {
+            .topic-card { flex: 1 1 calc(25% - 16px); }
+        }
+        /***************************
+            WEATHER METER
+        ***************************/
+       
+        /***************************
+            COMMUNITY
+        ***************************/
+        .community {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 0 16px;
+        }
 
-                .verdict-reactions {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: stretch; /* Changed from center to stretch */
-                    box-sizing: border-box;
-                    margin: 0 9px;
-                    padding: 3px;
-                    box-shadow: 0px -2px 5px 1px #888888;
-                }
+        .quick-links {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
 
-                    .verdict-btn {
-                    flex: 1;
-                    max-width: 50%;
-                    background: linear-gradient(135deg, #4e54c8, #8f94fb);
-                    color: #fff;
-                    border: none;
-                    border-radius: 8px;
-                    padding: 10px 16px;
-                    font-size: 0.95rem;
-                    font-weight: 600;
-                    box-shadow: 0 4px 12px rgba(78, 84, 200, 0.3);
-                    cursor: pointer;
-                    transition: transform 0.2s ease, box-shadow 0.2s ease;
-                    display: flex;
-                    align-items: center;
-                    gap: 6px;
-                    opacity: 0.9;
-                    }
-                verdict-btn:hover {
-                    background-color: var(--border-color);
-                    color: var(--link-color);
-                }
-                #ai-ltr{
-                    border 1px solid blue
-                }
-                .reaction-bar {
-                    display: flex;
-                    padding:5px;
-                    gap: 12px;
-                    justify-content: flex-end;
-                    font-size: 0.9rem;
-                    opacity: 0.85;
-                    margin-left: auto;
-                    flex-wrap: wrap;
-                }
+        .quick-btn {
+            padding: 10px 14px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+        }
 
-                .reaction {
-                    display: flex;
-                    align-items: center;
-                    gap: 4px;
-                    background: var(--border-color);
-                    padding: 4px 8px;
-                    border-radius: 14px;
-                    cursor: pointer;
-                    transition: background 0.2s ease;
-                }
+        .digest-cards {
+            display: flex;
+            gap: 14px;
+            overflow-x: auto;
+        }
 
-                .reaction:hover {
-                    background: var(--hover-link-color);
-                    color: #fff;
-                }
-                .reaction-count {
-                    font-weight: 500;
-                }
-                .footer {
-                    padding: 32px 0;
-                    text-align: center;
-                    font-size: 0.95rem;
-                    color: var(--text-color);
-                    border-top: 1px solid var(--border-color);
-                    margin-top: 40px;
-                }
+        .digest {
+            min-width: 240px;
+            padding: 14px;
+            background: var(--card-bg);
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+        }
 
-                .footer-links {
-                    list-style: none;
-                    padding: 0;
-                    margin: 12px 0 20px;
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: center;
-                    gap: 16px;
-                }
+        /***************************
+            NEWS CARDS
+        ***************************/
+        .news-header {
+            max-width: 960px;
+            margin: 20px auto 10px;
+            padding: 16px;
+            display: flex;
+            gap: 16px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
 
-                .footer-links a {
-                    text-decoration: none;
-                    color: var(--link-color);
-                }
+        .card-container {
+            max-width: 960px;
+            margin: 0 auto 30px;
+            padding: 0 16px;
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+        }
 
-                .footer-links a:hover {
-                    color: var(--hover-link-color);
-                }
+        .card {
+            flex: 0 0 100%;
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 16px;
+            box-shadow: var(--shadow);
+        }
 
-                @media (max-width: 600px) {
-                    .news-header {
-                        flex-direction: column;
-                        text-align: center;
-                    }
-                    .card-container {
-                        padding-left: 8px;
-                        padding-right: 8px;
-                    }
-                }
-               /* Tablet: 2 cards per screen */
-                @media (min-width: 768px) {
-                    .card {
-                        flex: 0 0 50%;
-                        max-width: 50%;
-                    }
-                }
+        @media (min-width: 768px) {
+            .card { flex: 0 0 50%; }
+        }
+        @media (min-width: 1200px) {
+            .card { flex: 0 0 33%; }
+        }
 
-                /* Large desktop: 3 cards per screen */
-                @media (min-width: 1200px) {
-                    .card {
-                        flex: 0 0 33.333%;
-                        max-width: 33.333%;
-                    }
-                }
-            </style>
+        /***************************
+            FOOTER
+        ***************************/
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            background: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
 
-            <script type="text/javascript">
-                (function(c,l,a,r,i,t,y){
-                    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-                })(window, document, "clarity", "script", "slvrquufd1");
-            </script>
+<body>
 
-            <script>
-                window.onload = function () {
-                    const toggle = document.getElementById("toggleTheme");
-                    const currentTheme = localStorage.getItem("theme");
-
-                    if (currentTheme === "dark") {
-                        document.body.classList.add("dark");
-                    }
-
-                    toggle.addEventListener("click", () => {
-                        document.body.classList.toggle("dark");
-                        const theme = document.body.classList.contains("dark") ? "dark" : "light";
-                        localStorage.setItem("theme", theme);
-                    });
-                }
-            </script>
-            <script>
-                function summaryFunction(){
-                    console.log('Hiiiiiiiiiiiiiiiiiiii')
-                }
-            </script>
-        </head>
-        <body>
-            <h1 class="header-stt">
-                <img src="dailyMicon.png" alt="" class="app-logo" />
-            </h1>
-            <div class="theme-toggle">
-                <button id="toggleTheme">🌓 Toggle Theme</button>
-            </div>
-   
-            ${params.map((entry, i) => `
-                <div class="news-header">
-                    <img src="${entry.image}" alt="News Logo">
-                    <div class="news-header-stt">
-                        <h3 class="news-title">
-                            <a href="${entry.link}" target="_blank">${entry.title}</a>
-                        </h3>
-                        <p class="news-date">${entry.pubDate}</p>
+    <!-- ⭐ HEADER SECTION -->
+    <header class="dm-header">
+        <!-- Logo + Title -->
+        <div class="dm-brand">
+            <img src="dailyMicon.png" class="dm-logo" alt="DailyMuse Logo" />
+            <h3 class="dm-title">India's headlines,from the finest five</h3>
+        </div>
+        <!-- ⭐ Topics -->
+        <section class="topics">
+            <div class="topic-card">🪷 India</div>
+            <div class="topic-card">💰 Finance</div>
+            <div class="topic-card">🌍 Technology</div>
+            <div class="topic-card">⚽ Sports</div>
+            <div class="topic-card">🎬 Entertainment</div>
+            <div class="topic-card">🩺 Health</div>
+        </section>
+    </header>
+    
+    <!-- ⭐ HERO SECTION -->
+    <section class="hero">
+       <h2 class="section-title">Today’s Top Stories</h2>
+       <div class="carousel">
+            ${params.map((entry, index) => `
+                <div class="carousel-slide${index === 0 ? ' active' : ''}">
+                    <img src="${entry.headlines[0]?.description?.match(/<img[^>]+src=(["'])(.*?)\1/)?.[2] 
+                        || entry.headlines[0]?.enclosure?.["$"]?.url 
+                        || entry.headlines[0]?.StoryImage 
+                        || entry.headlines[0]?.mediaContent?.["$"]?.url 
+                        || "noImg.png"}" />
+                    <div class="carousel-caption">
+                        ${entry.headlines[0]?.title || "Top Stories Curated for You"}
                     </div>
                 </div>
-                    <div class="card-container">
-                        ${entry['headlines'].map((content, i) => {
-        const imgHTML = content?.['description']?.match(/<img[^>]+src=(["'])(.*?)\1/)
-            ? `<img src="${content?.['description']?.match(/<img[^>]+src=(["'])(.*?)\1/)[2]}" alt="Headline image"/>`
-            : `<img src="${content?.enclosure?.['$']?.url || content?.StoryImage || content?.mediaContent?.['$']?.url || `noImg.png`}" alt="Headline image" />`;
-        return `
-                            <div class="card">
-                                ${imgHTML}
-                                <h3>${content?.title}</h3>
-                                <div class="card-actions">
-                                    <a href="${content?.link}" class="read-more" target="_blank">Read More →</a></br>
-                                    <div class="verdict-reactions">
-                                        <button class="verdict-btn" onclick="alert('Smart Summary service is coming soon 🚧')">
-                                            Smart Summary
-                                        </button>
-
-                                        <div class="reaction-bar">
-                                            <span class="reaction">👍 <span class="reaction-count">24</span></span>
-                                            <span class="reaction">👎 <span class="reaction-count">3</span></span>
-                                            <span class="reaction">💬 <span class="reaction-count">5</span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            `;
-    }).join('')}
-                    </div>
             `).join('')}
+        </div>
+    </section>
 
-            <footer class="footer">
-                <div class="container">
-                    <b>DailyMuse · One brilliant headliner, delivered daily </b></p>
-                    <ul class="footer-links">
-                        <li><a href="javascript:void(0)">About</a></li>
-                        <li><a href="javascript:void(0)">Privacy</a></li>
-                        <li><a href="https://github.com/paul41/DailyMuse">GitHub</a></li>
-                        <li><a href="mailto:sourav03.paul29@gmail.com">
-                                Contact
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" title="Subscribe for a 3-minute morning news brief. "> Subscribe </a>
-                        </li>
-                    </ul>
-                    <p class="copyright">© 2025 DailyMuse. Powered by GitHub Actions.</p>
+    <!-- ⭐ Dynamic News -->
+    <section>
+        <h2 class="section-title">From Your Favorite Sources</h2>
+        ${params
+                .map(
+                    (entry) => `
+            <div class="news-header">
+                <img src="${entry?.image === 'https://www.cnbctv18.com/_next/static/media/cnbctv18-logo.e3f586f6.png' 
+                    ? 'CNBC_TV18.png' 
+                    : entry?.image}" width="100" height="90" style="object-fit: contain; border-radius: 8px;"/>
+                <div>
+                    <h3><a href="${entry.link}" target="_blank" style="color: #8a1260db;">${entry.title}</a></h3>
+                    <p style="color: #c55f17db; font-family: Arial, sans-serif; font-size: 15px; font-weight: 600;">${entry.pubDate}</p>
                 </div>
-            </footer>
+            </div>
+            <div class="card-container">
+                ${entry.headlines
+                            .map((c) => {
+                                const img =
+                                    c?.description?.match(/<img[^>]+src=(["'])(.*?)\1/)?.[2] ||
+                                    c?.enclosure?.["$"]?.url ||
+                                    c?.StoryImage ||
+                                    c?.mediaContent?.["$"]?.url ||
+                                    "noImg.png";
+                                return `
+                        <div class="card">
+                            <img src="${img}" width="100%" height="180">
+                            <h3>${c.title}</h3>
+                            <a href="${c.link}" target="_blank">Read →</a>
+                        </div>
+                    `;
+                            }).join("")}
+            </div>
+        `
+                ).join("")}
+    </section>
+     <!-- ⭐ Trending Section -->
+    <h2 class="section-title">Trending Now</h2>
+    <section class="trending">
+        <div class="trend-card">
+            <div class="heat heat-1"></div>
+            <h3>Markets Surge to Record High</h3>
+        </div>
+        <div class="trend-card">
+            <div class="heat heat-2"></div>
+            <h3>AI Adoption in India Jumps</h3>
+        </div>
+        <div class="trend-card">
+            <div class="heat heat-3"></div>
+            <h3>Monsoon Expected Above Normal</h3>
+        </div>
+    </section>
+    <!-- ⭐ Community -->
+    <h2 class="section-title">Community & Shareability</h2>
+    <section class="community">
+        <div class="quick-links">
+            <div class="quick-btn">Share DailyMuse</div>
+            <div class="quick-btn">Submit Feedback</div>
+            <div class="quick-btn">Subscribe</div>
+        </div>
 
-        </body>
-    </html>`
-    fs.writeFileSync('index.html', html);
+        <div class="digest-cards">
+            <div class="digest">Morning Brief</div>
+            <div class="digest">Evening Wrap</div>
+        </div>
+    </section>
+
+    <!-- ⭐ Footer -->
+    <footer>
+        <b>DailyMuse · One brilliant headliner, delivered daily</b>
+        <p>© 2025 DailyMuse</p>
+    </footer>
+
+    <!-- ⭐ GSAP -->
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from(".dm-header", { y: -40, opacity: 0, duration: 1 });
+
+        gsap.from(".carousel", { y: 40, opacity: 0, duration: 1.2 });
+
+        gsap.from(".trend-card", {
+            scrollTrigger: { trigger: ".trending", start: "top 80%" },
+            opacity: 0, y: 30, stagger: 0.15
+        });
+
+        gsap.from(".topic-card", {
+            scrollTrigger: { trigger: ".topics", start: "top 80%" },
+            opacity: 0, scale: 0.7, stagger: 0.1
+        });
+
+        // carousel auto slide
+        const slides = document.querySelectorAll(".carousel-slide");
+        let i = 0;
+        setInterval(() => {
+            slides[i].classList.remove("active");
+            i = (i + 1) % slides.length;
+            slides[i].classList.add("active");
+        }, 4000);
+    </script>
+
+</body>
+</html>`;
+
+    fs.writeFileSync("index.html", html);
 }
+
+
