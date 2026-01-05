@@ -97,8 +97,8 @@ async function updateHTML(params) {
         }
 
         .carousel {
-            overflow: hidden;
-            border-radius: 14px;
+            width: auto;
+            overflow: hidden;            
             box-shadow: var(--shadow);
             position: relative;
         }
@@ -169,7 +169,7 @@ async function updateHTML(params) {
         .topic-card {
             flex: 1 1 calc(50% - 16px);
             background: var(--card-bg);
-            padding: 16px;
+            padding: 15px;
             border-radius: 14px;
             border-color: var(--border-color);
             box-shadow: var(--shadow);
@@ -280,6 +280,69 @@ async function updateHTML(params) {
             background: var(--card-bg);
             border-top: 1px solid var(--border-color);
         }
+
+        /* ==========================
+        MOBILE FIRST FIXES
+        ========================== */
+
+        /* Prevent horizontal scroll */
+        @media (max-width: 768px) {
+            html, body {
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+        
+            /* Header */
+            .dm-header {
+                padding: 12px 10px;
+                position: sticky;
+            }
+            .dm-title {
+                font-size: 1.05rem;
+                text-align: center;
+            }
+        }
+
+        /* HERO */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 0px;
+            }
+            .carousel {
+                width: auto;
+                border-radius: 10px;
+            }
+            .carousel-slide img {
+                height: 220px;
+            }
+        }
+        /* Section titles */
+        .section-title {
+            font-size: 1.25rem;
+            margin: 22px auto 8px;
+        }
+        /* ==========================
+        TOPICS → SCROLLABLE CHIPS
+        ========================== */
+        @media (max-width: 768px) {
+            .topics {
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+
+            .topics::-webkit-scrollbar {
+                display: none;
+            }
+
+            .topic-card {
+                flex: 0 0 auto;
+                min-width: 69px;
+                text-align: center;
+                padding: 12px;
+                font-size: 0.55rem;
+            }
+        }
+       
     </style>
 </head>
 
@@ -358,7 +421,8 @@ async function updateHTML(params) {
         `
                 ).join("")}
     </section>
-     <!-- ⭐ Trending Section -->
+
+    <!-- ⭐ Trending Section -->
     <h2 class="section-title">Trending Now</h2>
     <section class="trending">
         <div class="trend-card">
@@ -374,6 +438,13 @@ async function updateHTML(params) {
             <h3>Monsoon Expected Above Normal</h3>
         </div>
     </section>
+    <!-- ⭐ Topic News -->
+    <section>
+        <h2 class="section-title">Explore by Topics</h2>
+        <div class="topics">
+            <div class="topic-card">🪷 India</div>     
+        </div>
+    </section>
     <!-- ⭐ Community -->
     <h2 class="section-title">Community & Shareability</h2>
     <section class="community">
@@ -382,7 +453,6 @@ async function updateHTML(params) {
             <div class="quick-btn">Submit Feedback</div>
             <div class="quick-btn">Subscribe</div>
         </div>
-
         <div class="digest-cards">
             <div class="digest">Morning Brief</div>
             <div class="digest">Evening Wrap</div>
