@@ -120,7 +120,9 @@ async function updateHTML(params) {
         .carousel-caption {
             position: absolute;
             bottom: 20px;
-            left: 20px;
+            left: 15px;
+            right: 15px;
+            text-align: center;
             color: #fff;
             background: rgba(0,0,0,0.5);
             padding: 10px 14px;
@@ -242,7 +244,6 @@ async function updateHTML(params) {
             display: flex;
             gap: 16px;
             background: var(--card-bg);
-            border-radius: 12px;
             box-shadow: var(--shadow);
         }
 
@@ -315,6 +316,10 @@ async function updateHTML(params) {
             .carousel-slide img {
                 height: 220px;
             }
+            .carousel-caption {
+                font-size: 0.75rem;
+                text-align: center;
+            }
         }
         /* Section titles */
         .section-title {
@@ -342,7 +347,62 @@ async function updateHTML(params) {
                 font-size: 0.55rem;
             }
         }
-       
+        /* ==========================
+        CARDS
+        ========================== */
+        @media (max-width: 768px) {
+            .card-container {
+                padding: 0 10px;
+            }
+
+            .card {
+                flex: 0 0 91%;
+            }
+
+            .card img {
+                height: 160px;
+                object-fit: cover;
+            }
+        }  
+        
+        /* ==========================
+        TRENDING
+        ========================== */
+        @media (max-width: 768px) {
+            .trend-card {
+                padding: 10px;
+            }
+        }
+
+        /* ==========================
+        COMMUNITY
+        ========================== */
+        @media (max-width: 768px) {
+            .community {
+                padding: 0 10px;
+            }
+            .quick-links {
+                gap: 8px;
+            }
+
+            .quick-btn {
+                font-size: 0.9rem;
+                padding: 10px 12px;
+            }
+        }
+
+        /* ==========================
+        TABLET & UP
+        ========================== */
+        @media (min-width: 768px) {
+            .carousel-slide img {
+                height: 240px;
+            }
+
+            .topic-card {
+                min-width: unset;
+            }
+        }
     </style>
 </head>
 
@@ -452,10 +512,6 @@ async function updateHTML(params) {
             <div class="quick-btn">Share DailyMuse</div>
             <div class="quick-btn">Submit Feedback</div>
             <div class="quick-btn">Subscribe</div>
-        </div>
-        <div class="digest-cards">
-            <div class="digest">Morning Brief</div>
-            <div class="digest">Evening Wrap</div>
         </div>
     </section>
 

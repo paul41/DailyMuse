@@ -104,7 +104,9 @@
         .carousel-caption {
             position: absolute;
             bottom: 20px;
-            left: 20px;
+            left: 15px;
+            right: 15px;
+            text-align: center;
             color: #fff;
             background: rgba(0,0,0,0.5);
             padding: 10px 14px;
@@ -226,7 +228,6 @@
             display: flex;
             gap: 16px;
             background: var(--card-bg);
-            border-radius: 12px;
             box-shadow: var(--shadow);
         }
 
@@ -299,6 +300,10 @@
             .carousel-slide img {
                 height: 220px;
             }
+            .carousel-caption {
+                font-size: 0.75rem;
+                text-align: center;
+            }
         }
         /* Section titles */
         .section-title {
@@ -326,7 +331,62 @@
                 font-size: 0.55rem;
             }
         }
-       
+        /* ==========================
+        CARDS
+        ========================== */
+        @media (max-width: 768px) {
+            .card-container {
+                padding: 0 10px;
+            }
+
+            .card {
+                flex: 0 0 91%;
+            }
+
+            .card img {
+                height: 160px;
+                object-fit: cover;
+            }
+        }  
+        
+        /* ==========================
+        TRENDING
+        ========================== */
+        @media (max-width: 768px) {
+            .trend-card {
+                padding: 10px;
+            }
+        }
+
+        /* ==========================
+        COMMUNITY
+        ========================== */
+        @media (max-width: 768px) {
+            .community {
+                padding: 0 10px;
+            }
+            .quick-links {
+                gap: 8px;
+            }
+
+            .quick-btn {
+                font-size: 0.9rem;
+                padding: 10px 12px;
+            }
+        }
+
+        /* ==========================
+        TABLET & UP
+        ========================== */
+        @media (min-width: 768px) {
+            .carousel-slide img {
+                height: 240px;
+            }
+
+            .topic-card {
+                min-width: unset;
+            }
+        }
     </style>
 </head>
 
@@ -363,23 +423,23 @@
                 </div>
             
                 <div class="carousel-slide">
-                    <img src="https://c.ndtvimg.com/2026-01/setauimc_stock_625x300_02_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=345,height=250" />
+                    <img src="https://c.ndtvimg.com/2026-01/kuos92eo_hema-malini-_625x300_05_January_26.jpeg?im=FeatureCrop,algorithm=dnn,width=240,height=180" />
                     <div class="carousel-caption">
-                        How To Make Vegetable Stock At Home
+                        Hema Malini On Hosting Separate Prayer Meet For Dharmendra In Delhi
                     </div>
                 </div>
             
                 <div class="carousel-slide">
-                    <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/aapsarpanchjarnailsinghshotdead-s0-original-sixteen-to-nine.jpg?VersionId=7L2Xqx8cRBxoJcXspvz19e.WB1pWHaXX" />
+                    <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/the-battle-of-basantar-043844608-16x9_1.jpg?VersionId=n582KD4V2LZW488fL8wfYdg_UVsKdhK." />
                     <div class="carousel-caption">
-                        AAP Sarpanch Jarnail Singh Shot Dead In Amritsar Marriage Palace; Gangster Angle Suspected
+                        One river, two Param Virs: The audacious crossing of Basantar in 1971 War
                     </div>
                 </div>
             
                 <div class="carousel-slide">
                     <img src="https://th-i.thgim.com/public/incoming/x3wagn/article70472966.ece/alternates/LANDSCAPE_1200/13591098337_hymdy_20_IndianAirforce.JPG" />
                     <div class="carousel-caption">
-                        Delhi riots case LIVE: Supreme Court to pronounce verdict in bail pleas of Umar Khalid, others 
+                        Indian Air Force’s Suryakiran Aerobatic Team to thrill Hyderabad skies during Wings India 2026
                     </div>
                 </div>
             
@@ -419,51 +479,51 @@
                         </div>
                     
                         <div class="card">
+                            <img src="https://static.toiimg.com/photo/msid-126344997,imgsize-959647.cms" width="100%" height="180">
+                            <h3>'History will tell': Internal conspiracy? Maduro’s son's message for 'traitors' after father’s capture</h3>
+                            <a href="https://timesofindia.indiatimes.com/world/rest-of-world/history-will-tell-who-the-traitors-were-internal-conspiracy-maduros-sons-message-after-fathers-capture-by-us/articleshow/126344991.cms" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
                             <img src="https://static.toiimg.com/photo/msid-126344337,imgsize-289151.cms" width="100%" height="180">
                             <h3>Dalit teen thrashed, stripped and filmed by attackers for online comment in Bareilly</h3>
                             <a href="https://timesofindia.indiatimes.com/city/bareilly/16yo-dalit-boy-kidnapped-stripped-assaulted-by-5-over-social-media-comment/articleshow/126337701.cms" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://static.toiimg.com/photo/msid-126339964,imgsize-823705.cms" width="100%" height="180">
-                            <h3>Two Indian-origin men arrested in US with 300 pounds of cocaine; ICE wants custody</h3>
-                            <a href="https://timesofindia.indiatimes.com/world/us/two-indian-origin-men-arrested-in-us-with-300-pounds-of-cocaine-ice-wants-custody/articleshow/126339913.cms" target="_blank">Read →</a>
+                            <img src="https://static.toiimg.com/photo/msid-126344987,imgsize-50564.cms" width="100%" height="180">
+                            <h3>Viral dinner: Elon Musk posts photo; Trump, Melania at Mar-a-Lago</h3>
+                            <a href="https://timesofindia.indiatimes.com/technology/social/tesla-ceo-elon-musk-on-the-dinner-that-everyone-has-been-talking-about-on-the-internet-says-had-a-/articleshow/126344990.cms" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://static.toiimg.com/photo/msid-126343672,imgsize-1261064.cms" width="100%" height="180">
-                            <h3>'If they don't help on Russian oil issue...': Trump's new tariff warning to India; praises PM Modi</h3>
-                            <a href="https://timesofindia.indiatimes.com/business/india-business/if-they-dont-help-on-russian-oil-issue-donald-trumps-new-tariff-warning-to-india-praises-pm-modi/articleshow/126342824.cms" target="_blank">Read →</a>
+                            <img src="https://static.toiimg.com/photo/msid-126345081,imgsize-2180143.cms" width="100%" height="180">
+                            <h3>Rupee outlook: Do Venezuela crisis, Trump action signal rough ride for Indian currency?</h3>
+                            <a href="https://timesofindia.indiatimes.com/business/india-business/rupee-outlook-do-venezuela-crisis-trump-action-signal-rough-ride-for-indian-currency-what-analysts-expect/articleshow/126344445.cms" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://static.toiimg.com/photo/msid-126334685,imgsize-1180061.cms" width="100%" height="180">
-                            <h3>On camera: Xiaomi CEO takes apart YU7; responds to online criticism</h3>
-                            <a href="https://timesofindia.indiatimes.com/technology/tech-news/in-his-first-livestream-of-2026-xiaomi-ceo-tells-engineers-to-teardown-companys-tesla-rival-yu7-to-tell-everyone-that-/articleshow/126334686.cms" target="_blank">Read →</a>
+                            <img src="https://static.toiimg.com/photo/msid-126344221,imgsize-37308.cms" width="100%" height="180">
+                            <h3>India's 0-2 loss vs SA: Shubman Gill seeks 15-day Test camps</h3>
+                            <a href="https://timesofindia.indiatimes.com/sports/cricket/news/shubman-gill-wants-15-day-camps-prior-to-every-test-series/articleshow/126344209.cms" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://static.toiimg.com/photo/msid-126343334,imgsize-1133396.cms" width="100%" height="180">
-                            <h3>US strike on Columbia now? After Venezuela, Trump threatens action against Bogota</h3>
-                            <a href="https://timesofindia.indiatimes.com/world/us/us-strike-on-columbia-now-after-venezuela-donald-trump-threatens-action-against-bogota-calls-president-petro-a-sick-man/articleshow/126343098.cms" target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://static.toiimg.com/photo/msid-126343787,imgsize-733810.cms" width="100%" height="180">
-                            <h3>Somnath Swabhiman Parv: 1,000 years of unbroken faith</h3>
-                            <a href="https://timesofindia.indiatimes.com/india/somnath-swabhiman-parv-1000-years-of-unbroken-faith/articleshow/126343568.cms" target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://static.toiimg.com/photo/msid-126344096,imgsize-40590.cms" width="100%" height="180">
-                            <h3>'Bangladesh is not Pakistan': Tharoor slams BCCI decision over Mustafizur's release</h3>
-                            <a href="https://timesofindia.indiatimes.com/sports/cricket/news/mustafizur-rahman-row-bangladesh-is-not-pakistan-they-dont-dispatch-terrorists-shashi-tharoor-blasts-bcci/articleshow/126344072.cms" target="_blank">Read →</a>
+                            <img src="https://static.toiimg.com/photo/msid-126320863,imgsize-1520823.cms" width="100%" height="180">
+                            <h3>Endless rains to El Nino: How climate has stopped being seasonal — explained</h3>
+                            <a href="https://timesofindia.indiatimes.com/home/environment/endless-rains-to-el-nino-how-climate-has-stopped-being-seasonal/articleshow/126320032.cms" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
                             <img src="https://static.toiimg.com/photo/msid-126316572,imgsize-756753.cms" width="100%" height="180">
                             <h3>AI debate: Mathematician Joel Hamkins warns; ‘LLMs give wrong answers’</h3>
                             <a href="https://timesofindia.indiatimes.com/technology/technology-news/one-of-the-worlds-biggest-mathematicians-joel-david-hamkins-says-ai-models-are-basically-zero-help-for-mathematics-as-they-produce/articleshow/126316572.cms" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://static.toiimg.com/photo/msid-126332892,imgsize-23198.cms" width="100%" height="180">
+                            <h3>What is quiet firing: A new workplace trend or a serious phenomenon?</h3>
+                            <a href="https://timesofindia.indiatimes.com/education/careers/news/what-is-quiet-firing-a-new-workplace-trend-or-a-serious-phenomenon/articleshow/126332688.cms" target="_blank">Read →</a>
                         </div>
                     
             </div>
@@ -478,63 +538,63 @@
             <div class="card-container">
                 
                         <div class="card">
-                            <img src="https://c.ndtvimg.com/2026-01/setauimc_stock_625x300_02_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=345,height=250" width="100%" height="180">
-                            <h3>How To Make Vegetable Stock At Home</h3>
-                            <a href="https://food.ndtv.com/food-drinks/how-to-make-vegetable-stock-at-home-the-secret-behind-restaurant-style-flavour-10199101" target="_blank">Read →</a>
+                            <img src="https://c.ndtvimg.com/2026-01/kuos92eo_hema-malini-_625x300_05_January_26.jpeg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>Hema Malini On Hosting Separate Prayer Meet For Dharmendra In Delhi</h3>
+                            <a href="https://www.ndtv.com/entertainment/hema-malini-on-hosting-separate-prayer-meet-for-dharmendra-in-delhi-yeh-humare-ghar-ka-personal-mamla-hai-10323880" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://c.ndtvimg.com/2026-01/n66787h4_joe-root-ton-afp_625x300_05_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
-                            <h3>Joe Root Equals Ponting's Tally Of Hundreds, Inches Closer To Tendulkar</h3>
-                            <a href="https://sports.ndtv.com/cricket/ashes-joe-root-equals-ricky-ponting-with-41st-test-hundred-against-australia-in-sydney-10321543" target="_blank">Read →</a>
+                            <img src="https://c.ndtvimg.com/2026-01/2q8jsj3_critics_625x300_05_January_26.jpg?im=FitAndFill,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>Timothee Chalamet Says "I Love You" To Kylie Jenner After Best Actor Win</h3>
+                            <a href="https://www.ndtv.com/entertainment/timothee-chalamet-says-i-love-you-to-kylie-jenner-after-best-actor-win-at-critics-choice-awards-her-reaction-10323840" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://c.ndtvimg.com/2025-12/2h1rrtt4_modi-trump-afp_625x300_06_December_25.jpeg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
-                            <h3>Trump's Praise For "Very Good Man" PM Modi, Then A Tariff Warning To India</h3>
-                            <a href="https://www.ndtv.com/world-news/donald-trumps-praise-for-very-good-man-pm-narendra-modi-then-a-tariff-warning-to-india-over-russia-oil-10321587" target="_blank">Read →</a>
+                            <img src="https://c.ndtvimg.com/2026-01/a3drcptg_mental-health-issues_625x300_05_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>Over 80% Of Patients In India Lack Timely Care: Indian Psychiatric Society</h3>
+                            <a href="https://www.ndtv.com/health/over-80-per-cent-of-psychiatric-patients-in-india-do-not-receive-timely-care-indian-psychiatric-society-10289492" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://c.ndtvimg.com/2025-12/p53lj8ks_vaibhav-suryavanshi-x_625x300_28_December_25.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
-                            <h3>India U19 vs SA U19 Live Streaming, 2nd Youth ODI: How To watch Online</h3>
-                            <a href="https://sports.ndtv.com/cricket/india-u19-vs-south-africa-u19-live-streaming-2nd-youth-odi-when-and-where-to-watch-telecast-10320862" target="_blank">Read →</a>
+                            <img src="https://c.ndtvimg.com/2026-01/9gsrv434_lemongrass-water_625x300_02_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>Can Drinking Lemongrass Water In The Afternoon Benefit Heart Health?</h3>
+                            <a href="https://www.ndtv.com/health/can-drinking-lemongrass-water-in-the-afternoon-benefit-heart-health-10206649" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://c.ndtvimg.com/2026-01/dikkcmms_aarya_625x300_05_January_26.png?im=FitAndFill,algorithm=dnn,width=240,height=180" width="100%" height="180">
-                            <h3>Archana Puran Singh's Son Gets Rs 2.12 Lakh Guitar As Birthday Gift. Watch</h3>
-                            <a href="https://www.ndtv.com/entertainment/archana-puran-singhs-son-aaryamann-gets-rs-2-12-lakh-guitar-as-birthday-gift-from-fiance-yogita-bihani-viral-video-10321512" target="_blank">Read →</a>
+                            <img src="https://c.ndtvimg.com/2026-01/em3kd9r8_jay-shah-and-mustafizur-afp_625x300_05_January_26.jpg?im=FitAndFill,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>ICC Forced to Redraw T20 World Cup Schedule, Bangladesh Board Triggers Chaos</h3>
+                            <a href="https://sports.ndtv.com/cricket/icc-forced-to-redraw-t20-world-cup-schedule-bangladesh-board-triggers-chaos-report-10323685" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://c.ndtvimg.com/2026-01/02l5vrus_amit-shah_625x300_01_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
-                            <h3>Amit Shah Turns Tamil Nadu BJP Chief's Tour Finale Into Party's Poll Pitch</h3>
-                            <a href="https://www.ndtv.com/india-news/amit-shah-turns-tamil-nadu-bjp-chiefs-tour-finale-into-partys-poll-pitch-10321505" target="_blank">Read →</a>
+                            <img src="https://c.ndtvimg.com/2026-01/h0pin2g8_ousmane-dembele-afp_625x300_05_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>Desire Doue, Ousmane Dembele Light Up First Paris Derby In Over 35 Years</h3>
+                            <a href="https://sports.ndtv.com/football/desire-doue-ousmane-dembele-light-up-first-paris-derby-in-over-35-years-10315026" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://c.ndtvimg.com/2026-01/k0l2p3l4_indian-man_625x300_05_January_26.jpeg" width="100%" height="180">
-                            <h3>Indian Man Feeds Homeless US Couple On New Year's Day, Internet Applauds</h3>
-                            <a href="https://www.ndtv.com/offbeat/video-indian-man-feeds-homeless-american-couple-on-new-years-day-internet-applauds-10321300" target="_blank">Read →</a>
+                            <img src="https://c.ndtvimg.com/2025-10/mgp1fp8o_umar-khalid-sharjeel-imam_625x300_27_October_25.jpg?im=FaceCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>Will Umar Khalid, Sharjeel Imam Get Bail? Supreme Court Verdict Today</h3>
+                            <a href="https://www.ndtv.com/india-news/sharjeel-imam-umar-khalid-2022-delhi-riots-case-will-umar-khalid-sharjeel-imam-get-bail-supreme-court-verdict-today-10323482" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://c.ndtvimg.com/2026-01/gg2p2cvk_nikitha-godishala_625x300_05_January_26.jpeg" width="100%" height="180">
-                            <h3>Who Was Nikitha Godishala, 27-Year-Old Indian Killed By Ex-Boyfriend In US</h3>
-                            <a href="https://www.ndtv.com/world-news/who-was-nikitha-godishala-27-year-old-indian-killed-by-ex-boyfriend-in-us-arjun-sharma-10321192" target="_blank">Read →</a>
+                            <img src="https://c.ndtvimg.com/2026-01/e6eidd6o_team-atletico-madrid-afp_625x300_05_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>Atletico Madrid Title Hopes Dented In Real Sociedad Draw</h3>
+                            <a href="https://sports.ndtv.com/football/atletico-madrid-title-hopes-dented-in-real-sociedad-draw-10313475" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://c.ndtvimg.com/2026-01/o9mpncb8_us-strikes-on-venezuela_625x300_05_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
-                            <h3>32 Cubans Killed During Venezulean Leader Nicolas Maduro's Capture</h3>
-                            <a href="https://www.ndtv.com/world-news/32-cubans-killed-during-venezulean-leader-nicolas-maduros-capture-10320723" target="_blank">Read →</a>
+                            <img src="https://c.ndtvimg.com/2026-01/omqe9gu8_team-inter-milan-afp_625x300_05_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>Inter Milan Reclaim Serie A Summit With Win Over Bologna</h3>
+                            <a href="https://sports.ndtv.com/football/inter-milan-reclaim-serie-a-summit-with-win-over-bologna-10313559" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://c.ndtvimg.com/2026-01/e1hfco1k_ai_625x300_05_January_26.jpg?im=FitAndFill,algorithm=dnn,width=240,height=180" width="100%" height="180">
-                            <h3>AI Advancing Too Fast? Top Expert Warns World May Run Out of Time</h3>
-                            <a href="https://www.ndtv.com/world-news/ai-advancing-too-fast-top-expert-warns-world-may-run-out-of-time-10320705" target="_blank">Read →</a>
+                            <img src="https://c.ndtvimg.com/2026-01/j9hu1iog_rodri-afp_625x300_05_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>'A Gift' To Be Back, Says Rodri Despite Manchester City Stumble</h3>
+                            <a href="https://sports.ndtv.com/football/a-gift-to-be-back-says-rodri-despite-man-city-stumble-10311748" target="_blank">Read →</a>
                         </div>
                     
             </div>
@@ -549,14 +609,44 @@
             <div class="card-container">
                 
                         <div class="card">
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/the-battle-of-basantar-043844608-16x9_1.jpg?VersionId=n582KD4V2LZW488fL8wfYdg_UVsKdhK." width="100%" height="180">
+                            <h3>One river, two Param Virs: The audacious crossing of Basantar in 1971 War</h3>
+                            <a href=" https://www.indiatoday.in/india/story/one-river-two-param-virs-the-audacious-crossing-basantar-1971-war-2846660-2026-01-05?utm_source=rss " target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/telangana-assembly-row-bjp--brs-slam-revanth-reddy-remarks--seek-rahul-gandhis-action-052246259-16x9_0.png?VersionId=BlQhteCY12qizDh2qnWPf2OLHiFmJQya" width="100%" height="180">
+                            <h3>Will cut your tongue: Revanth Reddy's threat to critics sparks Opposition backlash</h3>
+                            <a href=" https://www.indiatoday.in/india/telangana/story/revanth-reddy-remarks-telangana-assembly-row-bjp-brs-rahul-gandhi-abusive-kcr-2846658-2026-01-05?utm_source=rss " target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/trumpsfreshtariffwarningtoindiaoverrussianoil-s0-original-sixteen-to-nine.jpg?VersionId=FFl7rb3wXYcSm2jLXIp2WjkweWIXOGfN" width="100%" height="180">
+                            <h3>Donald Trump Threatens India With Higher Tariffs Over Russian Oil Deals</h3>
+                            <a href=" https://www.indiatoday.in/india/video/donald-trump-threatens-india-with-higher-tariffs-over-russian-oil-deals-ytvd-2846654-2026-01-05?utm_source=rss " target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/indorewatercrisis10dead367samplesunfit-s0-original-sixteen-to-nine.jpg?VersionId=uDh17igh8GuZGcx7vIEgrWNfmvIos56f" width="100%" height="180">
+                            <h3>Indore Water Horror: Central Govt Report Finds 36.7% Rural MP Samples Unfit Amid 10 Deaths</h3>
+                            <a href=" https://www.indiatoday.in/india/video/indore-water-horror-central-govt-report-finds-367-rural-mp-samples-unfit-amid-10-deaths-ytvd-2846645-2026-01-05?utm_source=rss " target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/sewageintapwaterbengaluruhealthscare-s0-original-sixteen-to-nine.jpg?VersionId=JLIeocsn.Xm9M0t544IFp9SKaJzvWx6a" width="100%" height="180">
+                            <h3>Bengaluru: Sewage Contamination in KSFC Layout Water Supply Sparks Health Scare</h3>
+                            <a href=" https://www.indiatoday.in/india/video/bengaluru-sewage-contamination-in-ksfc-layout-water-supply-sparks-health-scare-ytvd-2846643-2026-01-05?utm_source=rss " target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
                             <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/aapsarpanchjarnailsinghshotdead-s0-original-sixteen-to-nine.jpg?VersionId=7L2Xqx8cRBxoJcXspvz19e.WB1pWHaXX" width="100%" height="180">
                             <h3>AAP Sarpanch Jarnail Singh Shot Dead In Amritsar Marriage Palace; Gangster Angle Suspected</h3>
                             <a href=" https://www.indiatoday.in/india/video/aap-sarpanch-jarnail-singh-shot-dead-in-amritsar-marriage-palace-gangster-angle-suspected-ytvd-2846635-2026-01-05?utm_source=rss " target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/breaking_news/202601/the-supreme-court-is-set-to-deliver-its-verdict-on-bail-pleas-filed-by-activist-umar-khalid-052949492-16x9_0.jpg?VersionId=IT0ngCVtTPbjaEdCrUOseJWi_KaKrSGb" width="100%" height="180">
-                            <h3>Live: Will Umar Khalid, Sharjeel Imam walk out of jail? Verdict shortly</h3>
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/breaking_news/202601/the-supreme-court-is-set-to-deliver-its-verdict-on-bail-pleas-filed-by-activist-umar-khalid--sharjee-051339805-16x9_0.png?VersionId=jyt_S1Pcdk8YjHEh.cf0_VJDW2eHC3Iw" width="100%" height="180">
+                            <h3>Live: Delay in trial can't be a trump card, says Supreme Court in Delhi riots case</h3>
                             <a href=" https://www.indiatoday.in/india/story/supreme-court-umar-khalid-bail-verdict-2025-live-updates-delhi-riots-case-2846629-2026-01-05?utm_source=rss " target="_blank">Read →</a>
                         </div>
                     
@@ -578,36 +668,6 @@
                             <a href=" https://www.indiatoday.in/india/video/us-president-donald-trump-warns-india-on-russian-oil-modi-must-make-me-happy-or-we-raise-tariffs-ytvd-2846606-2026-01-05?utm_source=rss " target="_blank">Read →</a>
                         </div>
                     
-                        <div class="card">
-                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/men-entering-the-wedding-venue-and-approaching-singh-052640980-16x9_0.png?VersionId=2GsXHObb4TsgbLh0seIbcGdne3s4gGio" width="100%" height="180">
-                            <h3>On CCTV, man walks up behind AAP sarpanch, shoots him in head at Punjab wedding</h3>
-                            <a href=" https://www.indiatoday.in/india/story/chilling-cctv-captures-moment-aap-sarpanch-jarmal-singh-shot-dead-at-amritsar-wedding-in-punjab-2846604-2026-01-05?utm_source=rss " target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/delhiriotscasescbailverdicttoday-s0-original-sixteen-to-nine.jpg?VersionId=f4jBlxWvYdLYIkFSRA.HXYjXsFFjltPe" width="100%" height="180">
-                            <h3>SC To Rule On Bail For Umar Khalid, Sharjeel Imam In Delhi Riots Case After Nearly Six Years</h3>
-                            <a href=" https://www.indiatoday.in/india/video/sc-to-rule-on-bail-for-umar-khalid-sharjeel-imam-in-delhi-riots-case-after-nearly-six-years-ytvd-2846597-2026-01-05?utm_source=rss " target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/stonespeltedathinduritualinbengaluru-s0-original-sixteen-to-nine.jpg?VersionId=X_rdkjjr3LUblitUJMZErnOV3jiisSqX" width="100%" height="180">
-                            <h3>Breaking News: Stones Pelted at Hindu Ritual in Bengaluru's Chamrajpete Area</h3>
-                            <a href=" https://www.indiatoday.in/india/video/breaking-news-stones-pelted-at-hindu-ritual-in-bengalurus-chamrajpete-area-ytvd-2846593-2026-01-05?utm_source=rss " target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/mamatawritestocecstopvoterrollrevision-s0-original-sixteen-to-nine.jpg?VersionId=LKGE0G_OsR7KM.T144Qq5hByeHuLMEyL" width="100%" height="180">
-                            <h3>West Bengal: Mamata Banerjee Writes to CEC Gyanesh Kumar, Demands Halt to Voter Roll Revision</h3>
-                            <a href=" https://www.indiatoday.in/india/video/west-bengal-mamata-banerjee-writes-to-cec-gyanesh-kumar-demands-halt-to-voter-roll-revision-ytvd-2846589-2026-01-05?utm_source=rss " target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/amitshahslamsdmkstalinlauncheslaptopscheme-s0-original-sixteen-to-nine.jpg?VersionId=w24BLdIXZxPCdFBd0CEhrpHTKEVznuCE" width="100%" height="180">
-                            <h3>Amit Shah Attacks Stalin's 'Dynasty Politics' In Tamil Nadu; DMK Hits Back At 'Anti-Tamil' BJP</h3>
-                            <a href=" https://www.indiatoday.in/india/video/amit-shah-attacks-stalins-dynasty-politics-in-tamil-nadu-dmk-hits-back-at-anti-tamil-bjp-ytvd-2846586-2026-01-05?utm_source=rss " target="_blank">Read →</a>
-                        </div>
-                    
             </div>
         
             <div class="news-header">
@@ -620,8 +680,26 @@
             <div class="card-container">
                 
                         <div class="card">
+                            <img src="https://th-i.thgim.com/public/incoming/x3wagn/article70472966.ece/alternates/LANDSCAPE_1200/13591098337_hymdy_20_IndianAirforce.JPG" width="100%" height="180">
+                            <h3>Indian Air Force’s Suryakiran Aerobatic Team to thrill Hyderabad skies during Wings India 2026</h3>
+                            <a href="https://www.thehindu.com/news/cities/Hyderabad/indian-air-forces-suryakiran-aerobatic-team-to-thrill-hyderabad-skies-during-wings-india-2026/article70472937.ece" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://th-i.thgim.com/public/incoming/8wv1xq/article70472953.ece/alternates/LANDSCAPE_1200/PTI12_31_2025_000382B.jpg" width="100%" height="180">
+                            <h3>Gandhinagar typhoid surge: Amit Shah calls for swift government action</h3>
+                            <a href="https://www.thehindu.com/news/national/gujarat/gandhinagar-typhoid-surge-amit-shah-calls-for-swift-government-action/article70472912.ece" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://th-i.thgim.com/public/incoming/kwtli1/article70472957.ece/alternates/LANDSCAPE_1200/G92r-BlboAAsAsj.png" width="100%" height="180">
+                            <h3>Assam hit by 5.1 magnitude earthquake; no casualty reported</h3>
+                            <a href="https://www.thehindu.com/news/national/assam/assam-hit-by-51-magnitude-earthquake-no-casualty-reported/article70472943.ece" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
                             <img src="noImg.png" width="100%" height="180">
-                            <h3>Delhi riots case LIVE: Supreme Court to pronounce verdict in bail pleas of Umar Khalid, others </h3>
+                            <h3>Delhi riots case LIVE: Supreme Court to pronounce verdict on bail pleas of Umar Khalid, Sharjeel Imam and others</h3>
                             <a href="https://www.thehindu.com/news/national/umar-khalid-sharjeel-imam-delhi-riots-case-accused-hearing-verdict-supreme-court-january-5-2026/article70472859.ece" target="_blank">Read →</a>
                         </div>
                     
@@ -659,24 +737,6 @@
                             <img src="https://th-i.thgim.com/public/incoming/9o3gtp/article70472125.ece/alternates/LANDSCAPE_1200/2025-01-27T203156Z_1503921896_RC2GO1AMP4OS_RTRMADP_3_USA-INDIA.jpg" width="100%" height="180">
                             <h3>Trump’s list of nations whose immigrants receive welfare in U.S. does not mention India</h3>
                             <a href="https://www.thehindu.com/news/international/trumps-list-of-nations-whose-immigrants-receive-welfare-in-us-does-not-mention-india/article70472123.ece" target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://th-i.thgim.com/public/incoming/4ko8pc/article70471620.ece/alternates/LANDSCAPE_1200/Thirumavalavan_7.jpg" width="100%" height="180">
-                            <h3>VCK to give more responsibilities to women and youth</h3>
-                            <a href="https://www.thehindu.com/news/national/tamil-nadu/vck-to-give-more-responsibilities-to-women-and-youth/article70471114.ece" target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://th-i.thgim.com/public/incoming/ih5wxn/article70471943.ece/alternates/LANDSCAPE_1200/PTI01_04_2026_000128B.jpg" width="100%" height="180">
-                            <h3>Centre relaxes norms for start-ups to avail funds from DSIR</h3>
-                            <a href="https://www.thehindu.com/news/national/centre-relaxes-norms-for-start-ups-to-avail-funds-from-dsir/article70471860.ece" target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://th-i.thgim.com/public/incoming/sxiylq/article70463253.ece/alternates/LANDSCAPE_1200/6744_1_1_2026_23_1_11_1_CHILDMARRIAGE2.JPG" width="100%" height="180">
-                            <h3>From a ‘hopeless end’ to endless hope</h3>
-                            <a href="https://www.thehindu.com/news/national/west-bengal/west-bengal-child-marriage-free-villages-murshidabad/article70463245.ece" target="_blank">Read →</a>
                         </div>
                     
             </div>
@@ -784,10 +844,6 @@
             <div class="quick-btn">Share DailyMuse</div>
             <div class="quick-btn">Submit Feedback</div>
             <div class="quick-btn">Subscribe</div>
-        </div>
-        <div class="digest-cards">
-            <div class="digest">Morning Brief</div>
-            <div class="digest">Evening Wrap</div>
         </div>
     </section>
 
