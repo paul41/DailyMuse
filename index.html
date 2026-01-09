@@ -92,13 +92,13 @@
         }
         .carousel-slide.active {
             display: block;
+            cursor: pointer;
         }
 
         .carousel-slide img {
             width: 100%;
             height: 240px;
             object-fit: cover;
-            border-radius: 14px;
         }
 
         .carousel-caption {
@@ -295,7 +295,6 @@
             }
             .carousel {
                 width: auto;
-                border-radius: 10px;
             }
             .carousel-slide img {
                 height: 220px;
@@ -413,40 +412,40 @@
     <!-- ⭐ HERO SECTION -->
     <section class="hero">
        <h2 class="section-title">Today’s Top Stories</h2>
-       <div class="carousel">
+        <div class="carousel">
             
-                <div class="carousel-slide active">
-                    <img src="https://static.toiimg.com/photo/msid-126426335,imgsize-723238.cms" />
+                <div class="carousel-slide active" onclick="handleSlideClick('https://timesofindia.indiatimes.com/business/india-business/between-the-staircase-and-the-see-saw-did-pm-modis-reluctance-to-call-trump-cost-india-a-trade-deal/articleshow/126428816.cms')">
+                    <img src="https://static.toiimg.com/photo/msid-126429464,imgsize-109268.cms" />
                     <div class="carousel-caption">
-                        'Shoot first, ask questions later': Denmark's warning to Trump; tensions soar over Greenland
+                        Between the staircase and the see-saw: Did PM Modi’s reluctance to call Trump cost India a trade deal?
                     </div>
                 </div>
             
-                <div class="carousel-slide">
-                    <img src="https://c.ndtvimg.com/2026-01/sgcuqt1_luka-modric_625x300_09_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" />
+                <div class="carousel-slide" onclick="handleSlideClick('https://sports.ndtv.com/football/zero-intention-mikel-arteta-defends-gabriel-martinelli-after-conor-bradley-injury-incident-10557071')">
+                    <img src="https://c.ndtvimg.com/2026-01/2jcb77es_gabriel-martinelli-conor-bradley_625x300_09_January_26.jpg?im=FaceCrop,algorithm=dnn,width=240,height=180" />
                     <div class="carousel-caption">
-                        AC Milan Survive Scare As Genoa Miss Late Penalty In Dramatic 1-1 Draw
+                        "Zero Intention": Arteta Defends Martinelli After Bradley Injury Incident
                     </div>
                 </div>
             
-                <div class="carousel-slide">
-                    <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/s-jaishankar-272853469-16x9.jpg?VersionId=3v1n35vRUovKqUI4SoeCBG.FbGI6unt8" />
+                <div class="carousel-slide" onclick="handleSlideClick(' https://www.indiatoday.in/india/video/markets-open-flat-with-positive-bias-as-defense-and-it-stocks-lead-early-gains-ytvd-2849162-2026-01-09?utm_source=rss ')">
+                    <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/defensestocksrallyinflatmarket-s0-original-sixteen-to-nine.jpg?VersionId=O49gerXTtiY21N59bC8_FZUulkMnkyii" />
                     <div class="carousel-caption">
-                        Snow storm and 670 km motorcade: How US got Jaishankar to New York for UN meet
+                        Markets Open Flat With Positive Bias As Defense And IT Stocks Lead Early Gains
                     </div>
                 </div>
             
-                <div class="carousel-slide">
-                    <img src="https://th-i.thgim.com/public/incoming/wbr7yg/article70489369.ece/alternates/LANDSCAPE_1200/Screenshot%202026-01-09%20092419.png" />
+                <div class="carousel-slide" onclick="handleSlideClick('https://www.thehindu.com/news/national/tamil-nadu/dhinakaran-favours-restoration-of-old-pension-scheme/article70486854.ece')">
+                    <img src="https://th-i.thgim.com/public/incoming/xniim6/article70489591.ece/alternates/LANDSCAPE_1200/9871_26_12_2025_20_27_43_4_DSC_0204.JPG" />
                     <div class="carousel-caption">
-                        Studio Green rushes to Madras High Court to get Karthi-starrer Vaa Vaathiyar released
+                        Dhinakaran favours restoration of Old Pension Scheme
                     </div>
                 </div>
             
-                <div class="carousel-slide">
-                    <img src="https://images.cnbctv18.com/uploads/2026/01/2026-01-09t021503z-1-lynxmpem0802u-rtroptp-4-kazakhstan-oil-2026-01-c2b9de384fe526b21f458cd13a1699f1-scaled.jpg" />
+                <div class="carousel-slide" onclick="handleSlideClick('https://www.cnbctv18.com/business/vodafones-agr-relief-us-supreme-court-on-trump-tariffs-trump-on-china-and-taiwan-q3-results-and-more-19817528.htm')">
+                    <img src="https://images.cnbctv18.com/uploads/2026/01/new-studio-banner-2026-01-5b5e011866917467f2d94b2aff072c06.jpg" />
                     <div class="carousel-caption">
-                        Chevron, Vitol, Trafigura vie to control Venezuelan oil exports
+                        Vodafone's AGR relief, US Supreme Court on Trump tariffs, Trump on China and Taiwan, Q3 results and more
                     </div>
                 </div>
             
@@ -467,62 +466,62 @@
             <div class="card-container">
                 
                         <div class="card">
-                            <img src="https://static.toiimg.com/photo/msid-126426335,imgsize-723238.cms" width="100%" height="180">
-                            <h3>'Shoot first, ask questions later': Denmark's warning to Trump; tensions soar over Greenland</h3>
-                            <a href="https://timesofindia.indiatimes.com/world/us/shoot-first-ask-questions-later-denmark-warns-trump-amid-greenland-annexation-threat/articleshow/126425811.cms" target="_blank">Read →</a>
+                            <img src="https://static.toiimg.com/photo/msid-126429464,imgsize-109268.cms" width="100%" height="180">
+                            <h3>Between the staircase and the see-saw: Did PM Modi’s reluctance to call Trump cost India a trade deal?</h3>
+                            <a href="https://timesofindia.indiatimes.com/business/india-business/between-the-staircase-and-the-see-saw-did-pm-modis-reluctance-to-call-trump-cost-india-a-trade-deal/articleshow/126428816.cms" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://static.toiimg.com/photo/msid-126425632,imgsize-952094.cms" width="100%" height="180">
-                            <h3>Delhi-NCR sees unexpected early morning rain as cold wave intensifies</h3>
-                            <a href="https://timesofindia.indiatimes.com/city/delhi/unexpected-early-morning-showers-drench-delhi-ncr-intensify-cold-wave-aqi-remains-very-poor-at-321/articleshow/126425642.cms" target="_blank">Read →</a>
+                            <img src="https://static.toiimg.com/photo/msid-126428081,imgsize-21572.cms" width="100%" height="180">
+                            <h3>Big relief for Vijay: 'Jana Nayagan' gets Madras HC clearance; U/A certificate ordered</h3>
+                            <a href="https://timesofindia.indiatimes.com/entertainment/tamil/movies/news/jana-nayagan-wins-legal-battle-as-madras-hc-slams-cbfc-delay-ordering-ua-certificate-to-be-granted-to-vijay-starrer-immediately-report/articleshow/126428081.cms" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://static.toiimg.com/photo/msid-126426603,imgsize-64424.cms" width="100%" height="180">
-                            <h3>‘She behaved horribly, ran over him’: Trump defends ICE agent who shot Minneapolis woman dead</h3>
-                            <a href="https://timesofindia.indiatimes.com/world/us/behaved-horribly-donald-trump-defends-ice-agent-after-minneapolis-shooting-claims-she-ran-him-over/articleshow/126425358.cms" target="_blank">Read →</a>
+                            <img src="https://static.toiimg.com/photo/msid-126428107,imgsize-125758.cms" width="100%" height="180">
+                            <h3>Oscars 2025: ‘Kantara Chapter 1’ enters race; ‘Tanvi The Great’ also in list</h3>
+                            <a href="https://timesofindia.indiatimes.com/entertainment/hindi/bollywood/news/oscars-2025-indias-kantara-chapter-1-and-tanvi-the-great-join-eligible-films-for-best-picture-race/articleshow/126428107.cms" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://static.toiimg.com/photo/msid-126425941,imgsize-164996.cms" width="100%" height="180">
-                            <h3>T20 WC standoff: Bangladesh sends second letter to ICC, reiterates venue shift from India</h3>
-                            <a href="https://timesofindia.indiatimes.com/sports/cricket/icc-mens-t20-world-cup/t20-world-cup-standoff-bangladesh-sends-second-letter-to-icc-reiterates-venue-shift-from-india/articleshow/126425944.cms" target="_blank">Read →</a>
+                            <img src="https://static.toiimg.com/photo/msid-126428554,imgsize-41188.cms" width="100%" height="180">
+                            <h3>'Decisions will echo for 10 yrs': Ex-captain Tamim Iqbal warns B'desh over T20 WC call</h3>
+                            <a href="https://timesofindia.indiatimes.com/sports/cricket/icc-mens-t20-world-cup/decisions-today-will-echo-for-10-years-ex-captain-tamim-iqbal-warns-bangladesh-over-t20-world-cup-call/articleshow/126428449.cms" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://static.toiimg.com/photo/msid-126425964,imgsize-72782.cms" width="100%" height="180">
-                            <h3>‘Jana Nayagan’ case in Madras Court: Fans await final verdict</h3>
-                            <a href="https://timesofindia.indiatimes.com/entertainment/tamil/movies/news/jana-nayagan-awaits-madras-court-censor-verdict-fans-stand-with-vijay-a-delay-can-slow-the-date-never-the-spirit/articleshow/126425964.cms" target="_blank">Read →</a>
+                            <img src="https://static.toiimg.com/photo/msid-126427532,imgsize-444183.cms" width="100%" height="180">
+                            <h3>Iran protests get angrier: Buildings set on fire as uprising enters 12th day — watch</h3>
+                            <a href="https://timesofindia.indiatimes.com/world/middle-east/iran-protests-get-angrier-government-buildings-set-on-fire-as-uprising-enters-12th-day-watch/articleshow/126427459.cms" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://static.toiimg.com/photo/msid-126420774,imgsize-55698.cms" width="100%" height="180">
-                            <h3>Gmail’s AI moment: Google CEO Pichai on April 1 launch; 20 years later, Gmail enters Gemini era</h3>
-                            <a href="https://timesofindia.indiatimes.com/technology/tech-news/google-ceo-sundar-pichai-on-ai-in-gmail-we-launched-gmail-on-april-fools-day-in-2004-20-years-later/articleshow/126420820.cms" target="_blank">Read →</a>
+                            <img src="https://static.toiimg.com/photo/msid-126427835,imgsize-33256.cms" width="100%" height="180">
+                            <h3>Amazon HR email to staff: ‘What you did last year’; asked to list specific wins and growth plans</h3>
+                            <a href="https://timesofindia.indiatimes.com/technology/tech-news/amazon-hr-sends-what-you-did-last-year-email-to-corporate-employees-says-provide-specific-examples-of-/articleshow/126427839.cms" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://static.toiimg.com/photo/msid-126425614,imgsize-830889.cms" width="100%" height="180">
-                            <h3>Mystery murder: 30-year-old’s body chopped into 6 pieces; head stuffed in drum</h3>
-                            <a href="https://timesofindia.indiatimes.com/city/ludhiana/mans-body-found-in-pieces-head-stuffed-in-drum/articleshow/126421070.cms" target="_blank">Read →</a>
+                            <img src="https://static.toiimg.com/photo/msid-126428063,imgsize-1053964.cms" width="100%" height="180">
+                            <h3>Land-for-jobs 'scam': Delhi court frames corruption, cheating charges against Lalu Yadav and family</h3>
+                            <a href="https://timesofindia.indiatimes.com/city/delhi/land-for-jobs-case-delhi-court-frames-corruption-cheating-charges-against-lalu-yadav-and-family/articleshow/126428057.cms" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://static.toiimg.com/photo/msid-126426165,imgsize-104856.cms" width="100%" height="180">
-                            <h3>Stock market today: Nifty50 opens above 25,900; BSE Sensex up over 140 points</h3>
-                            <a href="https://timesofindia.indiatimes.com/business/india-business/stock-market-today-nifty50-bse-sensex-january-09-2026-dalal-street-indian-equities-global-markets-donald-trump-tariffs/articleshow/126426148.cms" target="_blank">Read →</a>
+                            <img src="https://static.toiimg.com/photo/msid-126428503,imgsize-26004.cms" width="100%" height="180">
+                            <h3>‘Broke down in tears’: WB man waiting in SIR queue collapses, dies of heart attack</h3>
+                            <a href="https://timesofindia.indiatimes.com/city/kolkata/38-year-old-man-waiting-in-hearing-queue-collapses-dies-of-heart-attack/articleshow/126420499.cms" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://static.toiimg.com/photo/msid-126426657,imgsize-1160064.cms" width="100%" height="180">
-                            <h3>What happens if Trump's tariffs are struck down? Traders 'worried' for $150 bn refunds </h3>
-                            <a href="https://timesofindia.indiatimes.com/business/international-business/trump-tariff-trial-what-happens-if-us-duties-are-struck-down-traders-worried-for-150-billion-refunds-possibility/articleshow/126426102.cms" target="_blank">Read →</a>
+                            <img src="https://static.toiimg.com/photo/msid-126427483,imgsize-4232304.cms" width="100%" height="180">
+                            <h3>Mahua, Derek dragged away from outside Amit Shah's office; TMC protests over I-PAC raid</h3>
+                            <a href="https://timesofindia.indiatimes.com/india/watch-from-mahua-to-derek-police-drag-away-tmc-mps-protesting-outside-amit-shahs-office/articleshow/126427338.cms" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
                             <img src="https://static.toiimg.com/photo/msid-126391507,imgsize-26958.cms" width="100%" height="180">
-                            <h3>Musk says he's impressed with China; highlights its rapid EV &amp; solar growth</h3>
+                            <h3>Musk impressed with China, says 'Does things I say'; highlights its rapid EV &amp; solar growth</h3>
                             <a href="https://timesofindia.indiatimes.com/technology/tech-news/impressed-with-china-tesla-ceo-elon-musk-says-it-seems-like-china-/articleshow/126391498.cms" target="_blank">Read →</a>
                         </div>
                     
@@ -538,6 +537,54 @@
             <div class="card-container">
                 
                         <div class="card">
+                            <img src="https://c.ndtvimg.com/2026-01/2jcb77es_gabriel-martinelli-conor-bradley_625x300_09_January_26.jpg?im=FaceCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>"Zero Intention": Arteta Defends Martinelli After Bradley Injury Incident</h3>
+                            <a href="https://sports.ndtv.com/football/zero-intention-mikel-arteta-defends-gabriel-martinelli-after-conor-bradley-injury-incident-10557071" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://c.ndtvimg.com/2026-01/en7ufmv8_ndtv-golf-proam_625x300_09_January_26.jpeg?im=FitAndFill,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>Azharuddin and Corporate Titans to Headline NDTV Golf Pro-Am Hyderabad</h3>
+                            <a href="https://sports.ndtv.com/golf/mohammad-azharuddin-and-corporate-titans-to-headline-ndtv-golf-pro-am-hyderabad-10563030" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://c.ndtvimg.com/2026-01/0pp3tv94_fede-valverde_625x300_09_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>Valverde's Stunning Free-Kick Helps Real Beat Atletico To Set Up Clasico Final</h3>
+                            <a href="https://sports.ndtv.com/football/fede-valverde-slams-stunning-free-kick-as-real-madrid-beat-atletico-madrid-to-set-up-el-clasico-supercopa-final-10553371" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://c.ndtvimg.com/2026-01/i5drhcbk_bmw_625x300_09_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=300,height=200" width="100%" height="180">
+                            <h3>BMW India Posts Highest-Ever Sales In 2025, SUVs Lead The Charge</h3>
+                            <a href="https://www.ndtv.com/auto/bmw-india-posts-highest-ever-sales-in-2025-suvs-lead-the-charge-10562720" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://c.ndtvimg.com/2026-01/tfkjd4uk_psg_625x300_09_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>Chevalier The Hero As PSG Clinch French Champions Trophy With Shootout Win</h3>
+                            <a href="https://sports.ndtv.com/football/goalkeeper-lucas-chevalier-the-hero-as-psg-clinch-french-champions-trophy-with-penalty-shootout-win-over-marseille-10552180" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://c.ndtvimg.com/2026-01/iuent5vs_iran-protest_625x300_09_January_26.jpeg" width="100%" height="180">
+                            <h3>"Not Afraid, I Have Been Dead For 47 Years": Iran Woman's "Bloody" Protest</h3>
+                            <a href="https://www.ndtv.com/world-news/iran-protest-not-afraid-i-have-been-dead-for-47-years-iran-womans-bloody-protest-10562546" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://c.ndtvimg.com/2026-01/3llfq2eg_winter-bathing_625x300_08_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>To Shower Or Skip? 6 Winter Bathing Hacks You Actually Need</h3>
+                            <a href="https://www.ndtv.com/health/to-shower-or-skip-winter-bathing-hacks-you-actually-need-to-survive-the-cold-wave-10519064" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://i.gadgets360cdn.com/large/quick_share_android_iphone_thumb_1763696082796.jpg" width="100%" height="180">
+                            <h3>Google Could Add AirDrop Compatibility to These Pixel Models</h3>
+                            <a href="https://www.gadgets360.com/mobiles/news/google-pixel-9-airdrop-compatibility-quick-share-file-transfers-report-10562445" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
                             <img src="https://c.ndtvimg.com/2026-01/sgcuqt1_luka-modric_625x300_09_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
                             <h3>AC Milan Survive Scare As Genoa Miss Late Penalty In Dramatic 1-1 Draw</h3>
                             <a href="https://sports.ndtv.com/football/ac-milan-survive-scare-as-relegation-threatened-genoa-miss-late-penalty-in-dramatic-1-1-serie-a-draw-10555513" target="_blank">Read →</a>
@@ -547,54 +594,6 @@
                             <img src="https://c.ndtvimg.com/2026-01/p4mfs5o_tara-_625x300_09_January_26.png?im=FitAndFill,algorithm=dnn,width=240,height=180" width="100%" height="180">
                             <h3>After Viral AP Dhillon Concert, Tara-Veer Call It Quits: Report</h3>
                             <a href="https://www.ndtv.com/entertainment/after-viral-ap-dhillon-concert-tara-sutaria-and-veer-pahariya-call-it-quits-report-10562352" target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://c.ndtvimg.com/2026-01/u9lrfgbc_rampur_625x300_08_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
-                            <h3>Pak Woman In UP Hides Nationality For Job, Luck Runs Out 30 Years Later</h3>
-                            <a href="https://www.ndtv.com/india-news/case-against-up-woman-for-hiding-pakistan-nationality-while-getting-job-10548790" target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://c.ndtvimg.com/2025-10/igigd17c_modi-trump_625x300_20_October_25.jpeg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
-                            <h3>US Willing To Sell Venezuelan Oil To India? What White House Official Said</h3>
-                            <a href="https://www.ndtv.com/world-news/us-willing-to-sell-venezuelan-oil-to-india-what-white-house-official-said-10561981" target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://c.ndtvimg.com/2026-01/rac8jld4_gabriel-jesus-arsenal_625x300_09_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
-                            <h3>Arsenal Squander Chance To Extend Premier League Lead In Liverpool Stalemate</h3>
-                            <a href="https://sports.ndtv.com/football/arsenal-squander-chance-to-extend-premier-league-lead-in-liverpool-stalemate-10555037" target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://c.ndtvimg.com/2026-01/a4m68qo4_jonathan-ross-_625x300_09_January_26.jpeg" width="100%" height="180">
-                            <h3>All About Jonathan Ross, Iraq War Veteran Who Shot 37-Year-Old Mother In US</h3>
-                            <a href="https://www.ndtv.com/world-news/all-about-jonathan-ross-iraq-war-veteran-who-shot-37-year-old-mother-in-minneapolis-us-10561849" target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://c.ndtvimg.com/2026-01/efdv3na4_mandhana-and-harmanpreet-wpl-afp_625x300_09_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
-                            <h3>WPL 2026 Begins Today: Full Schedule, Live Streaming, Telecast And More</h3>
-                            <a href="https://sports.ndtv.com/cricket/wpl-2026-begins-today-full-schedule-live-streaming-telecast-and-more-10561586" target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://i.gadgets360cdn.com/large/oneplus_turbo_6_thumb_1766979669209.jpg" width="100%" height="180">
-                            <h3>Mystery OnePlus Phone With Dimensity 9500 Chip Tipped</h3>
-                            <a href="https://www.gadgets360.com/mobiles/news/mystery-oneplus-phone-with-dimensity-9500-chip-tipped-specifications-leak-10561337" target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://c.ndtvimg.com/2023-04/0jrilofo_bengal-governor-cv-ananda-bose-pti_625x300_14_April_23.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
-                            <h3>Bengal Governor Gets Threat Email Day After High Drama Linked To Coal Scam</h3>
-                            <a href="https://www.ndtv.com/india-news/west-bengal-governor-cv-ananda-bose-gets-threat-email-day-after-high-drama-linked-to-coal-scam-10561286" target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://c.ndtvimg.com/2025-12/ku6ut2hk_deepam_625x300_21_December_25.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
-                            <h3>Madras High Court To Hear Contempt Case Over Deepam Orders Todays</h3>
-                            <a href="https://www.ndtv.com/tamil-nadu-news/madras-high-court-to-hear-contempt-case-over-deepam-orders-today-10560382" target="_blank">Read →</a>
                         </div>
                     
             </div>
@@ -609,63 +608,63 @@
             <div class="card-container">
                 
                         <div class="card">
-                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/s-jaishankar-272853469-16x9.jpg?VersionId=3v1n35vRUovKqUI4SoeCBG.FbGI6unt8" width="100%" height="180">
-                            <h3>Snow storm and 670 km motorcade: How US got Jaishankar to New York for UN meet</h3>
-                            <a href=" https://www.indiatoday.in/india/story/snowstorm-motorcade-s-jaishankar-un-meeting-us-shutdown-2849079-2026-01-09?utm_source=rss " target="_blank">Read →</a>
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/defensestocksrallyinflatmarket-s0-original-sixteen-to-nine.jpg?VersionId=O49gerXTtiY21N59bC8_FZUulkMnkyii" width="100%" height="180">
+                            <h3>Markets Open Flat With Positive Bias As Defense And IT Stocks Lead Early Gains</h3>
+                            <a href=" https://www.indiatoday.in/india/video/markets-open-flat-with-positive-bias-as-defense-and-it-stocks-lead-early-gains-ytvd-2849162-2026-01-09?utm_source=rss " target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/tmcmoveshighcourtagainstedraids-s0-original-sixteen-to-nine.jpg?VersionId=yAl0niv3CHBgxxlIHoubJxxvseIU02XD" width="100%" height="180">
-                            <h3>Mamata Vs ED: TMC Moves High Court Against ED Raids At I-PAC Office Citing Violation Of Rights</h3>
-                            <a href=" https://www.indiatoday.in/india/video/tmc-moves-high-court-against-ed-raids-at-i-pac-office-citing-violation-of-fundamental-rights-ytvd-2849078-2026-01-09?utm_source=rss " target="_blank">Read →</a>
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/criminalenterprisechargesframedagainstlaluyadav-s0-original-sixteen-to-nine.jpg?VersionId=cf8MLqvGout.M19uTOh3biiTu9EKD9eT" width="100%" height="180">
+                            <h3>Land For Jobs Case: Court Orders Framing Of Charges Against Lalu Yadav, Calls It 'Criminal Enterprise'</h3>
+                            <a href=" https://www.indiatoday.in/india/video/land-for-jobs-case-court-orders-framing-of-charges-against-lalu-yadav-calls-it-criminal-enterprise-ytvd-2849160-2026-01-09?utm_source=rss " target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/gun-090157115-16x9_0.jpeg?VersionId=O0zuranfFxIJglUP8oKtJMxfB6P_nQHn" width="100%" height="180">
-                            <h3>Punjabi singer Rami Randhawa flaunts guns on social media, under police radar</h3>
-                            <a href=" https://www.indiatoday.in/india/story/punjab-police-case-rami-randhawa-flaunting-weapons-social-media-2849067-2026-01-09?utm_source=rss " target="_blank">Read →</a>
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/earthquake-092609922-16x9_0.jpg?VersionId=lXkLEJ616tA1bkUPo74RYP3U.5LJd0b6" width="100%" height="180">
+                            <h3>9 earthquakes shake Gujarat's Rajkot in 12 hours; no damage reported</h3>
+                            <a href=" https://www.indiatoday.in/india/story/rajkot-earthquakes-nine-earthquakes-strike-gujarat-rajkot-in-12-hours-gujarat-news-gandhinagar-2849152-2026-01-09?utm_source=rss " target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/breaking_news/202601/supreme-court-085342529-16x9.jpg?VersionId=1xB80Pt_cpeXaf2BoOylxa7honHuv7iO" width="100%" height="180">
-                            <h3>Live: As matter remains inconclusive, Supreme Court to hear stray dog case today</h3>
-                            <a href=" https://www.indiatoday.in/india/law-news/story/stray-dogs-supreme-court-hearing-live-updates-menace-case-2849063-2026-01-09?utm_source=rss " target="_blank">Read →</a>
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/shailbhatnagarniftyweakontrumptarifffears-s0-original-sixteen-to-nine.jpg?VersionId=0pL.HJvh9C3EWYq2t1TNWMQ93tqRh3.e" width="100%" height="180">
+                            <h3>Shail Bhatnagar: Nifty Risks 25,600 Lows As Trump Seeks 500% Tariff On Russian Oil Importers</h3>
+                            <a href=" https://www.indiatoday.in/india/video/shail-bhatnagar-nifty-risks-25600-lows-as-trump-seeks-500-tariff-on-russian-oil-importers-ytvd-2849144-2026-01-09?utm_source=rss " target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/karnatakatofightmgnregachanges-s0-original-sixteen-to-nine.jpg?VersionId=dzdCr9EaVSEdZeTu6dpcQHYuzc2Xl67m" width="100%" height="180">
-                            <h3>MGNREGA News: Karnataka Government Opposes Centre's New MGNREGA Law, Plans Supreme Court Challenge</h3>
-                            <a href=" https://www.indiatoday.in/india/video/karnataka-government-opposes-centres-new-mgnrega-law-plans-supreme-court-challenge-ytvd-2849061-2026-01-09?utm_source=rss " target="_blank">Read →</a>
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/mamatafilesfiragainstedoveri-pacraid-s0-original-sixteen-to-nine.jpg?VersionId=L4DHAIxLEcVb_Sbl.57gofklysNXPV2a" width="100%" height="180">
+                            <h3>Mamata Banerjee Personally Files FIR Against ED After Raid on I-PAC Chief Pratik Jain</h3>
+                            <a href=" https://www.indiatoday.in/india/video/mamata-banerjee-personally-files-fir-against-ed-after-raid-on-i-pac-chief-pratik-jain-ytvd-2849128-2026-01-09?utm_source=rss " target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/jama-masjid-092822568-16x9_0.jpg?VersionId=_kfbmTqasd2kqF5iRq5B7GNKz.lTR45t" width="100%" height="180">
-                            <h3>Encroachments near Jama Masjid to be razed, will follow court order: Delhi minister</h3>
-                            <a href=" https://www.indiatoday.in/india/story/jama-masjid-encroachments-removed-delhi-high-court-orders-mcd-survey-2849051-2026-01-09?utm_source=rss " target="_blank">Read →</a>
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/former-pm-indira-gandhi-with-daughter-in-law-sonia-gandhi-095848551-16x9_0.jpg?VersionId=Jlt9OMYtulRp17Stq5Y.D8oV8o2jGJ9Q" width="100%" height="180">
+                            <h3>Did Sonia Gandhi's pasta maker come to Indira's rescue during a CBI raid?</h3>
+                            <a href=" https://www.indiatoday.in/india/story/mamata-banerjee-ed-raid-how-sonia-gandhi-pasta-maker-came-to-indira-rescue-during-cbi-raid-arrest-emergency-2848740-2026-01-09?utm_source=rss " target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/indrajeetkundugovernorbosegetsthreatmail-s0-original-sixteen-to-nine.jpg?VersionId=JfWfyOqbpnHRuNJhzfpKZ3sVCGuEXGp3" width="100%" height="180">
-                            <h3>Bengal Governor CV Ananda Bose Receives 'Blast' Threat Mail; Security Tightened</h3>
-                            <a href=" https://www.indiatoday.in/india/video/indrajeet-kundu-reports-bengal-governor-cv-ananda-bose-receives-blast-threat-mail-security-tightened-ytvd-2849056-2026-01-09?utm_source=rss " target="_blank">Read →</a>
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/consumer-court-orders-leela-palace-udaipur-to-pay-rs-10-lakh-after-housekeeping-entered-occupied-roo-093712741-16x9_0.png?VersionId=1I_ukoIwJP01UPuHfRdgT_1sEaPfhFDu" width="100%" height="180">
+                            <h3>Udaipur Leela Palace staff enters occupied room with master key, hotel fined</h3>
+                            <a href=" https://www.indiatoday.in/india/law-news/story/leela-palace-udaipur-master-key-entry-privacy-violation-consumer-court-chennai-consumer-2849121-2026-01-09?utm_source=rss " target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/mamatabanerjeeyouforciblysnatchedourpaper-s0-original-sixteen-to-nine.jpg?VersionId=qyvvt6_mR0ofxoUNJgKXDcxz6cFEbXu7" width="100%" height="180">
-                            <h3>Mamata Banerjee Slams ED Over 'Green Files' as Bengal Legal Battle Reaches Calcutta High Court</h3>
-                            <a href=" https://www.indiatoday.in/india/video/mamata-banerjee-slams-ed-over-green-files-as-bengal-legal-battle-reaches-calcutta-high-court-ytvd-2849053-2026-01-09?utm_source=rss " target="_blank">Read →</a>
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/lalu-yadav-and-family-093145171-16x9_0.jpg?VersionId=DuX3hFVQnSuwzMd5nSWkJrjjn9Y7FPXa" width="100%" height="180">
+                            <h3>Lalu Yadav, family acted as criminal enterprise: Delhi court on land-for-jobs scam</h3>
+                            <a href=" https://www.indiatoday.in/india/law-news/story/lalu-yadav-family-acted-as-criminal-syndicate-delhi-court-on-land-for-jobs-scam-railways-2849118-2026-01-09?utm_source=rss " target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/mamatavsedcmstormsi-pacraidsite-s0-original-sixteen-to-nine.jpg?VersionId=APJjohGjTeqOcOYEXWAE0VctchjnINtY" width="100%" height="180">
-                            <h3>TMC Vs ED: Mamata Banerjee 'Interferes' in ED Raid on I-PAC; BJP Claims Evidence Tampering</h3>
-                            <a href=" https://www.indiatoday.in/india/video/tmc-vs-ed-mamata-banerjee-interferes-in-ed-raid-on-i-pac-bjp-claims-evidence-tampering-ytvd-2849047-2026-01-09?utm_source=rss " target="_blank">Read →</a>
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/vijay-thalapathy-092641264-16x9_0.jpg?VersionId=QMtp7Y6tAwyEO_r3tHMJCzhACad2rwt6" width="100%" height="180">
+                            <h3>Vijay's Jana Nayagan's release cleared, High Court pulls up Censor Board chief</h3>
+                            <a href=" https://www.indiatoday.in/india/story/vijays-jana-nayagans-release-cleared-as-madras-high-court-orders-cbfc-to-issue-ua-certificate-2849110-2026-01-09?utm_source=rss " target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/andhra-bus-fire-095939263-16x9_0.jpg?VersionId=WPST30di1b9qAAtuAgRB9X3StXbxVnlH" width="100%" height="180">
-                            <h3>Only certified makers allowed: Centre tightens sleeper bus norms after fatal fires</h3>
-                            <a href=" https://www.indiatoday.in/india/story/only-certified-makers-allowed-centre-rolls-out-stricter-rules-for-sleeper-buses-amid-fatal-fires-2849044-2026-01-09?utm_source=rss " target="_blank">Read →</a>
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/dk-shivakumar-284028965-16x9.jpg?VersionId=_ZGdjlzV7woRlzP0T7uwEFTvNF75f2FS" width="100%" height="180">
+                            <h3>Centre's MGNREGA move unacceptable, won't work: DK Shivakumar warns of legal action</h3>
+                            <a href=" https://www.indiatoday.in/india/karnataka/story/dk-shivakumar-mnrega-changes-opposition-national-herald-jds-bjp-merger-karnataka-2849109-2026-01-09?utm_source=rss " target="_blank">Read →</a>
                         </div>
                     
             </div>
@@ -680,63 +679,63 @@
             <div class="card-container">
                 
                         <div class="card">
-                            <img src="https://th-i.thgim.com/public/incoming/wbr7yg/article70489369.ece/alternates/LANDSCAPE_1200/Screenshot%202026-01-09%20092419.png" width="100%" height="180">
-                            <h3>Studio Green rushes to Madras High Court to get Karthi-starrer Vaa Vaathiyar released</h3>
-                            <a href="https://www.thehindu.com/entertainment/movies/studio-green-rushes-to-madras-high-court-to-get-karthi-starrer-vaa-vaathiyar-released/article70489335.ece" target="_blank">Read →</a>
+                            <img src="https://th-i.thgim.com/public/incoming/xniim6/article70489591.ece/alternates/LANDSCAPE_1200/9871_26_12_2025_20_27_43_4_DSC_0204.JPG" width="100%" height="180">
+                            <h3>Dhinakaran favours restoration of Old Pension Scheme</h3>
+                            <a href="https://www.thehindu.com/news/national/tamil-nadu/dhinakaran-favours-restoration-of-old-pension-scheme/article70486854.ece" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://th-i.thgim.com/public/news/national/nb45pi/article70489364.ece/alternates/LANDSCAPE_1200/iStock-1314155790.jpg" width="100%" height="180">
-                            <h3>Now, vehicle owners needn’t take vehicles to RTA offices for registration</h3>
-                            <a href="https://www.thehindu.com/news/national/telangana/now-vehicle-owners-neednt-take-vehicles-to-rta-offices-for-registration/article70487118.ece" target="_blank">Read →</a>
+                            <img src="https://th-i.thgim.com/public/incoming/op11mf/article70489695.ece/alternates/LANDSCAPE_1200/6742_11-8-2018_17-50-34_2_12TVKZELAMARAMKAREEM1.JPG" width="100%" height="180">
+                            <h3>Trade unions must unite to counter anti-worker policies, says Elamaram Kareem</h3>
+                            <a href="https://www.thehindu.com/news/national/kerala/trade-unions-must-unite-to-counter-anti-worker-policies-says-elamaram-kareem/article70489586.ece" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://th-i.thgim.com/public/incoming/dgmnd5/article70489307.ece/alternates/LANDSCAPE_1200/Rupee-gains-50-GLQF7BQCI.3.jpg.jpg" width="100%" height="180">
-                            <h3>Indian top IT firms set for another tepid quarter on weak US demand, client spending</h3>
-                            <a href="https://www.thehindu.com/sci-tech/technology/indian-top-it-firms-set-for-another-tepid-quarter-on-weak-us-demand-client-spending/article70489302.ece" target="_blank">Read →</a>
+                            <img src="https://th-i.thgim.com/public/incoming/gq2wwd/article70489673.ece/alternates/LANDSCAPE_1200/20260108072L.jpg" width="100%" height="180">
+                            <h3>Jaishankar meets French President Macron, appreciates 'positive sentiments' for strategic partnership</h3>
+                            <a href="https://www.thehindu.com/news/national/jaishankar-meets-french-president-macron-appreciates-positive-sentiments-for-strategic-partnership/article70489658.ece" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://th-i.thgim.com/public/incoming/b1bg2x/article70489334.ece/alternates/LANDSCAPE_1200/HC-imposes-50G5FF9ROVH.3.jpg.jpg" width="100%" height="180">
-                            <h3>High Court verdict in plea over Telangana DGP appointment today</h3>
-                            <a href="https://www.thehindu.com/news/national/telangana/high-court-verdict-in-plea-over-telangana-dgp-appointment-today/article70487694.ece" target="_blank">Read →</a>
+                            <img src="https://th-i.thgim.com/public/incoming/182c32/article70489667.ece/alternates/LANDSCAPE_1200/2026-01-08T113907Z_856298141_RC2CQAA55Z7Q_RTRMADP_3_INDIA-CHINA-BUSINES.JPG" width="100%" height="180">
+                            <h3>Calibrated capitulation: Congress claims govt planning to lift curbs on Chinese firms bidding for Indian contracts</h3>
+                            <a href="https://www.thehindu.com/news/national/calibrated-capitulation-congress-claims-govt-planning-to-lift-curbs-on-chinese-firms-bidding-for-indian-contracts/article70489625.ece" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://th-i.thgim.com/public/incoming/ugr30s/article70487961.ece/alternates/LANDSCAPE_1200/Supreme-Court-aG1GFDJV13.3.jpg.jpg" width="100%" height="180">
-                            <h3>Supreme Court sets aside A.P. HC order quashing FIRs filed by ACB</h3>
-                            <a href="https://www.thehindu.com/news/national/andhra-pradesh/supreme-court-sets-aside-ap-hc-order-quashing-firs-filed-by-acb/article70487704.ece" target="_blank">Read →</a>
+                            <img src="https://th-i.thgim.com/public/incoming/i1o3ao/article70489670.ece/alternates/LANDSCAPE_1200/iStock-819902910.jpg" width="100%" height="180">
+                            <h3>India participates in border coordination meet ahead of Nepal elections</h3>
+                            <a href="https://www.thehindu.com/news/national/india-participates-in-border-coordination-meet-ahead-of-nepal-elections/article70489619.ece" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://th-i.thgim.com/public/incoming/8qbczl/article70487281.ece/alternates/LANDSCAPE_1200/IMG_Siddaramaiah___Portr_1_1_5PFC1E8C.jpg" width="100%" height="180">
-                            <h3>Chief Minister Siddaramaiah urges Kerala Chief Minister Pinarayi Vijayan to withdraw Malayalam Bhasha Bill 2025</h3>
-                            <a href="https://www.thehindu.com/news/national/karnataka/chief-minister-siddaramaiah-urges-kerala-chief-minister-pinarayi-vijayan-to-withdraw-malayalam-bhasha-bill-2025/article70487831.ece" target="_blank">Read →</a>
+                            <img src="https://th-i.thgim.com/public/incoming/y3fmke/article70489668.ece/alternates/LANDSCAPE_1200/PTI01_03_2026_000311B.jpg" width="100%" height="180">
+                            <h3>Parties abandoning ideologies, poaching leaders through money, muscle and fear: Ajit Pawar</h3>
+                            <a href="https://www.thehindu.com/news/national/maharashtra/parties-abandoning-ideologies-poaching-leaders-through-money-muscle-and-fear-ajit-pawar/article70489639.ece" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://th-i.thgim.com/public/incoming/lkgzag/article70485428.ece/alternates/LANDSCAPE_1200/IMG_DK_Shivakumar_at_ED__2_1_K3B402HT.jpg" width="100%" height="180">
-                            <h3>ED facilitates restitution of assets in illegal remittance case</h3>
-                            <a href="https://www.thehindu.com/news/national/ed-facilitates-restitution-of-assets-in-illegal-remittance-case/article70487864.ece" target="_blank">Read →</a>
+                            <img src="https://th-i.thgim.com/public/incoming/x8tgpo/article70463471.ece/alternates/LANDSCAPE_1200/44_RAHUL_GANDHI_PC_27_12_DELHI.jpg" width="100%" height="180">
+                            <h3>‘Bhrasht Janata Party’: Rahul slams BJP's double engine govts in various States</h3>
+                            <a href="https://www.thehindu.com/news/national/bhrasht-janata-party-rahul-slams-bjps-double-engine-govts-in-various-states/article70489622.ece" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://th-i.thgim.com/public/incoming/dsw0la/article70489309.ece/alternates/LANDSCAPE_1200/PTI05_05_2025_000090B.jpg" width="100%" height="180">
-                            <h3>Pakistan to take up with India any development activity in violation of IWT: Foreign Office</h3>
-                            <a href="https://www.thehindu.com/news/international/pakistan-to-take-up-with-india-any-development-activity-in-violation-of-iwt-foreign-office/article70489286.ece" target="_blank">Read →</a>
+                            <img src="https://th-i.thgim.com/public/incoming/h8hdim/article70489637.ece/alternates/LANDSCAPE_1200/444109850.jpg" width="100%" height="180">
+                            <h3>State Bank of India sets up Global Capability Centre in Bengaluru</h3>
+                            <a href="https://www.thehindu.com/news/cities/bangalore/state-bank-of-india-sets-up-global-capability-centre-in-bengaluru/article70487175.ece" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://th-i.thgim.com/public/incoming/bd6v7z/article70488211.ece/alternates/LANDSCAPE_1200/20hyngg_ground_zero_story_on_rythu_bandhu_scheme__12.jpg" width="100%" height="180">
-                            <h3> Telangana land owner on ground, not in official records</h3>
-                            <a href="https://www.thehindu.com/news/national/telangana/telangana-land-owner-on-ground-not-in-official-records/article70488210.ece" target="_blank">Read →</a>
+                            <img src="https://th-i.thgim.com/public/incoming/a5fgub/article70489617.ece/alternates/LANDSCAPE_1200/JN-1.jpg" width="100%" height="180">
+                            <h3>‘Jana Nayagan’ censor row: Madras High Court orders to grant U/A certificate to Vijay-starrer, CBFC files appeal</h3>
+                            <a href="https://www.thehindu.com/news/national/tamil-nadu/jana-nayagan-release-madras-high-court-orders-grant-of-ua-censor-certificate-to-vijay-starrer-cbfc-files-appeal/article70489558.ece" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://th-i.thgim.com/public/incoming/5ts26p/article70488205.ece/alternates/LANDSCAPE_1200/10745_8_1_2026_18_30_50_2_VJ_15.JPEG" width="100%" height="180">
-                            <h3> Chittoor poised for a white revolution</h3>
-                            <a href="https://www.thehindu.com/news/national/andhra-pradesh/chittoor-poised-for-a-white-revolution/article70487001.ece" target="_blank">Read →</a>
+                            <img src="https://th-i.thgim.com/public/incoming/6n14sl/article70489633.ece/alternates/LANDSCAPE_1200/PTI01_08_2026_000054A.jpg" width="100%" height="180">
+                            <h3>Justice Mahesh Sharadchandra Sonak sworn in as Chief Justice of Jharkhand High Court</h3>
+                            <a href="https://www.thehindu.com/news/national/jharkhand/justice-mahesh-sharadchandra-sonak-sworn-in-as-chief-justice-of-jharkhand-high-court/article70489581.ece" target="_blank">Read →</a>
                         </div>
                     
             </div>
@@ -750,6 +749,12 @@
             </div>
             <div class="card-container">
                 
+                        <div class="card">
+                            <img src="https://images.cnbctv18.com/uploads/2026/01/new-studio-banner-2026-01-5b5e011866917467f2d94b2aff072c06.jpg" width="100%" height="180">
+                            <h3>Vodafone's AGR relief, US Supreme Court on Trump tariffs, Trump on China and Taiwan, Q3 results and more</h3>
+                            <a href="https://www.cnbctv18.com/business/vodafones-agr-relief-us-supreme-court-on-trump-tariffs-trump-on-china-and-taiwan-q3-results-and-more-19817528.htm" target="_blank">Read →</a>
+                        </div>
+                    
                         <div class="card">
                             <img src="https://images.cnbctv18.com/uploads/2026/01/2026-01-09t021503z-1-lynxmpem0802u-rtroptp-4-kazakhstan-oil-2026-01-c2b9de384fe526b21f458cd13a1699f1-scaled.jpg" width="100%" height="180">
                             <h3>Chevron, Vitol, Trafigura vie to control Venezuelan oil exports</h3>
@@ -802,12 +807,6 @@
                             <img src="https://images.cnbctv18.com/uploads/2026/01/market-falls-2026-01-78bbc6e33aa8da9bf11ff774a2750f89.jpg" width="100%" height="180">
                             <h3>Top Stories | Markets shed ₹8 lakh cr, Trump’s 500% tariff threat, Noida airport telecom tussle & more</h3>
                             <a href="https://www.cnbctv18.com/business/top-stories-markets-shed-%25e2%2582%25b98-lakh-cr-trumps-500-tariff-threat-noida-airport-telecom-tussle-more-ws-l-19817257.htm" target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://images.cnbctv18.com/uploads/2025/06/hdfc-bank-2025-06-de1e4f9e91ac2019dfe21de8f00b45da.jpg" width="100%" height="180">
-                            <h3>Retail holding in HDFC Bank drops to lowest level in 20 quarters</h3>
-                            <a href="https://www.cnbctv18.com/access/opinion/retail-holding-in-hdfc-bank-drops-to-lowest-level-in-20-quarters-19817265.htm" target="_blank">Read →</a>
                         </div>
                     
             </div>
@@ -878,7 +877,12 @@
             slides[i].classList.remove("active");
             i = (i + 1) % slides.length;
             slides[i].classList.add("active");
-        }, 4000);
+        }, 3500);
+        function handleSlideClick(link) { 
+            console.log("Clicked link:", link);
+            // open in new tab 
+            window.open(link, "_blank");
+        }
     </script>
 
 </body>
