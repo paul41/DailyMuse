@@ -259,12 +259,12 @@
         .category-topics {
             display: grid;
             grid-auto-flow: column;
-            grid-template-rows: repeat(2, 1fr); /* 2 cards per column */
+            grid-template-rows: repeat(2, auto); /* 🔥 auto, not 1fr */
             gap: 16px;
             padding: 12px;
-            height: 500px;          /* controls visible rows */
             overflow-x: auto;
             overflow-y: hidden;
+            align-items: start; /* prevents stretching */
         }
 
         .category-topic-card {
@@ -290,6 +290,16 @@
             font-weight: 600;
             text-decoration: none;
         }
+        .topic-header {
+            text-align: center;
+            margin: 20px 0 12px;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #c55f17db;
+            position: relative;
+            text-decoration:underline;
+    }
         /***************************
             FOOTER
         ***************************/
@@ -449,11 +459,11 @@
        <h2 class="section-title">Today’s Top Stories</h2>
         <div class="carousel">
             
-                <div class="carousel-slide active" onclick="handleSlideClick('https://timesofindia.indiatimes.com/world/middle-east/how-irans-protests-are-different-this-time-and-why-the-khamenei-regime-looks-more-exposed-than-ever/articleshow/126431562.cms')">
-                    <img src="https://static.toiimg.com/photo/msid-126432216,imgsize-1146526.cms" />
+                <div class="carousel-slide active" onclick="handleSlideClick('https://timesofindia.indiatimes.com/world/middle-east/khameneis-greatest-challenger-iran-at-its-lowest-point-in-50-years-enter-reza-pahlavi-and-the-1979-connection/articleshow/126436789.cms')">
+                    <img src="https://static.toiimg.com/photo/msid-126436828,imgsize-928993.cms" />
                     <div class="carousel-caption">
                         <span class="headline-title">
-                            1 USD = 1,400,000 IRR: Iran on edge - why this is the most dangerous uprising yet
+                            Khamenei’s greatest challenger? Iran at its lowest point in 50 years — enter Reza Pahlavi and 1979 connection
                         </span>
                         <span>
                             <b><i>- Times of India</i></b>
@@ -461,11 +471,11 @@
                     </div>
                 </div>
             
-                <div class="carousel-slide" onclick="handleSlideClick('https://www.ndtv.com/offbeat/techie-highlights-bengaluru-it-parks-infrastructure-compares-it-to-new-york-10570748')">
-                    <img src="https://c.ndtvimg.com/2026-01/nkacpfno_as_625x300_09_January_26.jpeg" />
+                <div class="carousel-slide" onclick="handleSlideClick('https://www.ndtv.com/world-news/donald-trump-says-colombia-president-gustavo-petro-to-visit-white-house-in-february-10580434')">
+                    <img src="https://c.ndtvimg.com/2025-10/e5hf33b4_colombian-president-gustavo-petro_625x300_31_October_25.jpeg?im=FeatureCrop,algorithm=dnn,width=240,height=180" />
                     <div class="carousel-caption">
                         <span class="headline-title">
-                            Techie Highlights Bengaluru IT Park's Infrastructure, Compares It To New York
+                            Trump Says Colombia President To Visit White House In February
                         </span>
                         <span>
                             <b><i>- NDTV News- Special</i></b>
@@ -473,11 +483,11 @@
                     </div>
                 </div>
             
-                <div class="carousel-slide" onclick="handleSlideClick(' https://www.indiatoday.in/india/video/political-espionage-mahua-moitra-slams-ed-raid-on-i-pac-offices-2849547-2026-01-09?utm_source=rss ')">
-                    <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/mag-091953351-16x9_0.png?VersionId=Dz8P1LQ2uot1i43jcbH6dENvKzrnHSEZ" />
+                <div class="carousel-slide" onclick="handleSlideClick(' https://www.indiatoday.in/india/story/speeding-audi-car-hits-divider-stalls-in-jaipur-one-dead-14-injured-2849606-2026-01-10?utm_source=rss ')">
+                    <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/damaged-audi-090433304-16x9_0.jpeg?VersionId=MxcK8zEFVnzfoV1g7WDvsffhB7azxwnZ" />
                     <div class="carousel-caption">
                         <span class="headline-title">
-                            'Political espionage': Mahua Moitra slams ED raid on I-PAC offices
+                            Speeding Audi runs amok in Jaipur, mows down people; one killed, 16 injured
                         </span>
                         <span>
                             <b><i>- India Today | India</i></b>
@@ -485,11 +495,11 @@
                     </div>
                 </div>
             
-                <div class="carousel-slide" onclick="handleSlideClick('https://www.thehindu.com/news/national/telangana/will-complete-srlip-expeditiously-irrigation-minister-uttam/article70492000.ece')">
+                <div class="carousel-slide" onclick="handleSlideClick('https://www.thehindu.com/news/national/karnataka/encourage-innovation-and-entrepreneurial-thinking-aicte-vice-chairman/article70491824.ece')">
                     <img src="noImg.png" />
                     <div class="carousel-caption">
                         <span class="headline-title">
-                            Will complete SRLIP expeditiously: Irrigation Minister Uttam
+                            Encourage innovation and entrepreneurial thinking: AICTE Vice-Chairman
                         </span>
                         <span>
                             <b><i>- The Hindu</i></b>
@@ -497,11 +507,11 @@
                     </div>
                 </div>
             
-                <div class="carousel-slide" onclick="handleSlideClick('https://www.cnbctv18.com/business/railtel-to-establish-greenfield-data-centre-in-addis-ababa-for-ethiopian-govt-19818046.htm')">
-                    <img src="https://images.cnbctv18.com/uploads/2023/05/Railtel.jpg" />
+                <div class="carousel-slide" onclick="handleSlideClick('https://www.cnbctv18.com/business/aviation/uae-dgca-urged-review-landing-safety-after-air-india-express-tail-strike-incident-19818124.htm')">
+                    <img src="https://images.cnbctv18.com/uploads/2025/09/air-india-express-2025-09-137b7b32b59ad14f48174e77a46f7b18.jpg" />
                     <div class="carousel-caption">
                         <span class="headline-title">
-                            RailTel to establish greenfield data centre in Addis Ababa for Ethiopian govt
+                            UAE probe urges DGCA to tighten regulatory oversight after Air India Express tail-strike incident
                         </span>
                         <span>
                             <b><i>- CNBCTV18</i></b>
@@ -520,57 +530,63 @@
                 <img src="https://static.toiimg.com/photo/msid-98638255.cms" width="100" height="90" style="object-fit: contain; border-radius: 8px;"/>
                 <div>
                     <h3><a href="https://timesofindia.indiatimes.com" target="_blank" style="color: #8a1260db;">Times of India</a></h3>
-                    <p style="color: #c55f17db; font-family: Arial, sans-serif; font-size: 15px; font-weight: 600;">Fri Jan 09 2026</p>
+                    <p style="color: #c55f17db; font-family: Arial, sans-serif; font-size: 15px; font-weight: 600;">Sat Jan 10 2026</p>
                 </div>
             </div>
             <div class="card-container">
                 
                         <div class="card">
-                            <img src="https://static.toiimg.com/photo/msid-126432216,imgsize-1146526.cms" width="100%" height="180">
-                            <h3>1 USD = 1,400,000 IRR: Iran on edge - why this is the most dangerous uprising yet</h3>
-                            <a href="https://timesofindia.indiatimes.com/world/middle-east/how-irans-protests-are-different-this-time-and-why-the-khamenei-regime-looks-more-exposed-than-ever/articleshow/126431562.cms" target="_blank">Read →</a>
+                            <img src="https://static.toiimg.com/photo/msid-126436828,imgsize-928993.cms" width="100%" height="180">
+                            <h3>Khamenei’s greatest challenger? Iran at its lowest point in 50 years — enter Reza Pahlavi and 1979 connection</h3>
+                            <a href="https://timesofindia.indiatimes.com/world/middle-east/khameneis-greatest-challenger-iran-at-its-lowest-point-in-50-years-enter-reza-pahlavi-and-the-1979-connection/articleshow/126436789.cms" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://static.toiimg.com/photo/msid-126438216,imgsize-101760.cms" width="100%" height="180">
-                            <h3>Budget 2026: Parliament session from January 28-April 2; to be held in two phases</h3>
-                            <a href="https://timesofindia.indiatimes.com/business/india-business/budget-2026-parliament-session-from-january-28-to-april-2-to-be-held-in-two-phases/articleshow/126438074.cms" target="_blank">Read →</a>
+                            <img src="https://static.toiimg.com/photo/msid-126434199,imgsize-1399061.cms" width="100%" height="180">
+                            <h3>Himachal Pradesh bus accident: Death toll rises to 14; PM Modi announces ex-gratia of Rs 2L</h3>
+                            <a href="https://timesofindia.indiatimes.com/india/himachal-pradesh-private-bus-rolls-down-the-hill-in-sirmaur-death-toll-video/articleshow/126434216.cms" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://static.toiimg.com/photo/msid-126438579,imgsize-1356408.cms" width="100%" height="180">
-                            <h3>'Worked for BJP, Congress, AAP, TMC': I-PAC issues statements after ED raids</h3>
-                            <a href="https://timesofindia.indiatimes.com/india/worked-for-bjp-congress-aap-tmc-i-pac-issues-statements-after-ed-raids-calls-it-unsettling-precedent/articleshow/126438430.cms" target="_blank">Read →</a>
+                            <img src="https://static.toiimg.com/photo/msid-126443068,imgsize-862500.cms" width="100%" height="180">
+                            <h3>'Incredible opportunities': US ambassador-designate Sergio Gor arrives in India</h3>
+                            <a href="https://timesofindia.indiatimes.com/india/incredible-opportunities-us-ambassador-designate-sergio-gor-arrives-in-india-visit-coincides-with-ongoing-tariff-tensions/articleshow/126443063.cms" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://static.toiimg.com/photo/msid-126438549,imgsize-39454.cms" width="100%" height="180">
-                            <h3>Mustafizur row: 'Not our domain' - BCCI's fresh stance on Bangladesh venue issue</h3>
-                            <a href="https://timesofindia.indiatimes.com/sports/cricket/news/mustafizur-rahman-row-not-our-domain-bccis-fresh-stance-on-bangladesh-t20-world-cup-venue-issue/articleshow/126438431.cms" target="_blank">Read →</a>
+                            <img src="https://static.toiimg.com/photo/msid-126436576,imgsize-1388123.cms" width="100%" height="180">
+                            <h3>Greenland, Iran, Colombia? Who's next on Trump's bombing radar</h3>
+                            <a href="https://timesofindia.indiatimes.com/world/us/greenland-iran-colombia-whos-next-on-donald-trumps-bombing-radar/articleshow/126436006.cms" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://static.toiimg.com/photo/msid-126437694,imgsize-40214.cms" width="100%" height="180">
-                            <h3>WPL: Honey Singh's entry catches Mandhana, Kaur off-guard - Watch</h3>
-                            <a href="https://timesofindia.indiatimes.com/sports/cricket/wpl/uncomfortable-honey-singhs-wpl-opening-ceremony-entry-catches-smriti-mandhana-harmanpreet-kaur-off-guard-watch/articleshow/126437392.cms" target="_blank">Read →</a>
+                            <img src="https://static.toiimg.com/photo/msid-126436606,imgsize-53966.cms" width="100%" height="180">
+                            <h3>‘Focus on responsibilities’: MEA hits back at Mamdani’s letter to Umar Khalid; terms it ‘prejudice’</h3>
+                            <a href="https://timesofindia.indiatimes.com/india/focus-on-responsibilities-mea-hits-back-at-mamdanis-letter-to-umar-khalid-terms-it-prejudice/articleshow/126436086.cms" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://static.toiimg.com/photo/msid-126430678,imgsize-41942.cms" width="100%" height="180">
-                            <h3>Google cofounders Sergey Brin and Larry Page are 'cutting ties' with Silicon Valley</h3>
-                            <a href="https://timesofindia.indiatimes.com/technology/tech-news/google-cofounders-sergey-brin-and-larry-page-are-cutting-ties-with-americas-silicon-valley/articleshow/126430690.cms" target="_blank">Read →</a>
+                            <img src="https://static.toiimg.com/photo/msid-126407688,imgsize-10890.cms" width="100%" height="180">
+                            <h3>Open AI 'Code Red' emergency: Google AI CEO drops hint; speaks of 'relentless progress'</h3>
+                            <a href="https://timesofindia.indiatimes.com/technology/tech-news/for-the-first-time-ever-google-ai-ceo-demis-hassabis-kinda-confirms-that-google-is-responsible-for-making-ceo-sam-altman-send-code-red-to-openai-employees/articleshow/126407702.cms" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://static.toiimg.com/photo/msid-126437993,imgsize-661652.cms" width="100%" height="180">
-                            <h3>'Owning the sea': The moment US forces intercepted sanctioned oil tanker in Caribbean Sea - watch</h3>
-                            <a href="https://timesofindia.indiatimes.com/world/us/owning-the-sea-moment-us-forces-intercepted-sanctioned-oil-tanker-in-caribbean-sea-watch/articleshow/126438000.cms" target="_blank">Read →</a>
+                            <img src="https://static.toiimg.com/photo/msid-126441330,imgsize-34368.cms" width="100%" height="180">
+                            <h3>WPL: Nadine de Klerk difference between MI and win; RCB pocket opener</h3>
+                            <a href="https://timesofindia.indiatimes.com/sports/cricket/wpl/wpl-2026-nadine-de-klerk-the-difference-between-mumbai-indians-and-win-as-rcb-pocket-season-opener/articleshow/126440938.cms" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://static.toiimg.com/photo/msid-126438854,imgsize-837064.cms" width="100%" height="180">
-                            <h3>Pakistan wants Netanyahu kidnapped? Khawaja Asif’s controversial appeal to US, Turkey – watch</h3>
-                            <a href="https://timesofindia.indiatimes.com/world/pakistan/pakistan-wants-netanyahu-kidnapped-pakistan-defence-minister-khawaja-asifs-appeal-to-us-turkey-watch/articleshow/126438837.cms" target="_blank">Read →</a>
+                            <img src="https://static.toiimg.com/photo/msid-126442750,imgsize-1026483.cms" width="100%" height="180">
+                            <h3>63 Maoists surrender in Chhattisgarh's Dantewada</h3>
+                            <a href="https://timesofindia.indiatimes.com/india/63-maoists-surrender-in-chhattisgarhs-dantewada/articleshow/126442753.cms" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://static.toiimg.com/photo/msid-126440246,imgsize-1645056.cms" width="100%" height="180">
+                            <h3>Another Maduro-style op? 'Be prepared': Iran's exiled prince issues 'urgent' call for Trump</h3>
+                            <a href="https://timesofindia.indiatimes.com/world/middle-east/another-maduro-style-operation-be-prepared-irans-exiled-prince-issues-urgent-call-for-trump/articleshow/126440251.cms" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
@@ -579,81 +595,75 @@
                             <a href="https://timesofindia.indiatimes.com/technology/tech-news/impressed-with-china-tesla-ceo-elon-musk-says-it-seems-like-china-/articleshow/126391498.cms" target="_blank">Read →</a>
                         </div>
                     
-                        <div class="card">
-                            <img src="https://static.toiimg.com/photo/msid-126438912,imgsize-48420.cms" width="100%" height="180">
-                            <h3>Pietersen wants IPL and PSL-winning coach to replace McCullum</h3>
-                            <a href="https://timesofindia.indiatimes.com/sports/cricket/ashes/this-is-a-wild-thought-kevin-pietersen-wants-ipl-and-psl-winning-coach-to-replace-brendon-mccullum/articleshow/126438682.cms" target="_blank">Read →</a>
-                        </div>
-                    
             </div>
         
             <div class="news-header">
                 <img src="https://www.ndtv.com/common/header/images/ndtv_logo_black.gif" width="100" height="90" style="object-fit: contain; border-radius: 8px;"/>
                 <div>
                     <h3><a href="https://www.ndtv.com" target="_blank" style="color: #8a1260db;">NDTV News- Special</a></h3>
-                    <p style="color: #c55f17db; font-family: Arial, sans-serif; font-size: 15px; font-weight: 600;">Fri Jan 09 2026</p>
+                    <p style="color: #c55f17db; font-family: Arial, sans-serif; font-size: 15px; font-weight: 600;">Sat Jan 10 2026</p>
                 </div>
             </div>
             <div class="card-container">
                 
                         <div class="card">
-                            <img src="https://c.ndtvimg.com/2026-01/nkacpfno_as_625x300_09_January_26.jpeg" width="100%" height="180">
-                            <h3>Techie Highlights Bengaluru IT Park's Infrastructure, Compares It To New York</h3>
-                            <a href="https://www.ndtv.com/offbeat/techie-highlights-bengaluru-it-parks-infrastructure-compares-it-to-new-york-10570748" target="_blank">Read →</a>
+                            <img src="https://c.ndtvimg.com/2025-10/e5hf33b4_colombian-president-gustavo-petro_625x300_31_October_25.jpeg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>Trump Says Colombia President To Visit White House In February</h3>
+                            <a href="https://www.ndtv.com/world-news/donald-trump-says-colombia-president-gustavo-petro-to-visit-white-house-in-february-10580434" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://c.ndtvimg.com/2026-01/igvcnr8s_sajeevan-sajana-nicola-carey-x-wplt20_625x300_09_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
-                            <h3>WPL LIVE: Sajeevan Sajana Leads MI's Fightback After Harmanpreet's Wicket</h3>
-                            <a href="https://sports.ndtv.com/cricket/mumbai-indians-vs-royal-challengers-bengaluru-live-updates-wpl-opening-ceremony-2026-mi-vs-rcb-women-live-cricket-score-mandhana-harmanpreet-10566034" target="_blank">Read →</a>
+                            <img src="https://c.ndtvimg.com/2026-01/4f3q1cds_shirin-ebadi_625x300_10_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>Iranian Nobel Laureate Warns Of Possible "Massacre" During Internet Shutdown</h3>
+                            <a href="https://www.ndtv.com/world-news/iranian-nobel-laureate-shirin-ebadi-warns-of-possible-massacre-during-internet-shutdown-10580240" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://c.ndtvimg.com/2026-01/9fasu8hg_chhattisgarh-theft_625x300_09_January_26.jpg?im=FitAndFill,algorithm=dnn,width=240,height=180" width="100%" height="180">
-                            <h3>iPhone Dream To Rs 51 Lakh Spree: How Woman Made Away With Aunt's Valuables</h3>
-                            <a href="https://www.ndtv.com/india-news/iphone-dream-to-rs-51-lakh-spree-how-chhattisgarh-woman-made-away-with-aunts-valuables-10570518" target="_blank">Read →</a>
+                            <img src="https://c.ndtvimg.com/2020-04/0bkhvgk_boxing-generic-afp_625x300_28_April_20.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>Boxers Asked To Vacate Accommodation, Fresh Logistical Issues Hit National C'ships</h3>
+                            <a href="https://sports.ndtv.com/boxing/boxers-asked-to-vacate-accommodation-fresh-logistical-issues-hit-national-championships-10579816" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://c.ndtvimg.com/2026-01/ot86dtk_mamdani-khalid-zohran-umar_625x300_02_January_26.jpeg?im=FaceCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
-                            <h3>'Focus On Your Responsibilities': India Slams Mamdani's Note For Umar Khalid</h3>
-                            <a href="https://www.ndtv.com/world-news/focus-on-your-responsibilities-india-slams-zohran-mamdanis-note-for-umar-khalid-10570508" target="_blank">Read →</a>
+                            <img src="https://c.ndtvimg.com/2026-01/9hp43gag_nadine-de-klerk-x_625x300_10_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>De Klerk's Helps RCBW Beat Mumbai Indians Women By 3 Wickets In WPL Opener</h3>
+                            <a href="https://sports.ndtv.com/cricket/nadine-de-klerks-stunning-all-round-show-helps-rcb-beat-mi-by-3-wickets-in-wpl-opener-10578039" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://c.ndtvimg.com/2026-01/hjckvias_brendon-mccullum_625x300_08_January_26.jpg?im=FitAndFill,algorithm=dnn,width=240,height=180" width="100%" height="180">
-                            <h3>'Don't Want To Be Told What To Do': Under-Pressure England Coach McCullum</h3>
-                            <a href="https://sports.ndtv.com/cricket/dont-want-to-be-told-what-to-do-under-pressure-england-coach-brendon-mccullum-declares-after-ashes-loss-10570200" target="_blank">Read →</a>
+                            <img src="https://c.ndtvimg.com/2026-01/fhbshh1_mamata-banerjee_625x300_10_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>'If I Am Attacked, I Am Reborn': Mamata Banerjee After I-PAC Raids</h3>
+                            <a href="https://www.ndtv.com/india-news/ed-trinamool-congress-bjp-if-i-am-attacked-i-am-reborn-mamata-banerjee-after-i-pac-raids-10579710" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://c.ndtvimg.com/2026-01/h4o0mdik_m_625x300_09_January_26.jpg?im=FitAndFill,algorithm=dnn,width=240,height=180" width="100%" height="180">
-                            <h3>17 Hyderabad Students Build Payload For Upcoming ISRO Launch</h3>
-                            <a href="https://www.ndtv.com/india-news/17-hyderabad-students-build-payload-for-upcoming-isro-launch-10569889" target="_blank">Read →</a>
+                            <img src="https://c.ndtvimg.com/2023-06/pbfujvho_atishi-aap-ani_625x300_07_June_23.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>Punjab vs Delhi Over Police Case In Aitishi Assembly Video Row</h3>
+                            <a href="https://www.ndtv.com/india-news/punjab-vs-delhi-over-police-case-in-aitishi-assembly-video-row-10579698" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://i.gadgets360cdn.com/large/meta_reuters2_thumb_1755780929365.jpg" width="100%" height="180">
-                            <h3>Meta's Reality Labs Chief Summons Team for an Urgent Meeting Next Week</h3>
-                            <a href="https://www.gadgets360.com/wearables/news/meta-reality-labs-head-andrew-bosworth-all-hands-meeting-next-week-most-important-of-the-year-10569572" target="_blank">Read →</a>
+                            <img src="https://c.ndtvimg.com/2024-06/rnu52nf_paul-stirling_625x300_07_June_24.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>Ireland Announce Squad For T20 World Cup 2026, Paul Stirling To Lead</h3>
+                            <a href="https://sports.ndtv.com/cricket/ireland-announce-squad-for-t20-world-cup-2026-paul-stirling-to-lead-10579327" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://c.ndtvimg.com/2026-01/v0hjeq8s_scientist_625x300_09_January_26.jpeg" width="100%" height="180">
-                            <h3>"Freaking Cold In Delhi": Scientist Praises Team For Braving The Weather</h3>
-                            <a href="https://www.ndtv.com/offbeat/freaking-cold-in-delhi-scientist-praises-team-for-braving-the-weather-10568824" target="_blank">Read →</a>
+                            <img src="https://c.ndtvimg.com/2026-01/fsdvu2t4_trump-denmark-afp_625x300_08_January_26.jpeg?im=FitAndFill,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>'We Will Defend Greenland': Denmark Warns US Of 'Devastating' NATO War</h3>
+                            <a href="https://www.ndtv.com/world-news/we-will-defend-greenland-denmark-warns-us-of-devastating-nato-war-10579323" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://c.ndtvimg.com/2026-01/3q2dd7e8_wpl-opening_625x300_09_January_26.png?im=FitAndFill,algorithm=dnn,width=240,height=180" width="100%" height="180">
-                            <h3>Glitzy Start To WPL 2026: Honey Singh, Jacqueline Set Stage On Fire</h3>
-                            <a href="https://sports.ndtv.com/cricket/glitzy-start-to-wpl-2026-yo-yo-honey-singh-jacqueline-fernandez-set-stage-on-fire-in-navi-mumbai-10567952" target="_blank">Read →</a>
+                            <img src="https://c.ndtvimg.com/2026-01/j9pdktok_missile-india-test_625x300_09_January_26.jpeg" width="100%" height="180">
+                            <h3>India Conducts Ground Test Of Scramjet Engine For Hypersonic Missiles</h3>
+                            <a href="https://www.ndtv.com/india-news/india-conducts-ground-test-of-scramjet-engine-for-hypersonic-missiles-10579223" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://c.ndtvimg.com/2025-06/jt7bh90s_workout_625x300_19_June_25.jpeg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
-                            <h3>10-Minute High-Intensity Workout Can Trigger Anti-Cancer Molecules</h3>
-                            <a href="https://www.ndtv.com/health/10-minute-high-intensity-workout-can-trigger-anti-cancer-molecules-in-bloodstream-finds-study-10567669" target="_blank">Read →</a>
+                            <img src="https://c.ndtvimg.com/2026-01/tqgqd3e8_jk-medical-college-_625x300_09_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                            <h3>Journey Cut Short By Politics, Students Say Goodbye To J&K Medical College</h3>
+                            <a href="https://www.ndtv.com/india-news/mata-vaishno-devi-medical-college-journey-cut-short-by-politics-students-say-goodbye-to-j-k-medical-college-10578873" target="_blank">Read →</a>
                         </div>
                     
             </div>
@@ -662,69 +672,69 @@
                 <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/mediamanager/itlogo.png" width="100" height="90" style="object-fit: contain; border-radius: 8px;"/>
                 <div>
                     <h3><a href=" https://www.indiatoday.in/?utm_source=rss " target="_blank" style="color: #8a1260db;">India Today | India</a></h3>
-                    <p style="color: #c55f17db; font-family: Arial, sans-serif; font-size: 15px; font-weight: 600;">Fri Jan 09 2026</p>
+                    <p style="color: #c55f17db; font-family: Arial, sans-serif; font-size: 15px; font-weight: 600;">Sat Jan 10 2026</p>
                 </div>
             </div>
             <div class="card-container">
                 
                         <div class="card">
-                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/mag-091953351-16x9_0.png?VersionId=Dz8P1LQ2uot1i43jcbH6dENvKzrnHSEZ" width="100%" height="180">
-                            <h3>'Political espionage': Mahua Moitra slams ED raid on I-PAC offices</h3>
-                            <a href=" https://www.indiatoday.in/india/video/political-espionage-mahua-moitra-slams-ed-raid-on-i-pac-offices-2849547-2026-01-09?utm_source=rss " target="_blank">Read →</a>
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/damaged-audi-090433304-16x9_0.jpeg?VersionId=MxcK8zEFVnzfoV1g7WDvsffhB7azxwnZ" width="100%" height="180">
+                            <h3>Speeding Audi runs amok in Jaipur, mows down people; one killed, 16 injured</h3>
+                            <a href=" https://www.indiatoday.in/india/story/speeding-audi-car-hits-divider-stalls-in-jaipur-one-dead-14-injured-2849606-2026-01-10?utm_source=rss " target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/dehradun-bangladeshi-woman-arrested-26205587-16x9.jpg?VersionId=q6uNwsOP.sPKztX7fflyEX.eSSXcuVuJ" width="100%" height="180">
-                            <h3>Stepmother burns 5-year-old girl's private parts with hot spatula in Kerala</h3>
-                            <a href=" https://www.indiatoday.in/india/kerala/story/kerala-woman-burns-minors-private-parts-2849551-2026-01-09?utm_source=rss " target="_blank">Read →</a>
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/kapil-mishra-052942931-16x9.png?VersionId=pPvzFpZkJVvcWGnZ2UFDxAmrXyXNn14i" width="100%" height="180">
+                            <h3>Punjab Police registers FIR against Kapil Mishra over doctored video of Atishi</h3>
+                            <a href=" https://www.indiatoday.in/india/story/aap-bjp-atishi-delhi-punjab-fir-viral-video-2849603-2026-01-10?utm_source=rss " target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/bengalontheboilmamataclasheswithedgovernorwarnslawisaboveyou-s0-original-sixteen-to-nine.jpg?VersionId=3OioYbA.tlcN7EBHKCormbm9Go_u.aQj" width="100%" height="180">
-                            <h3>Bengal On The Boil: Mamata Clashes With ED, Governor Warns 'Law Is Above You'</h3>
-                            <a href=" https://www.indiatoday.in/india/video/governor-bose-on-bengal-row-how-so-high-you-think-you-are-the-law-is-always-above-you-ytvd-2849550-2026-01-09?utm_source=rss " target="_blank">Read →</a>
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/jksbighopeforhangul-s0-original-sixteen-to-nine.jpg?VersionId=X564Sjy0C._JysI8cFsASaW0K3BNrAoz" width="100%" height="180">
+                            <h3>J&K Hangul Breeding Centre Now Fully Operational After Male Translocation</h3>
+                            <a href=" https://www.indiatoday.in/india/video/jk-hangul-breeding-centre-now-fully-operational-after-male-translocation-ytvd-2849599-2026-01-09?utm_source=rss " target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/sukhvindersinghsukhuonhimachals1500monthlypromise-s0-original-sixteen-to-nine.jpg?VersionId=eBHhviWcvIYVRNIouoTlaFeXuPZiIY9d" width="100%" height="180">
-                            <h3>Sukhvinder Singh Sukhu Faces Criticism as Himachal Women Wait for ₹1500 Monthly Promise</h3>
-                            <a href=" https://www.indiatoday.in/india/video/sukhvinder-singh-sukhu-faces-criticism-as-himachal-women-wait-for-rs1500-monthly-promise-ytvd-2849545-2026-01-09?utm_source=rss " target="_blank">Read →</a>
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/specialreportahavenforrescuedelephantsintamilnadu-s0-original-sixteen-to-nine.jpg?VersionId=YUOyVxL47DFJHG7wCI3V6EWAIFhAmymQ" width="100%" height="180">
+                            <h3>Pramod Madhav Reports: Inside Tamil Nadu's MR Palayam Centre For Rescued Elephants</h3>
+                            <a href=" https://www.indiatoday.in/india/video/pramod-madhav-reports-inside-tamil-nadus-mr-palayam-centre-for-rescued-elephants-ytvd-2849596-2026-01-09?utm_source=rss " target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/th-051407143-16x9.jpg?VersionId=AjHQiol1YNjYDgWJQ.ViRzId56bYkxfg" width="100%" height="180">
-                            <h3>63 Naxalites surrender in Chhattisgarh, 36 had bounties totalling Rs 1.19 crore</h3>
-                            <a href=" https://www.indiatoday.in/india/story/naxalites-surrender-dantewada-rs-1-19-crore-bounty-poona-margem-initiative-2849492-2026-01-09?utm_source=rss " target="_blank">Read →</a>
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/bengalshowdownbjptmcfaceoffoveredraidsonipac-s0-original-sixteen-to-nine.jpg?VersionId=yo5WyYLSiKzZpLZ.A1kjrH3dhZL6D9og" width="100%" height="180">
+                            <h3>Senior BJP Leader: Mamata Banerjee Has 'Shamed Democracy' By Obstructing ED Raid</h3>
+                            <a href=" https://www.indiatoday.in/india/video/senior-bjp-leader-mamata-banerjee-has-shamed-democracy-by-obstructing-ed-raid-ytvd-2849591-2026-01-09?utm_source=rss " target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/madhyapradeshfacesfiscalstrainduetopopulistwelfareschemes-s0-original-sixteen-to-nine.jpg?VersionId=ZZtcE65sx5lQn40AMoFWGezbRjsOn4Lt" width="100%" height="180">
-                            <h3>Ladli Behena Yojana Raises Aid for Women But Sparks Concern Over State's Soaring Debt</h3>
-                            <a href=" https://www.indiatoday.in/india/video/welfare-schemes-push-madhya-pradesh-into-record-debt-amid-election-promises-ytvd-2849543-2026-01-09?utm_source=rss " target="_blank">Read →</a>
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/recruitment-by-defence-research-and-development-organization-drdo-161353160-16x9.jpg?VersionId=0x_GY_0t6D8AlSwUqsCZJG50xlptWRwJ" width="100%" height="180">
+                            <h3>DRDO conducts successful ground test of scramjet engine for hypersonic missiles</h3>
+                            <a href=" https://www.indiatoday.in/india/story/drdo-hypersonic-missiles-scramjet-engine-2849589-2026-01-09?utm_source=rss " target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/satyajitkumarjharkhandsmaiyasammanyojanaimpact-s0-original-sixteen-to-nine.jpg?VersionId=6Io5XIiizsB8gi6x1zOgL76orlfy7c.H" width="100%" height="180">
-                            <h3>Satyajit Kumar Reports On Jharkhand's Maiya Samman Yojana And Its Impact On Women</h3>
-                            <a href=" https://www.indiatoday.in/india/video/satyajit-kumar-reports-on-jharkhands-maiya-samman-yojana-and-its-impact-on-women-ytvd-2849541-2026-01-09?utm_source=rss " target="_blank">Read →</a>
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/ravishankarprasadmamataspotisfullofsins-s0-original-sixteen-to-nine.jpg?VersionId=MSxo7tJzCnwszVewl8Jto7JV4caq4J7z" width="100%" height="180">
+                            <h3>Ravi Shankar Prasad Slams Mamata Banerjee's 'Atrocious Behaviour': 'Her Pot Is Full Of Sins'</h3>
+                            <a href=" https://www.indiatoday.in/india/video/ravi-shankar-prasad-slams-mamata-banerjees-atrocious-behaviour-her-pot-is-full-of-sins-ytvd-2849588-2026-01-09?utm_source=rss " target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/omkarwablemorethan12000menreceivingfundsbymistake-s0-original-sixteen-to-nine.jpg?VersionId=P.jO.aL3TG2YhHam9iRiggvAh7gPYdZc" width="100%" height="180">
-                            <h3>Omkar Wable Reports: 26 Lakh Ineligible Women Removed From Maharashtra's Ladki Bahin Scheme</h3>
-                            <a href=" https://www.indiatoday.in/india/video/omkar-wable-reports-26-lakh-ineligible-women-removed-from-maharashtras-ladki-bahin-scheme-ytvd-2849538-2026-01-09?utm_source=rss " target="_blank">Read →</a>
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/kirtiazadedraidabjpploytowinbengalelections-s0-original-sixteen-to-nine.jpg?VersionId=5tf8sRiKs_HegL8KwE6.QJN2GBm50HIU" width="100%" height="180">
+                            <h3>Kirti Azad: ED Raid a BJP Ploy to Steal Election Data, They Want to Win 'by Hook or by Crook'</h3>
+                            <a href=" https://www.indiatoday.in/india/video/kirti-azad-ed-raid-a-bjp-ploy-to-steal-election-data-they-want-to-win-by-hook-or-by-crook-ytvd-2849586-2026-01-09?utm_source=rss " target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/mk-stalin-090658992-16x9_0.png?VersionId=qNDmym9mfHyVqvLPVBYgvfirgp9VGqj6" width="100%" height="180">
-                            <h3>Censor board Centre's puppet: Stalin backs Jana Nayagan amid certification row</h3>
-                            <a href=" https://www.indiatoday.in/india/tamil-nadu/story/censor-board-played-like-centres-puppet-tamil-nadu-cm-backs-vijay-jana-nayagan-amid-certification-row-2849534-2026-01-09?utm_source=rss " target="_blank">Read →</a>
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/mamata-banerjee--mahua-moitra-and-tmc-leaders-093821101-16x9_0.jpg?VersionId=bkrDAcLG1LhBce3Ce8rb_l9j6UJDSweg" width="100%" height="180">
+                            <h3>Mamata Banerjee only leader taking on BJP thuggery: Mahua Moitra on ED I-PAC raids</h3>
+                            <a href=" https://www.indiatoday.in/india/story/mahua-moitra-exclusive-centre-weaponises-central-agencies-west-bengal-polls-ed-raids-ipac-2849575-2026-01-09?utm_source=rss " target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/aap-mp-sanjay-singh-praised-mamata-banerjee--saying-the-bjps-tactics-would-fail-in-the-face-of-her-090835183-16x9_0.jpg?VersionId=adEkuBBt0nSeO8Nk6yMhCetcA8FyDd9v" width="100%" height="180">
-                            <h3>Bengal is not Venezuela: AAP slams BJP over ED raids, calls Mamata a strong leader</h3>
-                            <a href=" https://www.indiatoday.in/india/story/bjp-hooliganism-bengal-elections-sanjay-singh-mamata-banerjee-ed-raids-2849487-2026-01-09?utm_source=rss " target="_blank">Read →</a>
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/pol-093931381-16x9_0.png?VersionId=v.8bgjQaGOsyxAY4TKkfaS9pOBRRU6wy" width="100%" height="180">
+                            <h3>It's political, camouflaged as law enforcement: Abhishek Singhvi ED raid on I-PAC offices</h3>
+                            <a href=" https://www.indiatoday.in/india/video/speaker-on-ed-raids-against-tmc-strategist-this-is-not-democracy-this-is-vendetta-ytvd-2849579-2026-01-09?utm_source=rss " target="_blank">Read →</a>
                         </div>
                     
             </div>
@@ -733,69 +743,69 @@
                 <img src="https://www.thehindu.com/theme/images/th-online/OG-sections.png" width="100" height="90" style="object-fit: contain; border-radius: 8px;"/>
                 <div>
                     <h3><a href="https://www.thehindu.com/news/national/" target="_blank" style="color: #8a1260db;">India Latest News: Top National Headlines Today & Breaking News | The Hindu</a></h3>
-                    <p style="color: #c55f17db; font-family: Arial, sans-serif; font-size: 15px; font-weight: 600;">Fri Jan 09 2026</p>
+                    <p style="color: #c55f17db; font-family: Arial, sans-serif; font-size: 15px; font-weight: 600;">Sat Jan 10 2026</p>
                 </div>
             </div>
             <div class="card-container">
                 
                         <div class="card">
                             <img src="noImg.png" width="100%" height="180">
-                            <h3>Will complete SRLIP expeditiously: Irrigation Minister Uttam</h3>
-                            <a href="https://www.thehindu.com/news/national/telangana/will-complete-srlip-expeditiously-irrigation-minister-uttam/article70492000.ece" target="_blank">Read →</a>
+                            <h3>Encourage innovation and entrepreneurial thinking: AICTE Vice-Chairman</h3>
+                            <a href="https://www.thehindu.com/news/national/karnataka/encourage-innovation-and-entrepreneurial-thinking-aicte-vice-chairman/article70491824.ece" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://th-i.thgim.com/public/incoming/kb696b/article70492107.ece/alternates/LANDSCAPE_1200/d5bd7c90-3890-4f3f-a92b-46330399c25e.jpeg" width="100%" height="180">
-                            <h3>Ongoing roadworks cripple traffic on Chandapura–Attibele stretch, commuters face daily delays</h3>
-                            <a href="https://www.thehindu.com/news/national/karnataka/ongoing-roadworks-cripple-traffic-on-chandapuraattibele-stretch-commuters-face-daily-delays/article70474805.ece" target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://th-i.thgim.com/public/incoming/h8tiv6/article70492098.ece/alternates/LANDSCAPE_1200/20251202349L.jpg" width="100%" height="180">
-                            <h3>Assam Opposition parties lodge police complaint against BJP for ‘poll roll manipulation’</h3>
-                            <a href="https://www.thehindu.com/news/national/assam/assam-opposition-parties-lodge-police-complaint-against-bjp-for-poll-roll-manipulation/article70491250.ece" target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://th-i.thgim.com/public/incoming/rycla4/article70492114.ece/alternates/LANDSCAPE_1200/20260109320L.jpg" width="100%" height="180">
-                            <h3>India closely following developments in Iran, says MEA</h3>
-                            <a href="https://www.thehindu.com/news/national/india-closely-following-developments-in-iran-says-mea/article70492103.ece" target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://th-i.thgim.com/public/incoming/mj9la7/article70492100.ece/alternates/LANDSCAPE_1200/Telangana%20Rising%20Global%20Summit%20%2016.jpg" width="100%" height="180">
-                            <h3>Telangana Rising delegation to aggressively promote the 2047 vision at WEF in Davos</h3>
-                            <a href="https://www.thehindu.com/news/national/telangana/telangana-rising-delegation-to-aggressively-promote-the-2047-vision-at-wef-in-davos/article70491932.ece" target="_blank">Read →</a>
+                            <img src="https://th-i.thgim.com/public/incoming/bt6ga9/article70492222.ece/alternates/LANDSCAPE_1200/10745_9_1_2026_20_41_14_1_IMG_20260109_WA0090.JPG" width="100%" height="180">
+                            <h3>A record 7.83 lakh devotees had ‘Vaikuntha Dwara Darshan’ in Tirumala</h3>
+                            <a href="https://www.thehindu.com/news/national/andhra-pradesh/a-record-783-lakh-devotees-had-vaikuntha-dwara-darshan-in-tirumala/article70491165.ece" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
                             <img src="noImg.png" width="100%" height="180">
-                            <h3>New district police chief vows strong action against drug menace, crime in Thiruvananthapuram</h3>
-                            <a href="https://www.thehindu.com/news/national/kerala/new-district-police-chief-vows-strong-action-against-drug-menace-crime-in-thiruvananthapuram/article70491598.ece" target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://th-i.thgim.com/public/incoming/scbfk9/article70492055.ece/alternates/LANDSCAPE_1200/PTI01_08_2026_000358B.jpg" width="100%" height="180">
-                            <h3>Will exert Constitutional right to oppose Malayalam Bhasha Bill, CM tells Pinarayi in letter</h3>
-                            <a href="https://www.thehindu.com/news/national/karnataka/will-exert-constitutional-right-to-oppose-malayalam-bhasha-bill-cm-tells-pinarayi-in-letter/article70491905.ece" target="_blank">Read →</a>
+                            <h3>​Enforcement directives: On the ED raids in West Bengal</h3>
+                            <a href="https://www.thehindu.com/opinion/editorial/enforcement-directives-on-the-ed-raids-in-west-bengal/article70491126.ece" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
                             <img src="noImg.png" width="100%" height="180">
-                            <h3>IISc researchers in collaborative study discover a key protein which can aid in the fight against TB</h3>
-                            <a href="https://www.thehindu.com/news/national/karnataka/iisc-researchers-in-collaborative-study-discover-a-key-protein-which-can-aid-in-the-fight-against-tb/article70491557.ece" target="_blank">Read →</a>
+                            <h3>15 persons booked under POCSO Act for sexually assaulting a minor girl in Tiruchi</h3>
+                            <a href="https://www.thehindu.com/news/national/tamil-nadu/15-persons-booked-under-pocso-act-for-sexually-assaulting-a-minor-girl-in-tiruchi/article70492122.ece" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://th-i.thgim.com/public/incoming/jysn9b/article70492027.ece/alternates/LANDSCAPE_1200/IMG_20250914_090526.jpg" width="100%" height="180">
-                            <h3>All candidates to undergo face authentication at exam venue, says UPSC</h3>
-                            <a href="https://www.thehindu.com/news/national/all-candidates-to-undergo-face-authentication-at-exam-venue-says-upsc/article70491883.ece" target="_blank">Read →</a>
+                            <img src="noImg.png" width="100%" height="180">
+                            <h3>Pay-and-park facilities to come up in 23 corridors across Bengaluru</h3>
+                            <a href="https://www.thehindu.com/news/national/karnataka/pay-and-park-facilities-to-come-up-in-23-corridors-across-bengaluru/article70492271.ece" target="_blank">Read →</a>
                         </div>
                     
                         <div class="card">
-                            <img src="https://th-i.thgim.com/public/incoming/7b5j2a/article70491996.ece/alternates/LANDSCAPE_1200/9871_10_2_2025_17_27_8_1_HIGHCOURTBENCH_MADURAI__01.JPG" width="100%" height="180">
-                            <h3>Thirupparankundram Deepam issue: Madurai Collector, Deputy Commissioner of Police inform court that they acted on their own</h3>
-                            <a href="https://www.thehindu.com/news/cities/Madurai/thirupparankundram-deepam-issue-madurai-collector-deputy-commissioner-of-police-inform-court-that-they-acted-on-their-own/article70491370.ece" target="_blank">Read →</a>
+                            <img src="noImg.png" width="100%" height="180">
+                            <h3>Four killed, seven injured as car rams stationary truck near Tumakuru</h3>
+                            <a href="https://www.thehindu.com/news/national/karnataka/four-killed-seven-injured-as-car-rams-stationary-truck-near-tumakuru/article70492323.ece" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://th-i.thgim.com/public/incoming/mownpb/article70492427.ece/alternates/LANDSCAPE_1200/Trump_83363.jpg" width="100%" height="180">
+                            <h3>U.S. Ambassador Gor arrives in India, says ‘incredible opportunities ahead for two nations’</h3>
+                            <a href="https://www.thehindu.com/news/national/us-ambassador-sergio-gor-in-india-visit-opportunities-bilateral-ties/article70492416.ece" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="noImg.png" width="100%" height="180">
+                            <h3>SCR announces extra halts, lifts parking curbs </h3>
+                            <a href="https://www.thehindu.com/news/national/telangana/scr-announces-extra-halts-lifts-parking-curbs/article70491605.ece" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://th-i.thgim.com/public/incoming/yuebx1/article70492075.ece/alternates/LANDSCAPE_1200/09012026_Sankranti%20festival%2003.jpg" width="100%" height="180">
+                            <h3>Sankranti exodus chokes Hyderabad roads, traffic peaks on key corridors</h3>
+                            <a href="https://www.thehindu.com/news/cities/Hyderabad/sankranti-exodus-chokes-hyderabad-roads-traffic-peaks-on-key-corridors/article70491817.ece" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://th-i.thgim.com/public/incoming/jb1hds/article70491918.ece/alternates/LANDSCAPE_1200/Ramadoss_05.JPG" width="100%" height="180">
+                            <h3>Ramadoss grapples a with lack of choices as Anbumani joins AIADMK alliance</h3>
+                            <a href="https://www.thehindu.com/news/national/tamil-nadu/ramadoss-grapples-a-with-lack-of-choices-as-anbumani-joins-aiadmk-alliance/article70491696.ece" target="_blank">Read →</a>
                         </div>
                     
             </div>
@@ -804,11 +814,47 @@
                 <img src="CNBC_TV18.png" width="100" height="90" style="object-fit: contain; border-radius: 8px;"/>
                 <div>
                     <h3><a href="https://www.cnbctv18.com/business/" target="_blank" style="color: #8a1260db;">Business News in CNBCTV18, Business Latest News, Business News</a></h3>
-                    <p style="color: #c55f17db; font-family: Arial, sans-serif; font-size: 15px; font-weight: 600;">Fri Jan 09 2026</p>
+                    <p style="color: #c55f17db; font-family: Arial, sans-serif; font-size: 15px; font-weight: 600;">Sat Jan 10 2026</p>
                 </div>
             </div>
             <div class="card-container">
                 
+                        <div class="card">
+                            <img src="https://images.cnbctv18.com/uploads/2025/09/air-india-express-2025-09-137b7b32b59ad14f48174e77a46f7b18.jpg" width="100%" height="180">
+                            <h3>UAE probe urges DGCA to tighten regulatory oversight after Air India Express tail-strike incident</h3>
+                            <a href="https://www.cnbctv18.com/business/aviation/uae-dgca-urged-review-landing-safety-after-air-india-express-tail-strike-incident-19818124.htm" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://images.cnbctv18.com/uploads/2024/11/manappuram-finance-2024-11-0cae629ee4accf963f8a918efd922f14.jpeg" width="100%" height="180">
+                            <h3>Manappuram Finance denies report on delay in Bain deal, says RBI approval pending</h3>
+                            <a href="https://www.cnbctv18.com/market/stocks/manappuram-finance-share-price-denies-report-on-delay-in-bain-deal-says-rbi-approval-pending-19818111.htm" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://images.cnbctv18.com/uploads/2025/08/pti07-31-2025-000280b-2025-08-a405e980bb567ab1b2e20879ead8bd4d.jpg" width="100%" height="180">
+                            <h3>Shed colonial mindset, trust Indian capability: Minister Ashwini Vaishnaw to railway officials</h3>
+                            <a href="https://www.cnbctv18.com/business/indian-railways-reform-roadmap-ashwini-vaishnaw-innovation-safety-technology-19818109.htm" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://images.cnbctv18.com/uploads/2025/02/modi-trump-2-2025-02-63434fb9ec45047ba1e8b921c5d715e9.jpg" width="100%" height="180">
+                            <h3>India–US trade deal: Tariffs remain the key hurdle, not Modi–Trump talks, says former assistant USTR</h3>
+                            <a href="https://www.cnbctv18.com/economy/india-us-trade-deal-lutnick-trump-tariffs-roadblock-19818104.htm" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://images.cnbctv18.com/uploads/2026/01/phoenix-mills-2026-01-f31a6bcdb6da4b214ac7e7bd301be780.jpeg" width="100%" height="180">
+                            <h3>Phoenix Mills Q3 Update: Retail consumption up 20%, office occupancy at 77%</h3>
+                            <a href="https://www.cnbctv18.com/market/stocks/phoenix-mills-q3-share-price-update-retail-consumption-up-20-office-occupancy-at-77-19818093.htm" target="_blank">Read →</a>
+                        </div>
+                    
+                        <div class="card">
+                            <img src="https://images.cnbctv18.com/uploads/2026/01/market-slips-2026-01-e440ac91a634b55c059a569c9ad3dcbb.jpg" width="100%" height="180">
+                            <h3>Top Stories | Markets' worst week in four months, MF inflows ease, mixed US jobs data & more</h3>
+                            <a href="https://www.cnbctv18.com/business/companies/top-stories-markets-worst-week-in-four-months-mf-inflows-ease-mixed-us-jobs-data-more-19818053.htm" target="_blank">Read →</a>
+                        </div>
+                    
                         <div class="card">
                             <img src="https://images.cnbctv18.com/uploads/2023/05/Railtel.jpg" width="100%" height="180">
                             <h3>RailTel to establish greenfield data centre in Addis Ababa for Ethiopian govt</h3>
@@ -831,42 +877,6 @@
                             <img src="https://images.cnbctv18.com/uploads/2025/09/unicorn-startup-2025-09-43ebf91ddf7dc1f6650a44b5a0900eb1.jpg" width="100%" height="180">
                             <h3>Practical beauty brand Antinorm raises ₹28 crore in seed round, CEO expects 5-10x growth</h3>
                             <a href="https://www.cnbctv18.com/business/startup/antinorm-beauty-startup-seed-funding-growth-plans-19818014.htm" target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://images.cnbctv18.com/uploads/2026/01/untitled-design-65-2026-01-ce2990894628f58cc53c255fe3e7a852.jpg" width="100%" height="180">
-                            <h3>Nippon Paint India appoints Sharad Malhotra as new Managing Director</h3>
-                            <a href="https://www.cnbctv18.com/business/companies/nippon-paint-india-appoints-sharad-malhotra-as-new-managing-director-19817984.htm" target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://images.cnbctv18.com/uploads/2024/04/real-estate-2024-04-eab954ba49bc94fa1bdb4ebf65f64a29.jpg" width="100%" height="180">
-                            <h3>Embassy Developments Q3 Update | Pre-sales jump 240% QoQ to ₹1,392 crore</h3>
-                            <a href="https://www.cnbctv18.com/market/stocks/embassy-developments-share-price-q3-update-pre-sales-jump-240-qoq-to-rs-1392-crore-19817981.htm" target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://images.cnbctv18.com/uploads/2025/12/akasa-air-new-2025-12-d533f1fd8ecbd66e27143b58182f7090.jpg" width="100%" height="180">
-                            <h3>Akasa Air joins IATA after completing safety audit</h3>
-                            <a href="https://www.cnbctv18.com/business/aviation/akasa-air-joins-iata-after-completing-safety-audit-ws-l-19817907.htm" target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://images.cnbctv18.com/uploads/2026/01/untitled-design-62-2026-01-75f0ce8e876f5feb66a8f67fd8386123.jpg" width="100%" height="180">
-                            <h3>Ashiana Housing Q3 sales rise sequentially, nine-month performance trails FY25</h3>
-                            <a href="https://www.cnbctv18.com/market/ashiana-housing-share-orice-q3-fy26-sales-rise-sequentially-nine-month-performance-trails-fy25-19817869.htm" target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://images.cnbctv18.com/uploads/2023/08/ITC-hotels-shutterstock.jpg" width="100%" height="180">
-                            <h3>ITC Hotels secures ₹327-crore lease in Delhi's Dwarka for 5-star hotel project</h3>
-                            <a href="https://www.cnbctv18.com/market/stocks/itc-hotels-share-price-secures-91-year-lease-in-delhi-for-rs-327-crore-yashobhoomi-hotel-project-19817879.htm" target="_blank">Read →</a>
-                        </div>
-                    
-                        <div class="card">
-                            <img src="https://images.cnbctv18.com/uploads/2025/10/shutterstock-2115114782-2025-10-08dd8b8cf54e4a2f8fa4a3bb03ee1493-scaled.jpg" width="100%" height="180">
-                            <h3>PayNearby introduces dual-authentication system for SHG cash transactions</h3>
-                            <a href="https://www.cnbctv18.com/business/finance/paynearby-introduces-dual-authentication-system-for-shg-cash-transactions-ws-l-19817790.htm" target="_blank">Read →</a>
                         </div>
                     
             </div>
@@ -892,209 +902,220 @@
     <!-- ⭐ Topic News -->
     <section>
         <h2 class="section-title">Explore by Topics</h2>
-        <h5>India</h5>
+        <h5 class="topic-header">India</h5>
         <div class="category-topics" id="india">
             
-                    <div class="category-topic-card" onclick="window.open('https://timesofindia.indiatimes.com/business/india-business/pm-modi-did-not-call-trump-us-commerce-secys-big-statement-explains-why-india-us-trade-deal-is-stuck/articleshow/126427323.cms', '_blank')">
-                        <img src="https://static.toiimg.com/photo/msid-126428437,imgsize-1223556.cms" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">‘PM Modi did not call Trump’: US commerce secretary on trade deadlock — explains impasse</h3>
+                    <div class="category-topic-card" onclick="window.open('https://timesofindia.indiatimes.com/india/himachal-pradesh-private-bus-rolls-down-the-hill-in-sirmaur-death-toll-video/articleshow/126434216.cms', '_blank')">
+                        <img src="https://static.toiimg.com/photo/msid-126434199,imgsize-1399061.cms" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Himachal Pradesh bus accident: Death toll rises to 14; PM Modi announces ex-gratia of Rs 2L</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://timesofindia.indiatimes.com/entertainment/tamil/movies/news/jana-nayagan-wins-legal-battle-as-madras-hc-slams-cbfc-delay-ordering-ua-certificate-to-be-granted-to-vijay-starrer-immediately-report/articleshow/126428081.cms', '_blank')">
-                        <img src="https://static.toiimg.com/photo/msid-126428081,imgsize-21572.cms" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Big relief for Vijay: 'Jana Nayagan' gets Madras HC clearance; U/A certificate ordered</h3>
+                    <div class="category-topic-card" onclick="window.open('https://timesofindia.indiatimes.com/india/incredible-opportunities-us-ambassador-designate-sergio-gor-arrives-in-india-visit-coincides-with-ongoing-tariff-tensions/articleshow/126443063.cms', '_blank')">
+                        <img src="https://static.toiimg.com/photo/msid-126443068,imgsize-862500.cms" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">'Incredible opportunities': US ambassador-designate Sergio Gor arrives in India</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://timesofindia.indiatimes.com/entertainment/hindi/bollywood/news/oscars-2025-indias-kantara-chapter-1-and-tanvi-the-great-join-eligible-films-for-best-picture-race/articleshow/126428107.cms', '_blank')">
-                        <img src="https://static.toiimg.com/photo/msid-126428107,imgsize-125758.cms" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Oscars 2025: ‘Kantara Chapter 1’ enters race; ‘Tanvi The Great’ also in list</h3>
+                    <div class="category-topic-card" onclick="window.open('https://timesofindia.indiatimes.com/india/focus-on-responsibilities-mea-hits-back-at-mamdanis-letter-to-umar-khalid-terms-it-prejudice/articleshow/126436086.cms', '_blank')">
+                        <img src="https://static.toiimg.com/photo/msid-126436606,imgsize-53966.cms" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">‘Focus on responsibilities’: MEA hits back at Mamdani’s letter to Umar Khalid; terms it ‘prejudice’</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://timesofindia.indiatimes.com/world/middle-east/iran-protests-get-angrier-government-buildings-set-on-fire-as-uprising-enters-12th-day-watch/articleshow/126427459.cms', '_blank')">
-                        <img src="https://static.toiimg.com/photo/msid-126427532,imgsize-444183.cms" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Iran protests get angrier: Buildings set on fire as uprising enters 12th day — watch</h3>
+                    <div class="category-topic-card" onclick="window.open('https://timesofindia.indiatimes.com/india/63-maoists-surrender-in-chhattisgarhs-dantewada/articleshow/126442753.cms', '_blank')">
+                        <img src="https://static.toiimg.com/photo/msid-126442750,imgsize-1026483.cms" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">63 Maoists surrender in Chhattisgarh's Dantewada</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://timesofindia.indiatimes.com/city/kolkata/38-year-old-man-waiting-in-hearing-queue-collapses-dies-of-heart-attack/articleshow/126420499.cms', '_blank')">
-                        <img src="https://static.toiimg.com/photo/msid-126428503,imgsize-26004.cms" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">‘Broke down in tears’: WB man waiting in SIR queue collapses, dies of heart attack</h3>
+                    <div class="category-topic-card" onclick="window.open('https://sports.ndtv.com/boxing/boxers-asked-to-vacate-accommodation-fresh-logistical-issues-hit-national-championships-10579816', '_blank')">
+                        <img src="https://c.ndtvimg.com/2020-04/0bkhvgk_boxing-generic-afp_625x300_28_April_20.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Boxers Asked To Vacate Accommodation, Fresh Logistical Issues Hit National C'ships</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://timesofindia.indiatimes.com/technology/tech-news/amazon-hr-sends-what-you-did-last-year-email-to-corporate-employees-says-provide-specific-examples-of-/articleshow/126427839.cms', '_blank')">
-                        <img src="https://static.toiimg.com/photo/msid-126427835,imgsize-33256.cms" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Amazon HR email to staff: ‘What you did last year’; asked to list specific wins and growth plans</h3>
+                    <div class="category-topic-card" onclick="window.open('https://www.ndtv.com/india-news/ed-trinamool-congress-bjp-if-i-am-attacked-i-am-reborn-mamata-banerjee-after-i-pac-raids-10579710', '_blank')">
+                        <img src="https://c.ndtvimg.com/2026-01/fhbshh1_mamata-banerjee_625x300_10_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">'If I Am Attacked, I Am Reborn': Mamata Banerjee After I-PAC Raids</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://timesofindia.indiatimes.com/india/watch-from-mahua-to-derek-police-drag-away-tmc-mps-protesting-outside-amit-shahs-office/articleshow/126427338.cms', '_blank')">
-                        <img src="https://static.toiimg.com/photo/msid-126427483,imgsize-4232304.cms" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Mahua, Derek dragged away from outside Amit Shah's office; TMC protests over I-PAC raid</h3>
+                    <div class="category-topic-card" onclick="window.open('https://www.ndtv.com/india-news/punjab-vs-delhi-over-police-case-in-aitishi-assembly-video-row-10579698', '_blank')">
+                        <img src="https://c.ndtvimg.com/2023-06/pbfujvho_atishi-aap-ani_625x300_07_June_23.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Punjab vs Delhi Over Police Case In Aitishi Assembly Video Row</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://timesofindia.indiatimes.com/business/india-business/union-budget-2026-building-indias-financial-security-architecture/articleshow/126426428.cms', '_blank')">
-                        <img src="https://static.toiimg.com/photo/msid-126426506,imgsize-76616.cms" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Union Budget 2026: Building India’s financial security architecture</h3>
+                    <div class="category-topic-card" onclick="window.open('https://www.ndtv.com/india-news/india-conducts-ground-test-of-scramjet-engine-for-hypersonic-missiles-10579223', '_blank')">
+                        <img src="https://c.ndtvimg.com/2026-01/j9pdktok_missile-india-test_625x300_09_January_26.jpeg" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">India Conducts Ground Test Of Scramjet Engine For Hypersonic Missiles</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://timesofindia.indiatimes.com/sports/cricket/news/instead-of-mustafizur-had-it-been-litton-das-or-soumya-sarkar-would-they-have-done-the-same-thing-asks-ex-bcb-administrator/articleshow/126427818.cms', '_blank')">
-                        <img src="https://static.toiimg.com/photo/msid-126427887,imgsize-28118.cms" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Would Litton or Soumya face same heat as Mustafizur, asks ex-BCB official</h3>
+                    <div class="category-topic-card" onclick="window.open('https://www.ndtv.com/india-news/mata-vaishno-devi-medical-college-journey-cut-short-by-politics-students-say-goodbye-to-j-k-medical-college-10578873', '_blank')">
+                        <img src="https://c.ndtvimg.com/2026-01/tqgqd3e8_jk-medical-college-_625x300_09_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Journey Cut Short By Politics, Students Say Goodbye To J&K Medical College</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://timesofindia.indiatimes.com/technology/tech-news/impressed-with-china-tesla-ceo-elon-musk-says-it-seems-like-china-/articleshow/126391498.cms', '_blank')">
-                        <img src="https://static.toiimg.com/photo/msid-126391507,imgsize-26958.cms" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Musk impressed with China, says 'Does things I say'; highlights its rapid EV &amp; solar growth</h3>
+                    <div class="category-topic-card" onclick="window.open(' https://www.indiatoday.in/india/story/speeding-audi-car-hits-divider-stalls-in-jaipur-one-dead-14-injured-2849606-2026-01-10?utm_source=rss ', '_blank')">
+                        <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/damaged-audi-090433304-16x9_0.jpeg?VersionId=MxcK8zEFVnzfoV1g7WDvsffhB7azxwnZ" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Speeding Audi runs amok in Jaipur, mows down people; one killed, 16 injured</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://www.ndtv.com/auto/bmw-india-posts-highest-ever-sales-in-2025-suvs-lead-the-charge-10562720', '_blank')">
-                        <img src="https://c.ndtvimg.com/2026-01/i5drhcbk_bmw_625x300_09_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=300,height=200" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">BMW India Posts Highest-Ever Sales In 2025, SUVs Lead The Charge</h3>
+                    <div class="category-topic-card" onclick="window.open(' https://www.indiatoday.in/india/story/aap-bjp-atishi-delhi-punjab-fir-viral-video-2849603-2026-01-10?utm_source=rss ', '_blank')">
+                        <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/kapil-mishra-052942931-16x9.png?VersionId=pPvzFpZkJVvcWGnZ2UFDxAmrXyXNn14i" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Punjab Police registers FIR against Kapil Mishra over doctored video of Atishi</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open(' https://www.indiatoday.in/india/video/markets-open-flat-with-positive-bias-as-defense-and-it-stocks-lead-early-gains-ytvd-2849162-2026-01-09?utm_source=rss ', '_blank')">
-                        <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/defensestocksrallyinflatmarket-s0-original-sixteen-to-nine.jpg?VersionId=O49gerXTtiY21N59bC8_FZUulkMnkyii" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Markets Open Flat With Positive Bias As Defense And IT Stocks Lead Early Gains</h3>
+                    <div class="category-topic-card" onclick="window.open(' https://www.indiatoday.in/india/video/jk-hangul-breeding-centre-now-fully-operational-after-male-translocation-ytvd-2849599-2026-01-09?utm_source=rss ', '_blank')">
+                        <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/jksbighopeforhangul-s0-original-sixteen-to-nine.jpg?VersionId=X564Sjy0C._JysI8cFsASaW0K3BNrAoz" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">J&K Hangul Breeding Centre Now Fully Operational After Male Translocation</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open(' https://www.indiatoday.in/india/video/land-for-jobs-case-court-orders-framing-of-charges-against-lalu-yadav-calls-it-criminal-enterprise-ytvd-2849160-2026-01-09?utm_source=rss ', '_blank')">
-                        <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/criminalenterprisechargesframedagainstlaluyadav-s0-original-sixteen-to-nine.jpg?VersionId=cf8MLqvGout.M19uTOh3biiTu9EKD9eT" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Land For Jobs Case: Court Orders Framing Of Charges Against Lalu Yadav, Calls It 'Criminal Enterprise'</h3>
+                    <div class="category-topic-card" onclick="window.open(' https://www.indiatoday.in/india/video/pramod-madhav-reports-inside-tamil-nadus-mr-palayam-centre-for-rescued-elephants-ytvd-2849596-2026-01-09?utm_source=rss ', '_blank')">
+                        <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/specialreportahavenforrescuedelephantsintamilnadu-s0-original-sixteen-to-nine.jpg?VersionId=YUOyVxL47DFJHG7wCI3V6EWAIFhAmymQ" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Pramod Madhav Reports: Inside Tamil Nadu's MR Palayam Centre For Rescued Elephants</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open(' https://www.indiatoday.in/india/story/rajkot-earthquakes-nine-earthquakes-strike-gujarat-rajkot-in-12-hours-gujarat-news-gandhinagar-2849152-2026-01-09?utm_source=rss ', '_blank')">
-                        <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/earthquake-092609922-16x9_0.jpg?VersionId=lXkLEJ616tA1bkUPo74RYP3U.5LJd0b6" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">9 earthquakes shake Gujarat's Rajkot in 12 hours; no damage reported</h3>
+                    <div class="category-topic-card" onclick="window.open(' https://www.indiatoday.in/india/video/senior-bjp-leader-mamata-banerjee-has-shamed-democracy-by-obstructing-ed-raid-ytvd-2849591-2026-01-09?utm_source=rss ', '_blank')">
+                        <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/bengalshowdownbjptmcfaceoffoveredraidsonipac-s0-original-sixteen-to-nine.jpg?VersionId=yo5WyYLSiKzZpLZ.A1kjrH3dhZL6D9og" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Senior BJP Leader: Mamata Banerjee Has 'Shamed Democracy' By Obstructing ED Raid</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open(' https://www.indiatoday.in/india/video/shail-bhatnagar-nifty-risks-25600-lows-as-trump-seeks-500-tariff-on-russian-oil-importers-ytvd-2849144-2026-01-09?utm_source=rss ', '_blank')">
-                        <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/shailbhatnagarniftyweakontrumptarifffears-s0-original-sixteen-to-nine.jpg?VersionId=0pL.HJvh9C3EWYq2t1TNWMQ93tqRh3.e" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Shail Bhatnagar: Nifty Risks 25,600 Lows As Trump Seeks 500% Tariff On Russian Oil Importers</h3>
+                    <div class="category-topic-card" onclick="window.open(' https://www.indiatoday.in/india/story/drdo-hypersonic-missiles-scramjet-engine-2849589-2026-01-09?utm_source=rss ', '_blank')">
+                        <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/recruitment-by-defence-research-and-development-organization-drdo-161353160-16x9.jpg?VersionId=0x_GY_0t6D8AlSwUqsCZJG50xlptWRwJ" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">DRDO conducts successful ground test of scramjet engine for hypersonic missiles</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open(' https://www.indiatoday.in/india/video/mamata-banerjee-personally-files-fir-against-ed-after-raid-on-i-pac-chief-pratik-jain-ytvd-2849128-2026-01-09?utm_source=rss ', '_blank')">
-                        <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/mamatafilesfiragainstedoveri-pacraid-s0-original-sixteen-to-nine.jpg?VersionId=L4DHAIxLEcVb_Sbl.57gofklysNXPV2a" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Mamata Banerjee Personally Files FIR Against ED After Raid on I-PAC Chief Pratik Jain</h3>
+                    <div class="category-topic-card" onclick="window.open(' https://www.indiatoday.in/india/video/ravi-shankar-prasad-slams-mamata-banerjees-atrocious-behaviour-her-pot-is-full-of-sins-ytvd-2849588-2026-01-09?utm_source=rss ', '_blank')">
+                        <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/ravishankarprasadmamataspotisfullofsins-s0-original-sixteen-to-nine.jpg?VersionId=MSxo7tJzCnwszVewl8Jto7JV4caq4J7z" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Ravi Shankar Prasad Slams Mamata Banerjee's 'Atrocious Behaviour': 'Her Pot Is Full Of Sins'</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open(' https://www.indiatoday.in/india/story/mamata-banerjee-ed-raid-how-sonia-gandhi-pasta-maker-came-to-indira-rescue-during-cbi-raid-arrest-emergency-2848740-2026-01-09?utm_source=rss ', '_blank')">
-                        <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/former-pm-indira-gandhi-with-daughter-in-law-sonia-gandhi-095848551-16x9_0.jpg?VersionId=Jlt9OMYtulRp17Stq5Y.D8oV8o2jGJ9Q" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Did Sonia Gandhi's pasta maker come to Indira's rescue during a CBI raid?</h3>
+                    <div class="category-topic-card" onclick="window.open(' https://www.indiatoday.in/india/video/kirti-azad-ed-raid-a-bjp-ploy-to-steal-election-data-they-want-to-win-by-hook-or-by-crook-ytvd-2849586-2026-01-09?utm_source=rss ', '_blank')">
+                        <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/kirtiazadedraidabjpploytowinbengalelections-s0-original-sixteen-to-nine.jpg?VersionId=5tf8sRiKs_HegL8KwE6.QJN2GBm50HIU" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Kirti Azad: ED Raid a BJP Ploy to Steal Election Data, They Want to Win 'by Hook or by Crook'</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open(' https://www.indiatoday.in/india/law-news/story/leela-palace-udaipur-master-key-entry-privacy-violation-consumer-court-chennai-consumer-2849121-2026-01-09?utm_source=rss ', '_blank')">
-                        <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/consumer-court-orders-leela-palace-udaipur-to-pay-rs-10-lakh-after-housekeeping-entered-occupied-roo-093712741-16x9_0.png?VersionId=1I_ukoIwJP01UPuHfRdgT_1sEaPfhFDu" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Udaipur Leela Palace staff enters occupied room with master key, hotel fined</h3>
+                    <div class="category-topic-card" onclick="window.open(' https://www.indiatoday.in/india/story/mahua-moitra-exclusive-centre-weaponises-central-agencies-west-bengal-polls-ed-raids-ipac-2849575-2026-01-09?utm_source=rss ', '_blank')">
+                        <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/mamata-banerjee--mahua-moitra-and-tmc-leaders-093821101-16x9_0.jpg?VersionId=bkrDAcLG1LhBce3Ce8rb_l9j6UJDSweg" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Mamata Banerjee only leader taking on BJP thuggery: Mahua Moitra on ED I-PAC raids</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open(' https://www.indiatoday.in/india/law-news/story/lalu-yadav-family-acted-as-criminal-syndicate-delhi-court-on-land-for-jobs-scam-railways-2849118-2026-01-09?utm_source=rss ', '_blank')">
-                        <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/lalu-yadav-and-family-093145171-16x9_0.jpg?VersionId=DuX3hFVQnSuwzMd5nSWkJrjjn9Y7FPXa" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Lalu Yadav, family acted as criminal enterprise: Delhi court on land-for-jobs scam</h3>
+                    <div class="category-topic-card" onclick="window.open(' https://www.indiatoday.in/india/video/speaker-on-ed-raids-against-tmc-strategist-this-is-not-democracy-this-is-vendetta-ytvd-2849579-2026-01-09?utm_source=rss ', '_blank')">
+                        <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/pol-093931381-16x9_0.png?VersionId=v.8bgjQaGOsyxAY4TKkfaS9pOBRRU6wy" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">It's political, camouflaged as law enforcement: Abhishek Singhvi ED raid on I-PAC offices</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open(' https://www.indiatoday.in/india/story/vijays-jana-nayagans-release-cleared-as-madras-high-court-orders-cbfc-to-issue-ua-certificate-2849110-2026-01-09?utm_source=rss ', '_blank')">
-                        <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/vijay-thalapathy-092641264-16x9_0.jpg?VersionId=QMtp7Y6tAwyEO_r3tHMJCzhACad2rwt6" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Vijay's Jana Nayagan's release cleared, High Court pulls up Censor Board chief</h3>
+                    <div class="category-topic-card" onclick="window.open('https://www.thehindu.com/news/national/karnataka/encourage-innovation-and-entrepreneurial-thinking-aicte-vice-chairman/article70491824.ece', '_blank')">
+                        <img src="noImg.png" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Encourage innovation and entrepreneurial thinking: AICTE Vice-Chairman</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open(' https://www.indiatoday.in/india/karnataka/story/dk-shivakumar-mnrega-changes-opposition-national-herald-jds-bjp-merger-karnataka-2849109-2026-01-09?utm_source=rss ', '_blank')">
-                        <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202601/dk-shivakumar-284028965-16x9.jpg?VersionId=_ZGdjlzV7woRlzP0T7uwEFTvNF75f2FS" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Centre's MGNREGA move unacceptable, won't work: DK Shivakumar warns of legal action</h3>
+                    <div class="category-topic-card" onclick="window.open('https://www.thehindu.com/news/national/andhra-pradesh/a-record-783-lakh-devotees-had-vaikuntha-dwara-darshan-in-tirumala/article70491165.ece', '_blank')">
+                        <img src="https://th-i.thgim.com/public/incoming/bt6ga9/article70492222.ece/alternates/LANDSCAPE_1200/10745_9_1_2026_20_41_14_1_IMG_20260109_WA0090.JPG" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">A record 7.83 lakh devotees had ‘Vaikuntha Dwara Darshan’ in Tirumala</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://www.thehindu.com/news/national/calibrated-capitulation-congress-claims-govt-planning-to-lift-curbs-on-chinese-firms-bidding-for-indian-contracts/article70489625.ece', '_blank')">
-                        <img src="https://th-i.thgim.com/public/incoming/182c32/article70489667.ece/alternates/LANDSCAPE_1200/2026-01-08T113907Z_856298141_RC2CQAA55Z7Q_RTRMADP_3_INDIA-CHINA-BUSINES.JPG" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Calibrated capitulation: Congress claims govt planning to lift curbs on Chinese firms bidding for Indian contracts</h3>
+                    <div class="category-topic-card" onclick="window.open('https://www.thehindu.com/news/national/tamil-nadu/15-persons-booked-under-pocso-act-for-sexually-assaulting-a-minor-girl-in-tiruchi/article70492122.ece', '_blank')">
+                        <img src="noImg.png" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">15 persons booked under POCSO Act for sexually assaulting a minor girl in Tiruchi</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://www.thehindu.com/news/national/india-participates-in-border-coordination-meet-ahead-of-nepal-elections/article70489619.ece', '_blank')">
-                        <img src="https://th-i.thgim.com/public/incoming/i1o3ao/article70489670.ece/alternates/LANDSCAPE_1200/iStock-819902910.jpg" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">India participates in border coordination meet ahead of Nepal elections</h3>
+                    <div class="category-topic-card" onclick="window.open('https://www.thehindu.com/news/national/karnataka/pay-and-park-facilities-to-come-up-in-23-corridors-across-bengaluru/article70492271.ece', '_blank')">
+                        <img src="noImg.png" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Pay-and-park facilities to come up in 23 corridors across Bengaluru</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://www.thehindu.com/news/cities/bangalore/state-bank-of-india-sets-up-global-capability-centre-in-bengaluru/article70487175.ece', '_blank')">
-                        <img src="https://th-i.thgim.com/public/incoming/h8hdim/article70489637.ece/alternates/LANDSCAPE_1200/444109850.jpg" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">State Bank of India sets up Global Capability Centre in Bengaluru</h3>
+                    <div class="category-topic-card" onclick="window.open('https://www.thehindu.com/news/national/karnataka/four-killed-seven-injured-as-car-rams-stationary-truck-near-tumakuru/article70492323.ece', '_blank')">
+                        <img src="noImg.png" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Four killed, seven injured as car rams stationary truck near Tumakuru</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://www.cnbctv18.com/business/antara-senior-care-india-elder-care-business-tara-singh-vachani-19817341.htm', '_blank')">
-                        <img src="https://images.cnbctv18.com/uploads/2026/01/1767598032_ZPVxkZ3O7B-YT-RELOADED-EP-THUMBS-ANTARAjpg-YPlQNtBa3w.jpg" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">From stigma to scale: How Antara is building India’s senior-care ecosystem</h3>
+                    <div class="category-topic-card" onclick="window.open('https://www.thehindu.com/news/national/us-ambassador-sergio-gor-in-india-visit-opportunities-bilateral-ties/article70492416.ece', '_blank')">
+                        <img src="https://th-i.thgim.com/public/incoming/mownpb/article70492427.ece/alternates/LANDSCAPE_1200/Trump_83363.jpg" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">U.S. Ambassador Gor arrives in India, says ‘incredible opportunities ahead for two nations’</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://www.cnbctv18.com/technology/vaishnaw-discusses-manufacturing-of-sovereign-high-end-gpus-in-india-with-nvidia-officials-19817317.htm', '_blank')">
-                        <img src="https://images.cnbctv18.com/uploads/2026/01/mass-layoffs-in-2025-companies-sectors-and-reasons-for-job-cuts-cnbc-tv18-1-2026-01-895d4e7fb91cf735fcb393c3acde2ed3.jpg" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Vaishnaw discusses manufacturing of sovereign, high-end GPUs in India with Nvidia officials</h3>
+                    <div class="category-topic-card" onclick="window.open('https://www.thehindu.com/news/national/telangana/scr-announces-extra-halts-lifts-parking-curbs/article70491605.ece', '_blank')">
+                        <img src="noImg.png" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">SCR announces extra halts, lifts parking curbs </h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://www.cnbctv18.com/india/sleeper-coach-buses-to-be-manufactured-by-automobile-cos-govt-accredited-facilities-gadkari-19817292.htm', '_blank')">
-                        <img src="https://images.cnbctv18.com/uploads/2025/08/modi-dwarka-expressway-uer-2-inauguration-2-2025-08-d748497d04d4a6fa7e857f7132bfeb58.jpg" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Sleeper coach buses to be manufactured by automobile cos, govt-accredited facilities: Gadkari</h3>
+                    <div class="category-topic-card" onclick="window.open('https://www.thehindu.com/news/national/tamil-nadu/ramadoss-grapples-a-with-lack-of-choices-as-anbumani-joins-aiadmk-alliance/article70491696.ece', '_blank')">
+                        <img src="https://th-i.thgim.com/public/incoming/jb1hds/article70491918.ece/alternates/LANDSCAPE_1200/Ramadoss_05.JPG" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Ramadoss grapples a with lack of choices as Anbumani joins AIADMK alliance</h3>
+                    </div>
+                
+                    <div class="category-topic-card" onclick="window.open('https://www.cnbctv18.com/business/indian-railways-reform-roadmap-ashwini-vaishnaw-innovation-safety-technology-19818109.htm', '_blank')">
+                        <img src="https://images.cnbctv18.com/uploads/2025/08/pti07-31-2025-000280b-2025-08-a405e980bb567ab1b2e20879ead8bd4d.jpg" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Shed colonial mindset, trust Indian capability: Minister Ashwini Vaishnaw to railway officials</h3>
+                    </div>
+                
+                    <div class="category-topic-card" onclick="window.open('https://www.cnbctv18.com/economy/india-us-trade-deal-lutnick-trump-tariffs-roadblock-19818104.htm', '_blank')">
+                        <img src="https://images.cnbctv18.com/uploads/2025/02/modi-trump-2-2025-02-63434fb9ec45047ba1e8b921c5d715e9.jpg" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">India–US trade deal: Tariffs remain the key hurdle, not Modi–Trump talks, says former assistant USTR</h3>
                     </div>
                 
         </div>
+        <h5 class="topic-header">Finance</h5>
         <div class="category-topics" id="finance">
             
-                    <div class="category-topic-card" onclick="window.open('https://timesofindia.indiatimes.com/business/india-business/pm-modi-did-not-call-trump-us-commerce-secys-big-statement-explains-why-india-us-trade-deal-is-stuck/articleshow/126427323.cms', '_blank')">
-                        <img src="https://static.toiimg.com/photo/msid-126428437,imgsize-1223556.cms" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">‘PM Modi did not call Trump’: US commerce secretary on trade deadlock — explains impasse</h3>
+                    <div class="category-topic-card" onclick="window.open('https://timesofindia.indiatimes.com/india/incredible-opportunities-us-ambassador-designate-sergio-gor-arrives-in-india-visit-coincides-with-ongoing-tariff-tensions/articleshow/126443063.cms', '_blank')">
+                        <img src="https://static.toiimg.com/photo/msid-126443068,imgsize-862500.cms" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">'Incredible opportunities': US ambassador-designate Sergio Gor arrives in India</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://timesofindia.indiatimes.com/business/india-business/union-budget-2026-building-indias-financial-security-architecture/articleshow/126426428.cms', '_blank')">
-                        <img src="https://static.toiimg.com/photo/msid-126426506,imgsize-76616.cms" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Union Budget 2026: Building India’s financial security architecture</h3>
+                    <div class="category-topic-card" onclick="window.open('https://www.cnbctv18.com/business/aviation/uae-dgca-urged-review-landing-safety-after-air-india-express-tail-strike-incident-19818124.htm', '_blank')">
+                        <img src="https://images.cnbctv18.com/uploads/2025/09/air-india-express-2025-09-137b7b32b59ad14f48174e77a46f7b18.jpg" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">UAE probe urges DGCA to tighten regulatory oversight after Air India Express tail-strike incident</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open(' https://www.indiatoday.in/india/video/markets-open-flat-with-positive-bias-as-defense-and-it-stocks-lead-early-gains-ytvd-2849162-2026-01-09?utm_source=rss ', '_blank')">
-                        <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/video/202601/defensestocksrallyinflatmarket-s0-original-sixteen-to-nine.jpg?VersionId=O49gerXTtiY21N59bC8_FZUulkMnkyii" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Markets Open Flat With Positive Bias As Defense And IT Stocks Lead Early Gains</h3>
+                    <div class="category-topic-card" onclick="window.open('https://www.cnbctv18.com/market/stocks/manappuram-finance-share-price-denies-report-on-delay-in-bain-deal-says-rbi-approval-pending-19818111.htm', '_blank')">
+                        <img src="https://images.cnbctv18.com/uploads/2024/11/manappuram-finance-2024-11-0cae629ee4accf963f8a918efd922f14.jpeg" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Manappuram Finance denies report on delay in Bain deal, says RBI approval pending</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://www.cnbctv18.com/business/vodafones-agr-relief-us-supreme-court-on-trump-tariffs-trump-on-china-and-taiwan-q3-results-and-more-19817528.htm', '_blank')">
-                        <img src="https://images.cnbctv18.com/uploads/2026/01/new-studio-banner-2026-01-5b5e011866917467f2d94b2aff072c06.jpg" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Vodafone's AGR relief, US Supreme Court on Trump tariffs, Trump on China and Taiwan, Q3 results and more</h3>
+                    <div class="category-topic-card" onclick="window.open('https://www.cnbctv18.com/business/indian-railways-reform-roadmap-ashwini-vaishnaw-innovation-safety-technology-19818109.htm', '_blank')">
+                        <img src="https://images.cnbctv18.com/uploads/2025/08/pti07-31-2025-000280b-2025-08-a405e980bb567ab1b2e20879ead8bd4d.jpg" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Shed colonial mindset, trust Indian capability: Minister Ashwini Vaishnaw to railway officials</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://www.cnbctv18.com/business/chevron-vitol-trafigura-vie-to-control-venezuelan-oil-exports-ws-l-19817452.htm', '_blank')">
-                        <img src="https://images.cnbctv18.com/uploads/2026/01/2026-01-09t021503z-1-lynxmpem0802u-rtroptp-4-kazakhstan-oil-2026-01-c2b9de384fe526b21f458cd13a1699f1-scaled.jpg" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Chevron, Vitol, Trafigura vie to control Venezuelan oil exports</h3>
+                    <div class="category-topic-card" onclick="window.open('https://www.cnbctv18.com/economy/india-us-trade-deal-lutnick-trump-tariffs-roadblock-19818104.htm', '_blank')">
+                        <img src="https://images.cnbctv18.com/uploads/2025/02/modi-trump-2-2025-02-63434fb9ec45047ba1e8b921c5d715e9.jpg" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">India–US trade deal: Tariffs remain the key hurdle, not Modi–Trump talks, says former assistant USTR</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://www.cnbctv18.com/business/chinas-anta-sports-offers-to-buy-pinault-familys-29-puma-stake-report-19817424.htm', '_blank')">
-                        <img src="https://images.cnbctv18.com/uploads/2026/01/2026-01-08t160022z-114947575-rc2dgcascgxg-rtrmadp-3-puma-m-a-anta-2026-01-76db34d1f1cc99b2e1f6b3cd52d16b98.jpg" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">China's Anta Sports offers to buy Pinault family's 29% Puma stake: report</h3>
+                    <div class="category-topic-card" onclick="window.open('https://www.cnbctv18.com/market/stocks/phoenix-mills-q3-share-price-update-retail-consumption-up-20-office-occupancy-at-77-19818093.htm', '_blank')">
+                        <img src="https://images.cnbctv18.com/uploads/2026/01/phoenix-mills-2026-01-f31a6bcdb6da4b214ac7e7bd301be780.jpeg" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Phoenix Mills Q3 Update: Retail consumption up 20%, office occupancy at 77%</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://www.cnbctv18.com/business/antara-senior-care-india-elder-care-business-tara-singh-vachani-19817341.htm', '_blank')">
-                        <img src="https://images.cnbctv18.com/uploads/2026/01/1767598032_ZPVxkZ3O7B-YT-RELOADED-EP-THUMBS-ANTARAjpg-YPlQNtBa3w.jpg" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">From stigma to scale: How Antara is building India’s senior-care ecosystem</h3>
+                    <div class="category-topic-card" onclick="window.open('https://www.cnbctv18.com/business/companies/top-stories-markets-worst-week-in-four-months-mf-inflows-ease-mixed-us-jobs-data-more-19818053.htm', '_blank')">
+                        <img src="https://images.cnbctv18.com/uploads/2026/01/market-slips-2026-01-e440ac91a634b55c059a569c9ad3dcbb.jpg" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Top Stories | Markets' worst week in four months, MF inflows ease, mixed US jobs data & more</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://www.cnbctv18.com/market/stocks/power-mech-projects-share-price-secures-rs-3126-crore-battery-storage-orders-from-wbsedcl-19817325.htm', '_blank')">
-                        <img src="https://images.cnbctv18.com/uploads/2026/01/power-mech-projects-2026-01-29948e262727043e175580051525bd71.jpeg" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Power Mech Projects secures ₹3,126 crore battery storage orders from WBSEDCL</h3>
+                    <div class="category-topic-card" onclick="window.open('https://www.cnbctv18.com/business/railtel-to-establish-greenfield-data-centre-in-addis-ababa-for-ethiopian-govt-19818046.htm', '_blank')">
+                        <img src="https://images.cnbctv18.com/uploads/2023/05/Railtel.jpg" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">RailTel to establish greenfield data centre in Addis Ababa for Ethiopian govt</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://www.cnbctv18.com/business/singapore-motorshow-2026-highlights-electric-ambition-luxury-craftsmanship-and-performance-innovation-ws-l-19817296.htm', '_blank')">
-                        <img src="https://images.cnbctv18.com/uploads/2025/09/marutisuzuki-victoris-pole-2025-09-bdb0960bd0b7c31f594561d82d226835.jpg" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Singapore Motorshow 2026 highlights electric ambition, luxury craftsmanship and performance innovation</h3>
+                    <div class="category-topic-card" onclick="window.open('https://www.cnbctv18.com/business/globus-spirits-q3-pat-jumps-multifold-at-inr-30-44-crore-19818040.htm', '_blank')">
+                        <img src="https://images.cnbctv18.com/uploads/2026/01/20241027112256_market13.jpg" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Globus Spirits Q3 PAT jumps multifold at ₹30.44 crore</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://www.cnbctv18.com/market/stocks/nhpc-share-price-board-approves-plan-to-issue-up-to-rs-2000-crore-unsecured-bonds-via-private-placement-19817269.htm', '_blank')">
-                        <img src="https://images.cnbctv18.com/uploads/2026/01/nhpc-2026-01-4873ab6e78afcf0e2191123476e215c9.jpeg" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">NHPC board approves plan to issue up to ₹2,000 crore unsecured bonds via private placement</h3>
+                    <div class="category-topic-card" onclick="window.open('https://www.cnbctv18.com/economy/budget-session-nhai-land-acquisition-reforms-to-accelerate-highway-projects-19818032.htm', '_blank')">
+                        <img src="https://images.cnbctv18.com/uploads/2026/01/312-2026-01-2689419b90d35ef2a32ea56ff4b23323.jpg" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Government plans changes to National Highways Act to fast-track road projects</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://www.cnbctv18.com/business/top-stories-markets-shed-%25e2%2582%25b98-lakh-cr-trumps-500-tariff-threat-noida-airport-telecom-tussle-more-ws-l-19817257.htm', '_blank')">
-                        <img src="https://images.cnbctv18.com/uploads/2026/01/market-falls-2026-01-78bbc6e33aa8da9bf11ff774a2750f89.jpg" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Top Stories | Markets shed ₹8 lakh cr, Trump’s 500% tariff threat, Noida airport telecom tussle & more</h3>
+                    <div class="category-topic-card" onclick="window.open('https://www.cnbctv18.com/business/startup/antinorm-beauty-startup-seed-funding-growth-plans-19818014.htm', '_blank')">
+                        <img src="https://images.cnbctv18.com/uploads/2025/09/unicorn-startup-2025-09-43ebf91ddf7dc1f6650a44b5a0900eb1.jpg" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Practical beauty brand Antinorm raises ₹28 crore in seed round, CEO expects 5-10x growth</h3>
                     </div>
                 
         </div>   
-        </div>
+        <h5 class="topic-header">Technology</h5>
         <div class="category-topics" id="technology">
             
-                    <div class="category-topic-card" onclick="window.open('https://timesofindia.indiatimes.com/technology/tech-news/amazon-hr-sends-what-you-did-last-year-email-to-corporate-employees-says-provide-specific-examples-of-/articleshow/126427839.cms', '_blank')">
-                        <img src="https://static.toiimg.com/photo/msid-126427835,imgsize-33256.cms" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Amazon HR email to staff: ‘What you did last year’; asked to list specific wins and growth plans</h3>
+                    <div class="category-topic-card" onclick="window.open('https://timesofindia.indiatimes.com/technology/tech-news/for-the-first-time-ever-google-ai-ceo-demis-hassabis-kinda-confirms-that-google-is-responsible-for-making-ceo-sam-altman-send-code-red-to-openai-employees/articleshow/126407702.cms', '_blank')">
+                        <img src="https://static.toiimg.com/photo/msid-126407688,imgsize-10890.cms" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Open AI 'Code Red' emergency: Google AI CEO drops hint; speaks of 'relentless progress'</h3>
                     </div>
                 
                     <div class="category-topic-card" onclick="window.open('https://timesofindia.indiatimes.com/technology/tech-news/impressed-with-china-tesla-ceo-elon-musk-says-it-seems-like-china-/articleshow/126391498.cms', '_blank')">
@@ -1102,75 +1123,43 @@
                         <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Musk impressed with China, says 'Does things I say'; highlights its rapid EV &amp; solar growth</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://www.cnbctv18.com/technology/vaishnaw-discusses-manufacturing-of-sovereign-high-end-gpus-in-india-with-nvidia-officials-19817317.htm', '_blank')">
-                        <img src="https://images.cnbctv18.com/uploads/2026/01/mass-layoffs-in-2025-companies-sectors-and-reasons-for-job-cuts-cnbc-tv18-1-2026-01-895d4e7fb91cf735fcb393c3acde2ed3.jpg" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Vaishnaw discusses manufacturing of sovereign, high-end GPUs in India with Nvidia officials</h3>
+                    <div class="category-topic-card" onclick="window.open('https://www.cnbctv18.com/business/indian-railways-reform-roadmap-ashwini-vaishnaw-innovation-safety-technology-19818109.htm', '_blank')">
+                        <img src="https://images.cnbctv18.com/uploads/2025/08/pti07-31-2025-000280b-2025-08-a405e980bb567ab1b2e20879ead8bd4d.jpg" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Shed colonial mindset, trust Indian capability: Minister Ashwini Vaishnaw to railway officials</h3>
                     </div>
                    
         </div>
+        <h5 class="topic-header">Sports</h5>
         <div class="category-topics" id="sports">
             
-                    <div class="category-topic-card" onclick="window.open('https://timesofindia.indiatimes.com/sports/cricket/news/instead-of-mustafizur-had-it-been-litton-das-or-soumya-sarkar-would-they-have-done-the-same-thing-asks-ex-bcb-administrator/articleshow/126427818.cms', '_blank')">
-                        <img src="https://static.toiimg.com/photo/msid-126427887,imgsize-28118.cms" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Would Litton or Soumya face same heat as Mustafizur, asks ex-BCB official</h3>
+                    <div class="category-topic-card" onclick="window.open('https://timesofindia.indiatimes.com/sports/cricket/wpl/wpl-2026-nadine-de-klerk-the-difference-between-mumbai-indians-and-win-as-rcb-pocket-season-opener/articleshow/126440938.cms', '_blank')">
+                        <img src="https://static.toiimg.com/photo/msid-126441330,imgsize-34368.cms" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">WPL: Nadine de Klerk difference between MI and win; RCB pocket opener</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://sports.ndtv.com/football/zero-intention-mikel-arteta-defends-gabriel-martinelli-after-conor-bradley-injury-incident-10557071', '_blank')">
-                        <img src="https://c.ndtvimg.com/2026-01/2jcb77es_gabriel-martinelli-conor-bradley_625x300_09_January_26.jpg?im=FaceCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">"Zero Intention": Arteta Defends Martinelli After Bradley Injury Incident</h3>
+                    <div class="category-topic-card" onclick="window.open('https://sports.ndtv.com/boxing/boxers-asked-to-vacate-accommodation-fresh-logistical-issues-hit-national-championships-10579816', '_blank')">
+                        <img src="https://c.ndtvimg.com/2020-04/0bkhvgk_boxing-generic-afp_625x300_28_April_20.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Boxers Asked To Vacate Accommodation, Fresh Logistical Issues Hit National C'ships</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://sports.ndtv.com/golf/mohammad-azharuddin-and-corporate-titans-to-headline-ndtv-golf-pro-am-hyderabad-10563030', '_blank')">
-                        <img src="https://c.ndtvimg.com/2026-01/en7ufmv8_ndtv-golf-proam_625x300_09_January_26.jpeg?im=FitAndFill,algorithm=dnn,width=240,height=180" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Azharuddin and Corporate Titans to Headline NDTV Golf Pro-Am Hyderabad</h3>
+                    <div class="category-topic-card" onclick="window.open('https://sports.ndtv.com/cricket/nadine-de-klerks-stunning-all-round-show-helps-rcb-beat-mi-by-3-wickets-in-wpl-opener-10578039', '_blank')">
+                        <img src="https://c.ndtvimg.com/2026-01/9hp43gag_nadine-de-klerk-x_625x300_10_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">De Klerk's Helps RCBW Beat Mumbai Indians Women By 3 Wickets In WPL Opener</h3>
                     </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://sports.ndtv.com/football/fede-valverde-slams-stunning-free-kick-as-real-madrid-beat-atletico-madrid-to-set-up-el-clasico-supercopa-final-10553371', '_blank')">
-                        <img src="https://c.ndtvimg.com/2026-01/0pp3tv94_fede-valverde_625x300_09_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Valverde's Stunning Free-Kick Helps Real Beat Atletico To Set Up Clasico Final</h3>
-                    </div>
-                
-                    <div class="category-topic-card" onclick="window.open('https://sports.ndtv.com/football/goalkeeper-lucas-chevalier-the-hero-as-psg-clinch-french-champions-trophy-with-penalty-shootout-win-over-marseille-10552180', '_blank')">
-                        <img src="https://c.ndtvimg.com/2026-01/tfkjd4uk_psg_625x300_09_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Chevalier The Hero As PSG Clinch French Champions Trophy With Shootout Win</h3>
-                    </div>
-                
-                    <div class="category-topic-card" onclick="window.open('https://sports.ndtv.com/football/ac-milan-survive-scare-as-relegation-threatened-genoa-miss-late-penalty-in-dramatic-1-1-serie-a-draw-10555513', '_blank')">
-                        <img src="https://c.ndtvimg.com/2026-01/sgcuqt1_luka-modric_625x300_09_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">AC Milan Survive Scare As Genoa Miss Late Penalty In Dramatic 1-1 Draw</h3>
-                    </div>
-                
-                    <div class="category-topic-card" onclick="window.open('https://www.cnbctv18.com/business/chinas-anta-sports-offers-to-buy-pinault-familys-29-puma-stake-report-19817424.htm', '_blank')">
-                        <img src="https://images.cnbctv18.com/uploads/2026/01/2026-01-08t160022z-114947575-rc2dgcascgxg-rtrmadp-3-puma-m-a-anta-2026-01-76db34d1f1cc99b2e1f6b3cd52d16b98.jpg" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">China's Anta Sports offers to buy Pinault family's 29% Puma stake: report</h3>
+                    <div class="category-topic-card" onclick="window.open('https://sports.ndtv.com/cricket/ireland-announce-squad-for-t20-world-cup-2026-paul-stirling-to-lead-10579327', '_blank')">
+                        <img src="https://c.ndtvimg.com/2024-06/rnu52nf_paul-stirling_625x300_07_June_24.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
+                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Ireland Announce Squad For T20 World Cup 2026, Paul Stirling To Lead</h3>
                     </div>
                 
         </div>
+        <h5 class="topic-header">Entertainment</h5>
         <div class="category-topics" id="entertainment">
-            
-                    <div class="category-topic-card" onclick="window.open('https://timesofindia.indiatimes.com/entertainment/tamil/movies/news/jana-nayagan-wins-legal-battle-as-madras-hc-slams-cbfc-delay-ordering-ua-certificate-to-be-granted-to-vijay-starrer-immediately-report/articleshow/126428081.cms', '_blank')">
-                        <img src="https://static.toiimg.com/photo/msid-126428081,imgsize-21572.cms" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Big relief for Vijay: 'Jana Nayagan' gets Madras HC clearance; U/A certificate ordered</h3>
-                    </div>
                 
-                    <div class="category-topic-card" onclick="window.open('https://timesofindia.indiatimes.com/entertainment/hindi/bollywood/news/oscars-2025-indias-kantara-chapter-1-and-tanvi-the-great-join-eligible-films-for-best-picture-race/articleshow/126428107.cms', '_blank')">
-                        <img src="https://static.toiimg.com/photo/msid-126428107,imgsize-125758.cms" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">Oscars 2025: ‘Kantara Chapter 1’ enters race; ‘Tanvi The Great’ also in list</h3>
-                    </div>
-                
-                    <div class="category-topic-card" onclick="window.open('https://www.ndtv.com/entertainment/after-viral-ap-dhillon-concert-tara-sutaria-and-veer-pahariya-call-it-quits-report-10562352', '_blank')">
-                        <img src="https://c.ndtvimg.com/2026-01/p4mfs5o_tara-_625x300_09_January_26.png?im=FitAndFill,algorithm=dnn,width=240,height=180" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">After Viral AP Dhillon Concert, Tara-Veer Call It Quits: Report</h3>
-                    </div>
-                    
         </div>
+        <h5 class="topic-header">Health</h5>
         <div class="category-topics" id="health">
-           
-                    <div class="category-topic-card" onclick="window.open('https://www.ndtv.com/health/to-shower-or-skip-winter-bathing-hacks-you-actually-need-to-survive-the-cold-wave-10519064', '_blank')">
-                        <img src="https://c.ndtvimg.com/2026-01/3llfq2eg_winter-bathing_625x300_08_January_26.jpg?im=FeatureCrop,algorithm=dnn,width=240,height=180" width="100%" height="180">
-                        <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">To Shower Or Skip? 6 Winter Bathing Hacks You Actually Need</h3>
-                    </div>
-                   
+              
         </div>
     </section>
     <!-- ⭐ Community -->

@@ -276,12 +276,12 @@ async function updateHTML(params) {
         .category-topics {
             display: grid;
             grid-auto-flow: column;
-            grid-template-rows: repeat(2, 1fr); /* 2 cards per column */
+            grid-template-rows: repeat(2, auto); /* 🔥 auto, not 1fr */
             gap: 16px;
             padding: 12px;
-            height: 500px;          /* controls visible rows */
             overflow-x: auto;
             overflow-y: hidden;
+            align-items: start; /* prevents stretching */
         }
 
         .category-topic-card {
@@ -307,6 +307,16 @@ async function updateHTML(params) {
             font-weight: 600;
             text-decoration: none;
         }
+        .topic-header {
+            text-align: center;
+            margin: 20px 0 12px;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #c55f17db;
+            position: relative;
+            text-decoration:underline;
+    }
         /***************************
             FOOTER
         ***************************/
@@ -541,13 +551,13 @@ async function updateHTML(params) {
     <!-- ⭐ Topic News -->
     <section>
         <h2 class="section-title">Explore by Topics</h2>
-        <h5>India</h5>
+        <h5 class="topic-header">India</h5>
         <div class="category-topics" id="india">
             ${params
                 .flatMap(entry => entry.headlines)
                 .filter(c =>
-                    c.link.toLowerCase().includes('india') ||
-                    c.link.toLowerCase().includes('/india')
+                    c.link.toLowerCase().includes('/india') ||
+                    c.link.toLowerCase().includes('national')
                 )
                 .map(c => {
                     const img =
@@ -564,6 +574,7 @@ async function updateHTML(params) {
                 `})
             .join('')}
         </div>
+        <h5 class="topic-header">Finance</h5>
         <div class="category-topics" id="finance">
             ${params
                 .flatMap(entry => entry.headlines)
@@ -571,8 +582,11 @@ async function updateHTML(params) {
                     c.link.toLowerCase().includes('finance') ||
                     c.link.toLowerCase().includes('/finance') ||
                     c.link.toLowerCase().includes('stocks') ||
+                    c.link.toLowerCase().includes('market') ||
+                    c.link.toLowerCase().includes('tariff') ||
                     c.link.toLowerCase().includes('business') ||
-                    c.link.toLowerCase().includes('banks')
+                    c.link.toLowerCase().includes('banks') ||
+                    c.link.toLowerCase().includes('economy')
                 )
                 .map(c => {
                     const img =
@@ -589,7 +603,7 @@ async function updateHTML(params) {
                 `})
             .join('')}
         </div>   
-        </div>
+        <h5 class="topic-header">Technology</h5>
         <div class="category-topics" id="technology">
             ${params
                 .flatMap(entry => entry.headlines)
@@ -612,12 +626,23 @@ async function updateHTML(params) {
                 `})
             .join('')}   
         </div>
+        <h5 class="topic-header">Sports</h5>
         <div class="category-topics" id="sports">
             ${params
                 .flatMap(entry => entry.headlines)
                 .filter(c =>
                     c.link.toLowerCase().includes('sports') ||
-                    c.link.toLowerCase().includes('/sports')
+                    c.link.toLowerCase().includes('/sports') ||
+                    c.link.toLowerCase().includes('boxing') ||
+                    c.link.toLowerCase().includes('cricket') ||
+                    c.link.toLowerCase().includes('football') ||
+                    c.link.toLowerCase().includes('soccer') ||
+                    c.link.toLowerCase().includes('tennis') ||
+                    c.link.toLowerCase().includes('hockey') ||
+                    c.link.toLowerCase().includes('badminton') ||
+                    c.link.toLowerCase().includes('kabaddi') ||
+                    c.link.toLowerCase().includes('championships') ||
+                    c.link.toLowerCase().includes('champions')
                 )
                 .map(c => {
                     const img =
@@ -634,6 +659,7 @@ async function updateHTML(params) {
                 `})
             .join('')}
         </div>
+        <h5 class="topic-header">Entertainment</h5>
         <div class="category-topics" id="entertainment">
             ${params
                 .flatMap(entry => entry.headlines)
@@ -656,6 +682,7 @@ async function updateHTML(params) {
                 `})
             .join('')}    
         </div>
+        <h5 class="topic-header">Health</h5>
         <div class="category-topics" id="health">
            ${params
                 .flatMap(entry => entry.headlines)
