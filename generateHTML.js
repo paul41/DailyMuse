@@ -108,13 +108,13 @@ async function updateHTML(params) {
         }
         .carousel-slide.active {
             display: block;
+            cursor: pointer;
         }
 
         .carousel-slide img {
             width: 100%;
             height: 240px;
             object-fit: cover;
-            border-radius: 14px;
         }
 
         .carousel-caption {
@@ -311,7 +311,6 @@ async function updateHTML(params) {
             }
             .carousel {
                 width: auto;
-                border-radius: 10px;
             }
             .carousel-slide img {
                 height: 220px;
@@ -429,9 +428,9 @@ async function updateHTML(params) {
     <!-- ⭐ HERO SECTION -->
     <section class="hero">
        <h2 class="section-title">Today’s Top Stories</h2>
-       <div class="carousel">
+        <div class="carousel">
             ${params.map((entry, index) => `
-                <div class="carousel-slide${index === 0 ? ' active' : ''}">
+                <div class="carousel-slide${index === 0 ? ' active' : ''}" onclick="handleSlideClick('${entry.headlines[0]?.link || '#'}')">
                     <img src="${entry.headlines[0]?.description?.match(/<img[^>]+src=(["'])(.*?)\1/)?.[2] 
                         || entry.headlines[0]?.enclosure?.["$"]?.url 
                         || entry.headlines[0]?.StoryImage 
@@ -546,7 +545,12 @@ async function updateHTML(params) {
             slides[i].classList.remove("active");
             i = (i + 1) % slides.length;
             slides[i].classList.add("active");
-        }, 4000);
+        }, 3500);
+        function handleSlideClick(link) { 
+            console.log("Clicked link:", link);
+            // open in new tab 
+            window.open(link, "_blank");
+        }
     </script>
 
 </body>
