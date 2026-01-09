@@ -1,6 +1,7 @@
 const fs = require('fs');
 const raw = fs.readFileSync('data.json', 'utf-8');
 const RSSLinkExtractor = require('./extractor');
+const { error } = require('console');
 const xmlContent = JSON.parse(raw);
 
 
@@ -8,7 +9,7 @@ const xmlContent = JSON.parse(raw);
     const extractor = new RSSLinkExtractor(xmlContent);
     const contents = await extractor.extractLinks();
     await updateHTML(contents).then(data => console.log('✅ HTML generated: index.html')).catch(err => {
-        console.error('Error updating HTML');
+        console.error('Error updating HTML',error);
         process.exit(1);
     });
 })();
@@ -437,7 +438,12 @@ async function updateHTML(params) {
                         || entry.headlines[0]?.mediaContent?.["$"]?.url 
                         || "noImg.png"}" />
                     <div class="carousel-caption">
-                        ${entry.headlines[0]?.title || "Top Stories Curated for You"}
+                        <span class="headline-title">
+                            ${entry.headlines[0]?.title || "Top Stories Curated for You"}
+                        </span>
+                        <span>
+                            <b><i>- ${entry.link === 'https://www.thehindu.com/news/national/' ? 'The Hindu' : entry.link === 'https://www.cnbctv18.com/business/' ?'CNBCTV18' : entry.title}</i></b>
+                        </span>
                     </div>
                 </div>
             `).join('')}
