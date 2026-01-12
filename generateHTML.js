@@ -209,13 +209,17 @@ async function updateHTML(params) {
         }
 
         .quick-links {
+            position: relative;
             display: flex;
+            justify-content: center;
+            align-items: center;
             gap: 12px;
             margin-bottom: 16px;
             flex-wrap: wrap;
         }
 
         .quick-btn {
+            cursor: pointer;
             padding: 10px 14px;
             background: var(--card-bg);
             border-radius: 10px;
@@ -245,6 +249,8 @@ async function updateHTML(params) {
             margin: 20px auto 10px;
             padding: 16px;
             display: flex;
+            justify-content: center;
+            align-items: center;
             gap: 16px;
             background: var(--card-bg);
             box-shadow: var(--shadow);
@@ -260,11 +266,15 @@ async function updateHTML(params) {
         }
 
         .card {
+            cursor: pointer;
             flex: 0 0 100%;
             background: var(--card-bg);
             border-radius: 14px;
-            padding: 16px;
+            margin-block-end: 10px;
             box-shadow: var(--shadow);
+        }
+        .card img{
+            border-radius: 14px 14px 0 0;
         }
 
         @media (min-width: 768px) {
@@ -285,7 +295,7 @@ async function updateHTML(params) {
         }
 
         .category-topic-card {
-            background: #ffffff;
+            background: #ede0d8f2;
             border-radius: 12px;
             padding: 16px;
             min-height: 140px;
@@ -301,12 +311,6 @@ async function updateHTML(params) {
             line-height: 1.4;
             margin-bottom: 10px;
         }
-
-        .category-topic-card a {
-            color: #2563eb;
-            font-weight: 600;
-            text-decoration: none;
-        }
         .topic-header {
             text-align: center;
             margin: 20px 0 12px;
@@ -316,7 +320,85 @@ async function updateHTML(params) {
             color: #c55f17db;
             position: relative;
             text-decoration:underline;
-    }
+        }   
+        .copied-label {
+            top: 50px;
+            position: absolute;
+            left: 36%;
+            transform: translateX(-50%);
+            background: #16a34a;
+            color: #fff;
+            padding: 3px 8px;
+            font-size: 11px;
+            border-radius: 6px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .show .copied-label {
+            opacity: 1;
+        }
+            /* Overlay */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+        }
+
+        /* Modal */
+        .modal {
+            background: #fff;
+            padding: 24px;
+            width: 320px;
+            border-radius: 8px;
+            text-align: center;
+            transform: scale(0.8) translateY(20px);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1) translateY(0);
+        }
+
+        input {
+            width: 92%;
+            padding: 10px;
+            margin: 12px 0;
+        }
+
+        .subscribe-btn {
+            width: 100%;
+            padding: 10px;
+            background: #c55f17db;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+        }
         /***************************
             FOOTER
         ***************************/
@@ -435,7 +517,12 @@ async function updateHTML(params) {
                 padding: 10px 12px;
             }
         }
-
+        @media (max-width: 768px) {
+            .copied-label {
+                top:50px;
+                left:15%;
+            }
+        }
         /* ==========================
         TABLET & UP
         ========================== */
@@ -458,7 +545,7 @@ async function updateHTML(params) {
         <!-- Logo + Title -->
         <div class="dm-brand">
             <img src="dailyMicon.png" class="dm-logo" alt="DailyMuse Logo" />
-            <h3 class="dm-title">India's headlines,from the finest five</h3>
+            <h3 class="dm-title">India's headlines, from the finest five</h3>
         </div>
         <!-- ⭐ Topics -->
         <section class="topics">
@@ -506,8 +593,8 @@ async function updateHTML(params) {
                     ? 'CNBC_TV18.png' 
                     : entry?.image}" width="100" height="90" style="object-fit: contain; border-radius: 8px;"/>
                 <div>
-                    <h3><a href="${entry.link}" target="_blank" style="color: #8a1260db;">${entry.title}</a></h3>
-                    <p style="color: #c55f17db; font-family: Arial, sans-serif; font-size: 15px; font-weight: 600;">${entry.pubDate}</p>
+                    <h3 style="margin-block-end: 0.5rem;"><a href="${entry.link}" target="_blank" style="color: #8a1260db;text-decoration: none;">${entry.title}</a></h3>
+                    <p style="color: #c55f17db; font-family: Arial, sans-serif; font-size: 15px; font-weight: 600;margin-block-start: 0.5rem;">${entry.pubDate}</p>
                 </div>
             </div>
             <div class="card-container">
@@ -520,10 +607,9 @@ async function updateHTML(params) {
                                     c?.mediaContent?.["$"]?.url ||
                                     "noImg.png";
                                 return `
-                        <div class="card">
+                        <div class="card" onClick="gotoNews('${c.link}')">
                             <img src="${img}" width="100%" height="180">
-                            <h3>${c.title}</h3>
-                            <a href="${c.link}" target="_blank">Read →</a>
+                            <h3 style="margin-block-start: 0px;padding:15px;">${c.title}</h3>
                         </div>
                     `;
                             }).join("")}
@@ -710,16 +796,33 @@ async function updateHTML(params) {
     <h2 class="section-title">Community & Shareability</h2>
     <section class="community">
         <div class="quick-links">
-            <div class="quick-btn">Share DailyMuse</div>
-            <div class="quick-btn">Submit Feedback</div>
-            <div class="quick-btn">Subscribe</div>
+            <div class="quick-btn" onClick="copyLink(event,'https://paul41.github.io/DailyMuse/')">Share DailyMuse
+                <span class="copied-label">Copied!</span>
+            </div>
+            <div class="quick-btn" onClick="subscribeModal()">Subscribe</div>
+            <div class="quick-btn">Blog</div>
         </div>
     </section>
 
+    <!-- ⭐ Subscribe Modal -->
+    <div class="modal-overlay" id="subscribeModal">
+        <div class="modal">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <h2>Subscribe to DailyMuse</h2>
+            <p>Get daily updates straight to your inbox.</p>
+            <input type="email" id="emailInput" placeholder="Enter your email" />
+            <button class="subscribe-btn" onclick="submitSubscription()">Subscribe</button>
+        </div>
+    </div>
+
     <!-- ⭐ Footer -->
     <footer>
+        <div style="margin-block-end: 1em;">
+            <a href="#" target="_blank" style="color: #8a1260db;text-decoration: none;font-size: 0.85rem">Privacy Policy</a> | 
+            <a href="#" target="_blank" style="color: #8a1260db;text-decoration: none;font-size: 0.85rem">About us</a>
+        </div>
         <b>DailyMuse · One brilliant headliner, delivered daily</b>
-        <p>© 2025 DailyMuse</p>
+        <p style="margin-block-start: 0">© 2026 DailyMuse</p>
     </footer>
 
     <!-- ⭐ GSAP -->
@@ -748,10 +851,52 @@ async function updateHTML(params) {
             i = (i + 1) % slides.length;
             slides[i].classList.add("active");
         }, 3500);
+        function gotoNews(link){
+            // open in new tab 
+            window.open(link, "_blank");
+        }
         function handleSlideClick(link) { 
             // open in new tab 
             window.open(link, "_blank");
         }
+        function copyLink(event, link) {
+            event.preventDefault();
+            navigator.clipboard.writeText(link).then(() => {
+                const el = event.target;
+                console.log('Link copied to clipboard:', event);
+                el.classList.add("show");
+                setTimeout(() => {
+                    el.classList.remove("show");
+                }, 1200);
+            })
+            .catch(err => { console.error('Failed to copy: ', err); });
+        }
+        function subscribeModal() {
+            document.getElementById("subscribeModal").classList.add("active");
+        }
+
+        function closeModal() {
+            document.getElementById("subscribeModal").classList.remove("active");
+        }
+
+        function submitSubscription() {
+            const email = document.getElementById("emailInput").value;
+
+            if (!email) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+            alert("Thank you for subscribing, " + email + "!");
+            closeModal();
+        }
+
+        /* Close modal when clicking outside */
+        document.getElementById("subscribeModal").addEventListener("click", function (e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
     </script>
 
 </body>
