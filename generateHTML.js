@@ -660,7 +660,7 @@ async function updateHTML(params) {
                 `})
             .join('')}
         </div>
-        <h5 class="topic-header">Finance</h5>
+        ${params.flatMap(item=>item.headlines).find(topicUrl=>topicUrl.link.toLowerCase().includes('finance')) ? `<h5 class="topic-header">Finance</h5>` : ''}
         <div class="category-topics" id="finance">
             ${params
                 .flatMap(entry => entry.headlines)
@@ -689,13 +689,15 @@ async function updateHTML(params) {
                 `})
             .join('')}
         </div>   
-        <h5 class="topic-header">Technology</h5>
+        ${params.flatMap(item=>item.headlines).find(topicUrl=>topicUrl.link.toLowerCase().includes('technology')) ? `<h5 class="topic-header">Technology</h5>` : ''}
         <div class="category-topics" id="technology">
             ${params
                 .flatMap(entry => entry.headlines)
                 .filter(c =>
                     c.link.toLowerCase().includes('technology') ||
-                    c.link.toLowerCase().includes('/technology')
+                    c.link.toLowerCase().includes('/technology') ||
+                    c.link.toLowerCase().includes('tech') ||
+                    c.link.toLowerCase().includes('gadgets')
                 )
                 .map(c => {
                     const img =
@@ -712,7 +714,7 @@ async function updateHTML(params) {
                 `})
             .join('')}   
         </div>
-        <h5 class="topic-header">Sports</h5>
+        ${params.flatMap(item=>item.headlines).find(topicUrl=>topicUrl.link.toLowerCase().includes('sports')) ? `<h5 class="topic-header">Sports</h5>` : ''}
         <div class="category-topics" id="sports">
             ${params
                 .flatMap(entry => entry.headlines)
@@ -745,7 +747,7 @@ async function updateHTML(params) {
                 `})
             .join('')}
         </div>
-        <h5 class="topic-header">Entertainment</h5>
+        ${params.flatMap(item=>item.headlines).find(topicUrl=>topicUrl.link.toLowerCase().includes('entertainment')) ? `<h5 class="topic-header">Entertainment</h5>` : ''}
         <div class="category-topics" id="entertainment">
             ${params
                 .flatMap(entry => entry.headlines)
@@ -768,7 +770,7 @@ async function updateHTML(params) {
                 `})
             .join('')}    
         </div>
-        <h5 class="topic-header">Health</h5>
+       ${params.flatMap(item=>item.headlines).find(topicUrl=>topicUrl.link.toLowerCase().includes('health')) ? `<h5 class="topic-header">Health</h5>` : ''}
         <div class="category-topics" id="health">
            ${params
                 .flatMap(entry => entry.headlines)
@@ -818,8 +820,8 @@ async function updateHTML(params) {
     <!-- ⭐ Footer -->
     <footer>
         <div style="margin-block-end: 1em;">
-            <a href="#" target="_blank" style="color: #8a1260db;text-decoration: none;font-size: 0.85rem">Privacy Policy</a> | 
-            <a href="#" target="_blank" style="color: #8a1260db;text-decoration: none;font-size: 0.85rem">About us</a>
+            <a href="privacy.html" target="_blank" style="color: #8a1260db;text-decoration: none;font-size: 0.85rem">Privacy Policy</a> | 
+            <a href="about.html" target="_blank" style="color: #8a1260db;text-decoration: none;font-size: 0.85rem">About us</a>
         </div>
         <b>DailyMuse · One brilliant headliner, delivered daily</b>
         <p style="margin-block-start: 0">© 2026 DailyMuse</p>
@@ -850,7 +852,7 @@ async function updateHTML(params) {
             slides[i].classList.remove("active");
             i = (i + 1) % slides.length;
             slides[i].classList.add("active");
-        }, 3500);
+        }, 4500);
         function gotoNews(link){
             // open in new tab 
             window.open(link, "_blank");
