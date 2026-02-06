@@ -9,7 +9,7 @@ const xmlContent = JSON.parse(raw);
     const extractor = new RSSLinkExtractor(xmlContent);
     const contents = await extractor.extractLinks();
     await updateHTML(contents).then(data => console.log('✅ HTML generated: index.html')).catch(err => {
-        console.error('Error updating HTML',error);
+        console.error('Error updating HTML', error);
         process.exit(1);
     });
 })();
@@ -117,18 +117,18 @@ async function updateHTML(params) {
             height: 240px;
             object-fit: cover;
         }
-
         .carousel-caption {
-            position: absolute;
-            bottom: 20px;
-            left: 15px;
-            right: 15px;
-            text-align: center;
-            color: #fff;
-            background: rgba(0,0,0,0.5);
-            padding: 10px 14px;
-            border-radius: 8px;
-        }
+                font-size: 0.75rem;
+                text-align: center;   
+                bottom: 20px;
+                left: 15px;
+                right: 15px;
+                color: #fff;
+                background: rgba(0,0,0,0.5);
+                padding: 10px 14px;
+                border-radius: 8px;
+            }
+      
         .section-title {
             max-width: 960px;
             margin: 30px auto 10px;
@@ -158,6 +158,55 @@ async function updateHTML(params) {
         .heat-2 { background: #ff884d; }
         .heat-3 { background: #ffd24d; }
 
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-header h3 {
+            padding: 5px;
+            margin: 0;
+            flex: 1;
+            font-size: 1rem;
+        }
+
+        .expand-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+        /* Hidden content */
+        .card-content {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+        }
+
+        /* Expanded state */
+        .trend-card.expanded .card-content {
+            max-height: 600px;
+            opacity: 1;
+        }
+
+        .trend-card.expanded .expand-btn {
+            transform: rotate(180deg);
+        }
+        /* Content styling */
+        .card-content p {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .card-content img {
+            width: 100%;
+            margin-top: 8px;
+            border-radius: 8px;
+        }
         /***************************
             TOPICS
         ***************************/
@@ -409,7 +458,7 @@ async function updateHTML(params) {
             background: var(--card-bg);
             border-top: 1px solid var(--border-color);
         }
-
+        
         /* ==========================
         MOBILE FIRST FIXES
         ========================== */
@@ -446,6 +495,14 @@ async function updateHTML(params) {
             .carousel-caption {
                 font-size: 0.75rem;
                 text-align: center;
+                position: absolute;
+                bottom: 20px;
+                left: 15px;
+                right: 15px;
+                color: #fff;
+                background: rgba(0,0,0,0.5);
+                padding: 10px 14px;
+                border-radius: 8px;
             }
         }
         /* Section titles */
@@ -535,6 +592,21 @@ async function updateHTML(params) {
                 min-width: unset;
             }
         }
+            .card-viewport {
+    overflow: hidden;
+    width: 100%;
+}
+
+.card-track {
+    display: flex;
+   will-change: transform;
+}
+
+.card {
+    min-width: 300px;   /* adjust to your card width */
+    margin-right: 16px;
+    cursor: pointer;
+}
     </style>
 </head>
 
@@ -560,45 +632,13 @@ async function updateHTML(params) {
     
     <!-- ⭐ HERO SECTION -->
     <section class="hero">
-       <h2 class="section-title">Today’s Top Stories</h2>
+       <h2 class="section-title">Latest news</h2>
         <div class="carousel">
             ${params.map((entry, index) => `
-                <div class="carousel-slide${index === 0 ? ' active' : ''}" onclick="handleSlideClick('${entry.headlines[0]?.link || '#'}')">
-                    <img src="${entry.headlines[0]?.description?.match(/<img[^>]+src=(["'])(.*?)\1/)?.[2] 
-                        || entry.headlines[0]?.enclosure?.["$"]?.url 
-                        || entry.headlines[0]?.StoryImage 
-                        || entry.headlines[0]?.mediaContent?.["$"]?.url 
-                        || "noImg.png"}" />
-                    <div class="carousel-caption">
-                        <span class="headline-title">
-                            ${entry.headlines[0]?.title || "Top Stories Curated for You"}
-                        </span>
-                        <span>
-                            <b><i>- ${entry.link === 'https://www.thehindu.com/news/national/' ? 'The Hindu' : entry.link === 'https://www.cnbctv18.com/business/' ?'CNBCTV18' : entry.title}</i></b>
-                        </span>
-                    </div>
-                </div>
-            `).join('')}
-        </div>
-    </section>
-
-    <!-- ⭐ Dynamic News -->
-    <section>
-        <h2 class="section-title">From Your Favorite Sources</h2>
-        ${params
-                .map(
-                    (entry) => `
-            <div class="news-header">
-                <img src="${entry?.image === 'https://www.cnbctv18.com/_next/static/media/cnbctv18-logo.e3f586f6.png' 
-                    ? 'CNBC_TV18.png' 
-                    : entry?.image}" width="100" height="90" style="object-fit: contain; border-radius: 8px;"/>
-                <div>
-                    <h3 style="margin-block-end: 0.5rem;"><a href="${entry.link}" target="_blank" style="color: #8a1260db;text-decoration: none;">${entry.title}</a></h3>
-                    <p style="color: #c55f17db; font-family: Arial, sans-serif; font-size: 15px; font-weight: 600;margin-block-start: 0.5rem;">${entry.pubDate}</p>
-                </div>
-            </div>
-            <div class="card-container">
-                ${entry.headlines
+                <div class="carousel-slide${index === 0 ? ' active' : ''}">
+                    <div class="card-viewport">
+                        <div class="card-track">
+                            ${entry.headlines
                             .map((c) => {
                                 const img =
                                     c?.description?.match(/<img[^>]+src=(["'])(.*?)\1/)?.[2] ||
@@ -607,23 +647,45 @@ async function updateHTML(params) {
                                     c?.mediaContent?.["$"]?.url ||
                                     "noImg.png";
                                 return `
-                        <div class="card" onClick="gotoNews('${c.link}')">
-                            <img src="${img}" width="100%" height="180">
-                            <h3 style="margin-block-start: 0px;padding:15px;">${c.title}</h3>
-                        </div>
-                    `;
+                                        <div class="card" onclick="handleSlideClick('${c?.link || '#'}')">
+                                            <img src="${img}" width="100%" height="180"> 
+                                            <div class="carousel-caption">
+                                                <span class="headline-title">
+                                                    ${c.title || "Top Stories Curated for You"}
+                                                </span>
+                                                <span>
+                                                    <b><i>- ${entry.link === 'https://www.thehindu.com/news/national/' ? 'The Hindu' : entry.link === 'https://www.cnbctv18.com/business/' ?'CNBCTV18' : entry.title}</i></b>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    `;
                             }).join("")}
-            </div>
-        `
-                ).join("")}
-    </section>
-
-    <!-- ⭐ Trending Section -->
-    <h2 class="section-title">Trending Now</h2>
-    <section class="trending">
+                        </div>
+                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+</section>
+<!-- ⭐ Trending Section -->
+    <h2 class="section-title">Trending Now <span style="color: #c55f17db;font-size: 0.85rem;">AI Analysis</span></h2>
+<section class="trending">
         <div class="trend-card">
             <div class="heat heat-1"></div>
-            <h3>Markets Surge to Record High</h3>
+            <div class="card-header">
+                <h3>Markets Surge to Record High</h3>
+                <button class="expand-btn" aria-label="Expand">
+                    ▼
+                </button>
+            </div>
+            <div class="card-content">
+                <p>
+                    Global markets hit record highs as investors reacted positively
+                    to strong earnings and easing inflation.
+                </p>
+
+                <img src="img/market1.jpg" alt="Market chart">
+                <img src="img/market2.jpg" alt="Stock performance">
+            </div>
         </div>
         <div class="trend-card">
             <div class="heat heat-2"></div>
@@ -634,25 +696,63 @@ async function updateHTML(params) {
             <h3>Monsoon Expected Above Normal</h3>
         </div>
     </section>
+    <!-- ⭐ Dynamic News -->
+    <section>
+        <h2 class="section-title">From Your Favorite Sources</h2>
+        ${params
+            .map(
+                (entry) => `
+            <div class="news-header">
+                <img src="${entry?.image === 'https://www.cnbctv18.com/_next/static/media/cnbctv18-logo.e3f586f6.png'
+                        ? 'CNBC_TV18.png'
+                        : entry?.image}" width="100" height="90" style="object-fit: contain; border-radius: 8px;"/>
+                <div>
+                    <h3 style="margin-block-end: 0.5rem;"><a href="${entry.link}" target="_blank" style="color: #8a1260db;text-decoration: none;">${entry.title}</a></h3>
+                    <p style="color: #c55f17db; font-family: Arial, sans-serif; font-size: 15px; font-weight: 600;margin-block-start: 0.5rem;">${entry.pubDate}</p>
+                </div>
+            </div>
+            <div class="card-container">
+                ${entry.headlines
+                        .map((c) => {
+                            const img =
+                                c?.description?.match(/<img[^>]+src=(["'])(.*?)\1/)?.[2] ||
+                                c?.enclosure?.["$"]?.url ||
+                                c?.StoryImage ||
+                                c?.mediaContent?.["$"]?.url ||
+                                "noImg.png";
+                            return `
+                        <div class="card">
+                            <img src="${img}" width="100%" height="180">
+                            <h3 style="margin-block-start: 0px;padding:15px;">${c.title}</h3>
+                        </div>
+                    `;
+                        }).join("")}
+            </div>
+        `
+            ).join("")}
+    </section>
+
+    
+    
     <!-- ⭐ Topic News -->
     <section>
         <h2 class="section-title">Explore by Topics</h2>
         <h5 class="topic-header">India</h5>
         <div class="category-topics" id="india">
             ${params
-                .flatMap(entry => entry.headlines)
-                .filter(c =>
-                    c.link.toLowerCase().includes('/india') ||
-                    c.link.toLowerCase().includes('national')
-                )
-                .map(c => {
-                    const img =
-                        c?.description?.match(/<img[^>]+src=(["'])(.*?)\1/)?.[2] ||
-                        c?.enclosure?.["$"]?.url ||
-                        c?.StoryImage ||
-                        c?.mediaContent?.["$"]?.url ||
-                        "noImg.png";
-                    return `
+            .flatMap(entry => entry.headlines)
+            .filter(c =>
+                c.link.toLowerCase().includes('/india') ||
+                c.link.toLowerCase().includes('national')
+            )
+            .map(c => {
+                const img =
+                    c?.description?.match(/<img[^>]+src=(["'])(.*?)\1/)?.[2] ||
+                    c?.enclosure?.["$"]?.url ||
+                    c?.StoryImage ||
+                    c?.mediaContent?.["$"]?.url ||
+                    "noImg.png";
+                return `
                     <div class="category-topic-card" onclick="window.open('${c.link}', '_blank')">
                         <img src="${img}" width="100%" height="180">
                         <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">${c.title}</h3>
@@ -660,28 +760,28 @@ async function updateHTML(params) {
                 `})
             .join('')}
         </div>
-        ${params.flatMap(item=>item.headlines).find(topicUrl=>topicUrl.link.toLowerCase().includes('finance')) ? `<h5 class="topic-header">Finance</h5>` : ''}
+        ${params.flatMap(item => item.headlines).find(topicUrl => topicUrl.link.toLowerCase().includes('finance') || topicUrl.link.toLowerCase().includes('stocks') || topicUrl.link.toLowerCase().includes('market') || topicUrl.link.toLowerCase().includes('business') || topicUrl.link.toLowerCase().includes('ecomnomy')) ? `<h5 class="topic-header">Finance</h5>` : ''}
         <div class="category-topics" id="finance">
             ${params
-                .flatMap(entry => entry.headlines)
-                .filter(c =>
-                    c.link.toLowerCase().includes('finance') ||
-                    c.link.toLowerCase().includes('/finance') ||
-                    c.link.toLowerCase().includes('stocks') ||
-                    c.link.toLowerCase().includes('market') ||
-                    c.link.toLowerCase().includes('tariff') ||
-                    c.link.toLowerCase().includes('business') ||
-                    c.link.toLowerCase().includes('banks') ||
-                    c.link.toLowerCase().includes('economy')
-                )
-                .map(c => {
-                    const img =
-                        c?.description?.match(/<img[^>]+src=(["'])(.*?)\1/)?.[2] ||
-                        c?.enclosure?.["$"]?.url ||
-                        c?.StoryImage ||
-                        c?.mediaContent?.["$"]?.url ||
-                        "noImg.png";
-                    return `
+            .flatMap(entry => entry.headlines)
+            .filter(c =>
+                c.link.toLowerCase().includes('finance') ||
+                c.link.toLowerCase().includes('/finance') ||
+                c.link.toLowerCase().includes('stocks') ||
+                c.link.toLowerCase().includes('market') ||
+                c.link.toLowerCase().includes('tariff') ||
+                c.link.toLowerCase().includes('business') ||
+                c.link.toLowerCase().includes('banks') ||
+                c.link.toLowerCase().includes('economy')
+            )
+            .map(c => {
+                const img =
+                    c?.description?.match(/<img[^>]+src=(["'])(.*?)\1/)?.[2] ||
+                    c?.enclosure?.["$"]?.url ||
+                    c?.StoryImage ||
+                    c?.mediaContent?.["$"]?.url ||
+                    "noImg.png";
+                return `
                     <div class="category-topic-card" onclick="window.open('${c.link}', '_blank')">
                         <img src="${img}" width="100%" height="180">
                         <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">${c.title}</h3>
@@ -689,24 +789,24 @@ async function updateHTML(params) {
                 `})
             .join('')}
         </div>   
-        ${params.flatMap(item=>item.headlines).find(topicUrl=>topicUrl.link.toLowerCase().includes('technology')) ? `<h5 class="topic-header">Technology</h5>` : ''}
+        ${params.flatMap(item => item.headlines).find(topicUrl => topicUrl.link.toLowerCase().includes('technology')) ? `<h5 class="topic-header">Technology</h5>` : ''}
         <div class="category-topics" id="technology">
             ${params
-                .flatMap(entry => entry.headlines)
-                .filter(c =>
-                    c.link.toLowerCase().includes('technology') ||
-                    c.link.toLowerCase().includes('/technology') ||
-                    c.link.toLowerCase().includes('tech') ||
-                    c.link.toLowerCase().includes('gadgets')
-                )
-                .map(c => {
-                    const img =
-                        c?.description?.match(/<img[^>]+src=(["'])(.*?)\1/)?.[2] ||
-                        c?.enclosure?.["$"]?.url ||
-                        c?.StoryImage ||
-                        c?.mediaContent?.["$"]?.url ||
-                        "noImg.png";
-                    return `
+            .flatMap(entry => entry.headlines)
+            .filter(c =>
+                c.link.toLowerCase().includes('technology') ||
+                c.link.toLowerCase().includes('/technology') ||
+                c.link.toLowerCase().includes('tech') ||
+                c.link.toLowerCase().includes('gadgets')
+            )
+            .map(c => {
+                const img =
+                    c?.description?.match(/<img[^>]+src=(["'])(.*?)\1/)?.[2] ||
+                    c?.enclosure?.["$"]?.url ||
+                    c?.StoryImage ||
+                    c?.mediaContent?.["$"]?.url ||
+                    "noImg.png";
+                return `
                     <div class="category-topic-card" onclick="window.open('${c.link}', '_blank')">
                         <img src="${img}" width="100%" height="180">
                         <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">${c.title}</h3>
@@ -714,32 +814,32 @@ async function updateHTML(params) {
                 `})
             .join('')}   
         </div>
-        ${params.flatMap(item=>item.headlines).find(topicUrl=>topicUrl.link.toLowerCase().includes('sports')) ? `<h5 class="topic-header">Sports</h5>` : ''}
+        ${params.flatMap(item => item.headlines).find(topicUrl => topicUrl.link.toLowerCase().includes('sports')) ? `<h5 class="topic-header">Sports</h5>` : ''}
         <div class="category-topics" id="sports">
             ${params
-                .flatMap(entry => entry.headlines)
-                .filter(c =>
-                    c.link.toLowerCase().includes('sports') ||
-                    c.link.toLowerCase().includes('/sports') ||
-                    c.link.toLowerCase().includes('boxing') ||
-                    c.link.toLowerCase().includes('cricket') ||
-                    c.link.toLowerCase().includes('football') ||
-                    c.link.toLowerCase().includes('soccer') ||
-                    c.link.toLowerCase().includes('tennis') ||
-                    c.link.toLowerCase().includes('hockey') ||
-                    c.link.toLowerCase().includes('badminton') ||
-                    c.link.toLowerCase().includes('kabaddi') ||
-                    c.link.toLowerCase().includes('championships') ||
-                    c.link.toLowerCase().includes('champions')
-                )
-                .map(c => {
-                    const img =
-                        c?.description?.match(/<img[^>]+src=(["'])(.*?)\1/)?.[2] ||
-                        c?.enclosure?.["$"]?.url ||
-                        c?.StoryImage ||
-                        c?.mediaContent?.["$"]?.url ||
-                        "noImg.png";
-                    return `
+            .flatMap(entry => entry.headlines)
+            .filter(c =>
+                c.link.toLowerCase().includes('sports') ||
+                c.link.toLowerCase().includes('/sports') ||
+                c.link.toLowerCase().includes('boxing') ||
+                c.link.toLowerCase().includes('cricket') ||
+                c.link.toLowerCase().includes('football') ||
+                c.link.toLowerCase().includes('soccer') ||
+                c.link.toLowerCase().includes('tennis') ||
+                c.link.toLowerCase().includes('hockey') ||
+                c.link.toLowerCase().includes('badminton') ||
+                c.link.toLowerCase().includes('kabaddi') ||
+                c.link.toLowerCase().includes('championships') ||
+                c.link.toLowerCase().includes('champions')
+            )
+            .map(c => {
+                const img =
+                    c?.description?.match(/<img[^>]+src=(["'])(.*?)\1/)?.[2] ||
+                    c?.enclosure?.["$"]?.url ||
+                    c?.StoryImage ||
+                    c?.mediaContent?.["$"]?.url ||
+                    "noImg.png";
+                return `
                     <div class="category-topic-card" onclick="window.open('${c.link}', '_blank')">
                         <img src="${img}" width="100%" height="180">
                         <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">${c.title}</h3>
@@ -747,22 +847,22 @@ async function updateHTML(params) {
                 `})
             .join('')}
         </div>
-        ${params.flatMap(item=>item.headlines).find(topicUrl=>topicUrl.link.toLowerCase().includes('entertainment')) ? `<h5 class="topic-header">Entertainment</h5>` : ''}
+        ${params.flatMap(item => item.headlines).find(topicUrl => topicUrl.link.toLowerCase().includes('entertainment')) ? `<h5 class="topic-header">Entertainment</h5>` : ''}
         <div class="category-topics" id="entertainment">
             ${params
-                .flatMap(entry => entry.headlines)
-                .filter(c =>
-                    c.link.toLowerCase().includes('entertainment') ||
-                    c.link.toLowerCase().includes('/entertainment')
-                )
-                .map(c => {
-                    const img =
-                        c?.description?.match(/<img[^>]+src=(["'])(.*?)\1/)?.[2] ||
-                        c?.enclosure?.["$"]?.url ||
-                        c?.StoryImage ||
-                        c?.mediaContent?.["$"]?.url ||
-                        "noImg.png";
-                    return `
+            .flatMap(entry => entry.headlines)
+            .filter(c =>
+                c.link.toLowerCase().includes('entertainment') ||
+                c.link.toLowerCase().includes('/entertainment')
+            )
+            .map(c => {
+                const img =
+                    c?.description?.match(/<img[^>]+src=(["'])(.*?)\1/)?.[2] ||
+                    c?.enclosure?.["$"]?.url ||
+                    c?.StoryImage ||
+                    c?.mediaContent?.["$"]?.url ||
+                    "noImg.png";
+                return `
                     <div class="category-topic-card" onclick="window.open('${c.link}', '_blank')">
                         <img src="${img}" width="100%" height="180">
                         <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">${c.title}</h3>
@@ -770,22 +870,22 @@ async function updateHTML(params) {
                 `})
             .join('')}    
         </div>
-       ${params.flatMap(item=>item.headlines).find(topicUrl=>topicUrl.link.toLowerCase().includes('health')) ? `<h5 class="topic-header">Health</h5>` : ''}
+       ${params.flatMap(item => item.headlines).find(topicUrl => topicUrl.link.toLowerCase().includes('health')) ? `<h5 class="topic-header">Health</h5>` : ''}
         <div class="category-topics" id="health">
            ${params
-                .flatMap(entry => entry.headlines)
-                .filter(c =>
-                    c.link.toLowerCase().includes('health') ||
-                    c.link.toLowerCase().includes('/health')
-                )
-                .map(c => {
-                    const img =
-                        c?.description?.match(/<img[^>]+src=(["'])(.*?)\1/)?.[2] ||
-                        c?.enclosure?.["$"]?.url ||
-                        c?.StoryImage ||
-                        c?.mediaContent?.["$"]?.url ||
-                        "noImg.png";
-                    return `
+            .flatMap(entry => entry.headlines)
+            .filter(c =>
+                c.link.toLowerCase().includes('health') ||
+                c.link.toLowerCase().includes('/health')
+            )
+            .map(c => {
+                const img =
+                    c?.description?.match(/<img[^>]+src=(["'])(.*?)\1/)?.[2] ||
+                    c?.enclosure?.["$"]?.url ||
+                    c?.StoryImage ||
+                    c?.mediaContent?.["$"]?.url ||
+                    "noImg.png";
+                return `
                     <div class="category-topic-card" onclick="window.open('${c.link}', '_blank')">
                         <img src="${img}" width="100%" height="180">
                         <h3 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;overflow: hidden; text-overflow: ellipsis;">${c.title}</h3>
@@ -846,21 +946,54 @@ async function updateHTML(params) {
         });
 
         // carousel auto slide
-        const slides = document.querySelectorAll(".carousel-slide");
-        let i = 0;
-        setInterval(() => {
-            slides[i].classList.remove("active");
-            i = (i + 1) % slides.length;
-            slides[i].classList.add("active");
-        }, 4500);
-        function gotoNews(link){
-            // open in new tab 
-            window.open(link, "_blank");
-        }
+        // const slides = document.querySelectorAll(".carousel-slide");
+        // let i = 0;
+        // setInterval(() => {
+        //     slides[i].classList.remove("active");
+        //     i = (i + 1) % slides.length;
+        //     slides[i].classList.add("active");
+        // }, 4500);
         function handleSlideClick(link) { 
             // open in new tab 
             window.open(link, "_blank");
         }
+document.querySelectorAll(".carousel-slide").forEach(slide => {
+    const track = slide.querySelector(".card-track");
+    const cards = Array.from(track.children);
+
+    const cardWidth = cards[0].offsetWidth + 16;
+    const visibleCards = Math.floor(slide.offsetWidth / cardWidth);
+
+    // clone first visible cards
+    for (let i = 0; i < visibleCards; i++) {
+        track.appendChild(cards[i].cloneNode(true));
+    }
+
+    let index = 0;
+    let transitioning = false;
+
+    function move() {
+        if (transitioning) return;
+        transitioning = true;
+
+        index++;
+        track.style.transition = "transform 0.6s ease-in-out";
+        track.style.transform = 'translateX(-' + (index * cardWidth) + 'px)';
+    }
+
+    track.addEventListener("transitionend", () => {
+        if (index >= cards.length) {
+            track.style.transition = "none";
+            index = 0;
+            track.style.transform = "translateX(0px)";
+        }
+        transitioning = false;
+    });
+
+    setInterval(move, 3700);
+});
+
+
         function copyLink(event, link) {
             event.preventDefault();
             navigator.clipboard.writeText(link).then(() => {
@@ -899,6 +1032,14 @@ async function updateHTML(params) {
                 closeModal();
             }
         });
+
+        // Expandable trending cards
+        document.querySelectorAll('.expand-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.closest('.trend-card').classList.toggle('expanded');
+            });
+        });
+
     </script>
 
 </body>
