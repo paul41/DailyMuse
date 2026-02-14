@@ -2,19 +2,32 @@ const fs = require('fs');
 const raw = fs.readFileSync('data.json', 'utf-8');
 const RSSLinkExtractor = require('./extractor');
 const { error } = require('console');
+const {findTrendingTopics} = require('./trendingTopics');
 const xmlContent = JSON.parse(raw);
-
-
-(async () => {
-    const extractor = new RSSLinkExtractor(xmlContent);
+const extractor = new RSSLinkExtractor(xmlContent);
+findTrendingTopics().then(async topics => {
     const contents = await extractor.extractLinks();
-    await updateHTML(contents).then(data => console.log('✅ HTML generated: index.html')).catch(err => {
-        console.error('Error updating HTML', error);
+    const feeds = []
+    topics.forEach(async (t, i) => {
+        feeds.push(t)
+    });
+    console.log(feeds);
+    
+    await updateHTML(contents,feeds).then(data => console.log('✅ HTML generated: index.html')).catch(err => {
+        console.error('Error updating HTML', err);
         process.exit(1);
     });
-})();
+}
+).catch(async err => {
+    console.error("Error fetching trending topics: ", err) 
+    const contents = await extractor.extractLinks();
+    await updateHTML(contents).then(data => console.log('✅ HTML generated: index.html')).catch(err => {
+        console.error('Error updating HTML', err);
+        process.exit(1);
+    });
+});
 
-async function updateHTML(params) {
+async function updateHTML(params, topic) {
     const html = `<!DOCTYPE html>
 <html>
 <head>
@@ -668,33 +681,24 @@ async function updateHTML(params) {
 </section>
 <!-- ⭐ Trending Section -->
     <h2 class="section-title">Trending Now <span style="color: #c55f17db;font-size: 0.85rem;">AI Analysis</span></h2>
-<section class="trending">
-        <div class="trend-card">
-            <div class="heat heat-1"></div>
-            <div class="card-header">
-                <h3>Markets Surge to Record High</h3>
-                <button class="expand-btn" aria-label="Expand">
-                    ▼
-                </button>
-            </div>
-            <div class="card-content">
-                <p>
-                    Global markets hit record highs as investors reacted positively
-                    to strong earnings and easing inflation.
-                </p>
-
-                <img src="img/market1.jpg" alt="Market chart">
-                <img src="img/market2.jpg" alt="Stock performance">
-            </div>
-        </div>
-        <div class="trend-card">
-            <div class="heat heat-2"></div>
-            <h3>AI Adoption in India Jumps</h3>
-        </div>
-        <div class="trend-card">
-            <div class="heat heat-3"></div>
-            <h3>Monsoon Expected Above Normal</h3>
-        </div>
+    <section class="trending">
+         ${topic.map(({topic})=>{
+           return `<div class="trend-card">
+                <div class="heat heat-1"></div>
+                <div class="card-header">
+                    <h3>${topic.title || "Trending Topic"}</h3>
+                    <button class="expand-btn" aria-label="Expand">
+                        ▼
+                    </button>
+                </div>
+                <div class="card-content">
+                    <p>
+                        ${topic.contentSnippet || "Stay informed with Daily Muse's AI-curated trending topics, bringing you the latest news highlights at your fingertips."}
+                    </p>
+                    <span>${topic.pubDate}</span>
+                </div>
+            </div> 
+            `}).join("")}
     </section>
     <!-- ⭐ Dynamic News -->
     <section>

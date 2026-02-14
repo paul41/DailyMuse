@@ -1,24 +1,44 @@
+/* ================== DEPENDENCIES ================== */
+
+const fs = require('fs');
 const natural = require('natural');
+const stemmer = natural.PorterStemmer;
 const stopword = require('stopword');
+const Parser = require('rss-parser'); // uncomment when ready
+const { log } = require('console');
+const parser = new Parser();
+const tokenizer = new natural.WordTokenizer();
 const TfIdf = natural.TfIdf;
-const raw = fs.readFileSync('data.json', 'utf-8');
 
-const SIMILARITY_THRESHOLD = 0.25;
-const TOPICS_TO_RETURN = 5;
+/* ================== CONFIG ================== */
 
-/* ------------------ TEXT PROCESSING ------------------ */
+const FEEDS = [
+ 'https://timesofindia.indiatimes.com/rssfeedstopstories.cms',
+  'https://feeds.feedburner.com/NDTV-LatestNews',
+  'https://www.indiatoday.in/rss/1206578',
+  'https://www.thehindu.com/news/national/?service=rss',
+  'https://www.cnbctv18.com/commonfeeds/v1/cne/rss/business.xml'
+];
+
+const SIMILARITY_THRESHOLD = 0.3;   // clustering threshold
+const DEDUP_THRESHOLD = 0.85;       // near-duplicate removal
+const TOPICS_TO_RETURN = 7;
+
+/* ================== TEXT PROCESSING ================== */
 
 function preprocess(text = '') {
-  return stopword.removeStopwords(
-    text
-      .toLowerCase()
-      .replace(/[^a-z\s]/g, '')
-      .split(/\s+/)
-      .filter(w => w.length > 3)
-  ).join(' ');
+  return stopword
+    .removeStopwords(
+      tokenizer
+        .tokenize(text.toLowerCase())
+        .map(w => w.replace(/[^a-z]/g, ''))
+        .filter(w => w.length > 3)
+        .map(w => stemmer.stem(w))
+    )
+    .join(' ');
 }
 
-/* ------------------ COSINE SIMILARITY ------------------ */
+/* ================== VECTOR UTILS ================== */
 
 function vectorize(tfidf, index) {
   const vec = {};
@@ -43,28 +63,76 @@ function cosineSimilarity(a, b) {
   return dot / (Math.sqrt(magA) * Math.sqrt(magB) || 1);
 }
 
-/* ------------------ CLUSTERING ------------------ */
+function addVectors(a, b) {
+  const out = { ...a };
+  for (const k in b) {
+    out[k] = (out[k] || 0) + b[k];
+  }
+  return out;
+}
 
-function clusterDocuments(vectors, articles) {
-  const clusters = [];
+function scaleVector(v, s) {
+  const out = {};
+  for (const k in v) out[k] = v[k] / s;
+  return out;
+}
+
+/* ================== DEDUPLICATION ================== */
+
+function deduplicateArticles(vectors, articles) {
+  const keep = [];
+  const removed = new Set();
 
   vectors.forEach((vec, i) => {
-    let added = false;
+    if (removed.has(i)) return;
 
-    for (const cluster of clusters) {
-      const similarity = cosineSimilarity(vec, cluster.centroid);
-      if (similarity >= SIMILARITY_THRESHOLD) {
-        cluster.docs.push(i);
-        cluster.feeds.add(articles[i].feed);
-        added = true;
-        break;
+    keep.push(i);
+
+    for (let j = i + 1; j < vectors.length; j++) {
+      if (removed.has(j)) continue;
+      if (cosineSimilarity(vec, vectors[j]) >= DEDUP_THRESHOLD) {
+        removed.add(j);
       }
     }
-    if (!added) {
+  });
+
+  return keep.map(i => ({
+    article: articles[i],
+    vector: vectors[i]
+  }));
+}
+
+/* ================== CLUSTERING ================== */
+
+function clusterDocuments(items) {
+  const clusters = [];
+
+  items.forEach(({ vector, article }) => {
+    let bestCluster = null;
+    let bestScore = 0;
+
+    for (const cluster of clusters) {
+      const sim = cosineSimilarity(vector, cluster.centroid);
+      if (sim > bestScore) {
+        bestScore = sim;
+        bestCluster = cluster;
+      }
+    }
+
+    if (bestCluster && bestScore >= SIMILARITY_THRESHOLD) {
+      bestCluster.docs.push(article);
+      bestCluster.feeds.add(article.feed);
+      bestCluster.sumVector = addVectors(bestCluster.sumVector, vector);
+      bestCluster.centroid = scaleVector(
+        bestCluster.sumVector,
+        bestCluster.docs.length
+      );
+    } else {
       clusters.push({
-        docs: [i],
-        centroid: vec,
-        feeds: new Set([articles[i].feed])
+        docs: [article],
+        feeds: new Set([article.feed]),
+        sumVector: vector,
+        centroid: vector
       });
     }
   });
@@ -72,69 +140,80 @@ function clusterDocuments(vectors, articles) {
   return clusters;
 }
 
-/* ------------------ TOPIC LABELING ------------------ */
+/* ================== TOPIC LABELING ================== */
 
-function extractTopic(tfidf, docIndexes) {
+function extractTopic(tfidf, docs) {
   const scores = {};
 
-  docIndexes.forEach(i => {
-    tfidf.listTerms(i).slice(0, 5).forEach(t => {
-      scores[t.term] = (scores[t.term] || 0) + t.tfidf;
-    });
+  docs.forEach(d => {
+    // console.log(d)
+    tfidf.listTerms(d._tfidfIndex)
+      .slice(0, 7)
+      .forEach(t => {
+        scores[t.term] = (scores[t.term] || 0) + t.tfidf;
+        scores["title"] = d.title;
+        scores["contentSnippet"] = d.contentSnippet;
+        scores["pubDate"] = d.pubDate;
+        // scores["img"] = d.img;
+        scores["link"] = d.link;
+      });
   });
-
-  return Object.entries(scores)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 3)
-    .map(t => t[0])
-    .join(' ');
+  return scores;
 }
 
-/* ------------------ MAIN PIPELINE ------------------ */
+/* ================== MAIN PIPELINE ================== */
 
 async function findTrendingTopics() {
   const articles = [];
 
   for (const feedUrl of FEEDS) {
-    //const feed = await parser.parseURL(feedUrl); // TODO: Implement feed fetching
-    // feed.items.forEach(item => {
-    //   articles.push({
-    //     title: item.title,
-    //     content: preprocess(`${item.title} ${item.contentSnippet || ''}`),
-    //     feed: feed.title
-    //   });
-    // });
+    // console.log(`Fetching feed: ${feedUrl}`);
+    const feed = await parser.parseURL(feedUrl);
+    feed.items.forEach(item => {
+      articles.push({
+        title: item.title || '',
+        content: preprocess(
+          `${item.title || ''} ${item.contentSnippet || item.content || ''}`
+        ),
+        feed: feed.title || feedUrl,
+        pubDate: item.pubDate || '',
+        contentSnippet: item.contentSnippet || '',
+        // img: item,
+        link: item.link || ''
+      });
+    });
   }
 
   const tfidf = new TfIdf();
   articles.forEach(a => tfidf.addDocument(a.content));
-
+  articles.forEach((a, i) => (a._tfidfIndex = i));
   const vectors = articles.map((_, i) => vectorize(tfidf, i));
-
-  const clusters = clusterDocuments(vectors, articles);
-
-  const ranked = clusters
-    .map(cluster => ({
-      topic: extractTopic(tfidf, cluster.docs),
-      articleCount: cluster.docs.length,
-      feedCount: cluster.feeds.size
+  const uniqueItems = deduplicateArticles(vectors, articles);
+  const clusters = clusterDocuments(uniqueItems);
+  // console.log(clusters);
+  
+  return clusters
+    .map(c => ({
+      topic: extractTopic(tfidf, c.docs),
+      articleCount: c.docs.length,
+      feedCount: c.feeds.size,
+      score: c.docs.length * Math.log(1 + c.feeds.size)
     }))
-    .sort((a, b) =>
-      b.articleCount * b.feedCount - a.articleCount * a.feedCount
-    )
+    .sort((a, b) => b.score - a.score)
     .slice(0, TOPICS_TO_RETURN);
-
-  return ranked;
 }
 
-/* ------------------ RUN ------------------ */
+/* ================== RUN ================== */
 
-findTrendingTopics()
-  .then(topics => {
-    console.log('\n🔥 Trending Topics:\n');
-    topics.forEach((t, i) => {
-      console.log(
-        `${i + 1}. ${t.topic} (${t.articleCount} articles, ${t.feedCount} feeds)`
-      );
-    });
-  }).catch(console.error);
+// findTrendingTopics()
+//   .then(topics => {
+//     console.log('\n🔥 Trending Topics:\n');
+//     topics.forEach((t, i) => {
+//       console.log(
+//         `${i + 1}. ${t.topic.title} (${t.articleCount} articles, ${t.feedCount} feeds)`
+//       );
+//       //return `${t.topic.title}`
+//     });
+//   })
+//   .catch(console.error);
+module.exports = {findTrendingTopics};
